@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+ 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Welcome</title>
+ 
+</head>
+<body>
+ 
+	<div class="hero-unit">
+	  
+	 
+
+		<div class="row">
+			 	<div class="span2">
+			<%=image_tag("/assets/img1.jpg")%>	
+			<%=image_tag("/assets/img2.jpg")%>
+			 
+		 
+			<%=image_tag("/assets/img5.jpg")%>
+					 
+				 </div>
+			
+			 	<div class="span6">
+		            
+	
+					<%@homes.each do |home|%>
+				
+		<center> 
+					<h1>	<%=home.title%> </h1>   <br>
+				
+	 				<%=image_tag("/assets/tots.jpg")%>
+					 <center>
+
+
+<div class="lead">
+<p>
+<%=simple_format(word_wrap(home.content,:line_width=>260))%> </p> </h2></div>
+	<%end%> 
+ </div>
+	
+	
+			 <div class="span2">
+				<%=image_tag("/assets/img8.jpg")%>
+					
+						<%=image_tag("/assets/img7.jpg")%>
+							
+									<%=image_tag("/assets/img12.jpg")%>
+									 <%=image_tag("/assets/img6.jpg")%>
+							 
+			 
+				</div>
+	</div>
+ </div>
+	 </div> 
+	
+	
+	 
+
+</body>
+</html>

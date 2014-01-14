@@ -1,4 +1,31 @@
 MomsAndTots::Application.routes.draw do
+  get "public/index"
+
+  get "public/login"
+
+  get "public/attempt_login"
+
+  get "public/listProducts"
+
+  get "public/listReviews"
+
+  get "public/listRecipes"
+
+  get "public/listItems"
+
+  get "public/listContacts"
+
+  get "public/newMember"
+
+  resources :items
+
+
+  resources :recipes
+
+
+  resources :reviews
+
+
   resources :products
   
 root :to =>"products#index"

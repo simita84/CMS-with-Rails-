@@ -29,12 +29,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">MomsAndTots</a>
+          <a class="brand">ClubbyKids</a>
+		 
           <div class="container nav-collapse">
+	
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              	 	<li><%=link_to("Home",:controller=>'public',:action=>'index')%></li>
+				 	<li><%=link_to("Events",:controller=>'public',:action=>'login')%></li>
+					<li><%=link_to("Reviews",:controller=>'public',:action=>'listProducts')%></li>
+					<li><%=link_to("Kids Recipes",:controller=>'public',:action=>'listRecipes')%></li>
+					<li><%=link_to("Kids Items",:controller=>'public',:action=>'listItems')%></li>
+					<li><%=link_to("Contact Us",:controller=>'public',:action=>'listContacts')%></li>
+					<li><%=link_to("Login",:controller=>'public',:action=>'login')%></li>		 
+					<li><%=link_to("Sign Up",:controller=>'public',:action=>'newMember')%></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -43,20 +50,17 @@
 
     <div class="container">
         <div class="row">
-          <div class="span9">
+          <div class="span12">
+	 
+		<div class='hero-unit'>
+	
             <%= bootstrap_flash %>
             <%= yield %>
+ 
+</div>
           </div>
-          <div class="span3">
-            <div class="well sidebar-nav">
-              <h3>Sidebar</h3>
-              <ul class="nav nav-list">
-                <li class="nav-header">Sidebar</li>
-                <li><%= link_to "Link1", "/path1"  %></li>
-                <li><%= link_to "Link2", "/path2"  %></li>
-                <li><%= link_to "Link3", "/path3"  %></li>
-              </ul>
-            </div><!--/.well -->
+         
+</div>
           </div><!--/span-->
         </div><!--/row-->
 

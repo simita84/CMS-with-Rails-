@@ -1,0 +1,46 @@
+<html>
+
+<body>
+		<h3>Kids Items On Sale </h3>
+ 
+ 	<%=link_to("Back",{:controller=>'member',:action=>'index'},:class=>'btn')%> 
+ 	<%=link_to("Add new items",{:action=>'newItems'},:class=>'btn')%> 
+<br> 
+	
+	<br>
+	  	<table class="table">
+	<%= will_paginate  @items%>
+ 			<% @items.each do |item|%>
+			<tr align ="left">
+					<th class='text-error'><%=item.name	%></th>         </tr>    
+				<tr>
+						<td> 				 
+ 						<%= image_tag item.itemphoto.url(:medium) %>
+</td></tr>
+					<tr align ="left">
+						<td>	<%= simple_format(item.content,:line_width=>30)%></td> </tr> 	 
+
+						<tr> <td> <b>Author:</b><%=item.member_username%></td> </tr>
+
+					
+		<% if item.member_username == session[:username]%>
+ 
+			<tr><td> 	
+				<div class="btn">
+			 <%= link_to "Modify Item",  { :controller=>"member", :action=>"editItems", :id=>item.id} %>
+				</div>
+			 
+		  
+				<div class="btn">
+				<%= link_to "Remove Item",  { :controller=>"member", :action=>"deleteItems", :id=>item.id} %>
+				</div>
+			</td>
+ 
+		<% end %>
+			 			</tr>	   
+	<%end%>	
+			</table>
+				<%= will_paginate  @items%>
+ 
+</body>
+</html>

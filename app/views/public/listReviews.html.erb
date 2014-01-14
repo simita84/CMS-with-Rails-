@@ -1,2 +1,80 @@
-<h1>Public#listReviews</h1>
-<p>Find me in app/views/public/listReviews.html.erb</p>
+<html>
+
+<body>
+ 
+ 
+<div class="container">
+		<div class="span2">
+
+		<h4>Review Categories </h4>
+					 <ul class='nav'>
+						
+					
+						<%@products.each do |product|%> 	 
+ 						 <li>
+						<%=link_to(product.title,:controller=>'public',:action=>'listReviews', 	:product_id=>product.id) %>  	 </li>
+						<%end%>
+						
+				 
+ 					</div>
+ 
+		 
+		
+ 
+<div class="span9">
+					  
+		<%=link_to("Back",{:controller=>'public',:action=>'listProducts'},:class=>'btn')%>
+		
+	 
+			<h1> <%=@product.title%> 's  Reviews</h1>
+	 
+			<br>
+	
+			<%= will_paginate @reviews %>
+			<table class="table" >
+  		
+				<% @reviews.each do |review|%>
+				<tr align ="left">	
+	
+					<td class="text-error">
+						
+					 
+			
+			<h3>	 <%=review.title	%></h3></td>   
+			<td> <p> <b>Posted by : </b>
+		 		<%=review.member_username%> 
+				  On  
+			 
+				<%=review.created_at.strftime("%B %e %Y") %></p></td>     </tr>     				 
+           		 		 
+						<tr align ="left">
+				<td class="lead">	
+				<p><%= word_wrap(review.content,:line_width=>500)%></p></td> </tr> 	 
+				
+					<tr> </tr>	  
+				
+					<tr> 
+					
+						</tr>
+			 
+	 					<%end%>	
+ 
+					</table>
+	
+					<%= will_paginate @reviews %>
+		 			<h3><%=flash[:notice]%></h3>
+		 
+ </div>
+
+</div>
+ 
+	
+ 
+	
+	
+	 
+ 
+</body>
+	
+</html>
+ 

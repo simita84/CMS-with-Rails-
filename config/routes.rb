@@ -1,22 +1,56 @@
 MomsAndTots::Application.routes.draw do
-  get "public/index"
+  get "member/showAccountInfo"
 
-  get "public/login"
+  get "member/newReviews"
 
-  get "public/attempt_login"
+  get "member/newRecipes"
 
-  get "public/listProducts"
+  get "member/newItems"
 
-  get "public/listReviews"
+  get "member/listReviews"
 
-  get "public/listRecipes"
+  get "member/listRecipes"
 
-  get "public/listItems"
+  get "member/listProducts"
 
-  get "public/listContacts"
+  get "member/listMembers"
 
-  get "public/newMember"
+  get "member/listItems"
 
+  get "member/listEvents"
+
+  get "member/listContactInfo"
+
+  get "member/index"
+
+  get "member/eventDetails"
+
+  get "member/editReviews"
+
+  get "member/editRecipes"
+
+  get "member/editMember"
+
+  get "member/editItems"
+
+  get "member/deleteReviews"
+
+  get "member/deleteRecipes"
+
+  get "member/deleteItems"
+
+  get "access/attempt_login"
+
+  get "access/index"
+
+  get "access/listMembers"
+
+  get "access/login"
+
+  get "access/menu"
+
+  resources :homes
+ 
   resources :items
 
 
@@ -28,7 +62,7 @@ MomsAndTots::Application.routes.draw do
 
   resources :products
   
-root :to =>"products#index"
+root :to =>"public#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

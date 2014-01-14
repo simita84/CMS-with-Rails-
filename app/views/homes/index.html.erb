@@ -1,0 +1,31 @@
+<%- model_class = Home -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:content) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @homes.each do |home| %>
+      <tr>
+        <td><%= link_to home.id, home_path(home) %></td>
+        <td><%= home.title %></td>
+        <td><%= home.content %></td>
+        <td><%=l home.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_home_path(home), :class => 'btn btn-mini' %>
+           
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+ 

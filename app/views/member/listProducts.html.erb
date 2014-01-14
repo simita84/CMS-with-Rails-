@@ -1,0 +1,27 @@
+
+<html>
+<body>
+
+  
+ 
+			<div><%= pluralize(@products.size, 'product') %> found</div>
+	
+<h3 align="center">Products Review  </h3>
+
+			 
+<%@products.each do |product|%> 	 
+
+ 
+
+ <%=link_to(product.title,{:controller=>'member',:action=>'listReviews', :product_id=>product.id},:class=>'btn') %> 
+
+ 
+
+<%end%>
+ <h3><%=flash[:notice]%></h3> 
+
+ 
+</body>
+</html>
+  
+

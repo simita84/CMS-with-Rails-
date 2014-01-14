@@ -1,0 +1,61 @@
+<html>
+
+<body>
+
+
+	
+ 
+		 
+		
+ 	<%=link_to("Back Home",{:controller=>'member',:action=>'index'},:class=>'btn')%> 
+
+ 
+			<%=link_to("Create new Recipes",{:action=>'newRecipes'},:class=>'btn')%>  
+			<br>
+				<br>
+				<h3 align="center">Recipes </h3>
+			 
+		<table class="table">
+
+	<%= will_paginate  @recipes%>
+	<% @recipes.each do |recipe|%>
+			<tr align ="left">
+	<th class='text-error'>
+		<h2><%=recipe.title	%> </h2>
+		
+		<p><b>Posted  by: </b>
+		 <%=recipe.member_username%> 
+	 <b>On :</b> <%=recipe.created_at.strftime("%B %e %Y") %></p>
+	</th>       
+			 	</tr>     				 
+
+<tr><td align ="center"> 		
+	<p>			 
+			 <%= image_tag recipe.recipephoto.url(:medium) %>
+							 	<%= simple_format(recipe.content,:line_width=>440)%><p>
+							</td> </tr> 	 
+
+						 
+					
+		<% if recipe.member_username == session[:username]%>
+ 
+			<tr><td> 	
+				<div class="btn">
+			 <%= link_to "Modify Recipe",  { :controller=>"member", :action=>"editRecipes", :id=>recipe.id} %>
+				</div>
+			 
+		  
+				<div class="btn">
+				<%= link_to "Remove Recipe",  { :controller=>"member", :action=>"deleteRecipes", :id=>recipe.id} %>
+				</div>
+			</td>
+ 
+		<% end %>
+			 			</tr>	   
+	<%end%>	
+			</table>
+				<%= will_paginate  @recipes%>
+
+ 
+</body>
+</html>

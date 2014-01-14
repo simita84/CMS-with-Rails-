@@ -1,0 +1,34 @@
+<html>
+ <body>		
+ 
+ <%=form_for(:review,:url=>{:action=>'updateReviews',:id =>@review.id,:product_id=>@product.id}) do |f| %>
+ 	<table class="table">
+	 			<tr>
+					<th>Reviews Title</th>
+					<td>
+						<%=f.text_field(:title)%>
+					</td>
+				</tr>
+				<tr>
+					<th>Reviews Contents</th>
+					<td>
+						<%=f.text_area(:content,size: "60x12")%></td>
+					</tr>
+					<tr>
+							<th>Posted By</th>
+					 	<td>
+							<%=f.text_field(:member_username)%>
+							 </td>
+		 			</tr>
+			<tr>
+				<td> 	
+					<div class="btn"><%=submit_tag("Edit Reviews")%> 	</div>
+				</td>
+	 	        <td>
+					<div class="btn">	<%=link_to("CANCEL",:action=>'listReviews',:product_id=>@product.id)%></div>
+						</td>
+	 				</tr>
+	 
+					<%end%>
+ 	</body>
+	</html>

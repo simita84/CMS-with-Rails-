@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140114205100) do
+ActiveRecord::Schema.define(:version => 20140114220509) do
+
+  create_table "homes", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -31,8 +38,12 @@ ActiveRecord::Schema.define(:version => 20140114205100) do
     t.string   "title"
     t.text     "content"
     t.string   "member_username"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.string   "recipephoto_file_name"
+    t.string   "recipephoto_content_type"
+    t.integer  "recipephoto_file_size"
+    t.datetime "recipephoto_updated_at"
   end
 
   create_table "reviews", :force => true do |t|

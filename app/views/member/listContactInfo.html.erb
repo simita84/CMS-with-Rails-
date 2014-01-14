@@ -1,0 +1,26 @@
+<html>
+
+<body>
+  	
+	  
+<div class="span3 offset3">
+	<img src="/images/img1.jpg" class="img-polaroid" /><br></div>
+		<% @contacts.each do |contact|%>
+	<table class="table">
+		
+		<tr>
+		<th>We are</th>
+		<td><%=contact.name%></td>
+		</tr>
+		<tr>
+		<th>EMail Us @</th>
+		<td><%=contact.emailid%></td>
+		</tr>
+		<tr>
+		<th>Find Us On </th>
+		<td><a href=""><%=contact.facebook%></a></td>
+		</tr>
+	
+		</table>
+		
+		<%end%>

@@ -1,0 +1,47 @@
+
+<html>
+
+<body>
+	 
+ 
+
+<table class="table">
+
+	<table class="table">
+	
+		<tr><th> Account Details</th>
+ 		</tr>
+		<tr>
+				<td>
+				<%= image_tag @member_user.memberphoto.url(:thumb) %>
+				</td>
+		</tr>
+		<tr>
+			<td>Email ID: </td>
+			
+			<td><%=@member_user.username%></td>
+		</tr>
+	
+		
+		<tr>
+			<td>First Name: </td>
+			<td><%=@member_user.first_name%></td>
+		</tr>
+			
+				<tr>
+					<td>Last Name: </td>
+					<td><%=@member_user.last_name%></td>
+				</tr>
+				<tr>
+					<td>Member Since: </td>
+					<td><%=@member_user.created_at.to_time.strftime('%e %b %Y %H:%m:%S')%></td>
+				</tr>
+				<tr><td>
+					<%= link_to( "Modify Profile Details", 
+		 { :controller=>"member", :action=>"editMember", :id=>@member_user.id},:class=>'btn') %>		 </td></tr>
+				
+			
+ 
+
+</body>
+</html>

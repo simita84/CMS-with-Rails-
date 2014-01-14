@@ -1,0 +1,90 @@
+  <%=link_to("Back to Events",{:action=>'listEvents'},:class=>'btn')%>
+
+
+		
+		 
+  <dl align='center'>
+ 
+		<dt><h2><%= @event.name %></h2></dt>  
+	<dt>	<%= image_tag @event.eventphoto.url(:medium) %><dt><br>
+		<dt>When </dt> 
+	      <dd><%= @event.datetime.strftime('%e %b %Y %H:%m:%S%p')%></dd><br>
+	 
+	<dt>Where </dt>
+      <dd><td><%= @event.address%></td></dd>
+     
+</dl>
+   
+  <table class='table'>
+ 		<tr> 
+	<td>
+		<h3>Response </h3>
+			</td></tr>
+<%= form_for(:invitee, :url => {:action => 'memberresponsehandler',:id => @invitee.id, :event_id => @event.id, :email => session[:email_id]}) do |f| %>
+ 
+
+
+<tr><td>
+ 
+  <tr>
+    <th> Will you attend ?   </th>
+    <td><%= f.select(:response, ["Yes","No","May Be","NA"].collect {|p| p[0..10]}) %></td>
+</tr>
+<tr>
+   	<th> No: of Adults </th>
+     <td><%= f.text_field(:adults) %></td>
+
+</tr>
+<tr>
+    <th> No: of kids</th>
+ 	<td><%= f.text_field(:kids) %></td>
+</tr>
+<tr>
+    <th> Message</th>
+    <td><%= f.text_area(:message,:cols=>5,:rows=>5) %></td>
+</tr>
+<tr>
+ 	<td> <%=f.submit "Submit",class:'btn' %> </td>
+	<td>RESET </td>
+</tr>
+</table>
+    
+
+    
+  <% end %>
+
+  </td>
+</tr>
+
+ <tr>
+	<td>
+ 
+
+
+<h2>Guests list for <%= @event.name %></h2>
+
+
+<table class="table">
+   <tr class="header">
+     <th>Name</th>
+     <th>Email</th>
+     <th>Response</th>
+     <th>Number Of Adults</th>
+     <th>Number Of Kids</th>
+     <th>Message</th>
+   </tr>
+   <% @invitedinvitees.each do |invitedinvitee| %>
+   <tr>
+     <td><%= invitedinvitee.firstname %></td>
+     <td><%= invitedinvitee.email %></td>
+     <td><%= invitedinvitee.response %></td>
+     <td><%= invitedinvitee.adults %></td>
+     <td><%= invitedinvitee.kids %></td>
+     <td><%= invitedinvitee.message %></td>
+   </tr>
+
+  <% end %>
+ </table>
+ </td>
+</tr>
+</table>

@@ -7,6 +7,8 @@
 ' img3/index.jpg': ' img3-5e789c5844a1fc8ba608cf21d2a4d65a.jpg'
 ' recipe1.jpg': ' recipe1-4bd8a0e051afb70b642a008a3067d1ad.jpg'
 ' recipe1/index.jpg': ' recipe1-4bd8a0e051afb70b642a008a3067d1ad.jpg'
+' slide1.jpg': ' slide1-b8d04592043a4ba8a7ca2c0886ec7bc0.jpg'
+' slide1/index.jpg': ' slide1-b8d04592043a4ba8a7ca2c0886ec7bc0.jpg'
 choo-choo.jpg: choo-choo-67a9a4236522f0c639182da1acb1b1ae.jpg
 choo-choo/index.jpg: choo-choo-67a9a4236522f0c639182da1acb1b1ae.jpg
 img1.jpg: img1-a00f60def9ce04bf14b7573e3ce44577.jpg
@@ -35,8 +37,8 @@ kids.jpeg: kids-d3d772c4a544d22c7c70862959461fa4.jpeg
 kids/index.jpeg: kids-d3d772c4a544d22c7c70862959461fa4.jpeg
 kids.png: kids-301c187c8cb8c3bb47427f87ea6bb338.png
 kids/index.png: kids-301c187c8cb8c3bb47427f87ea6bb338.png
-moms.jpg: moms-0f33f9729bad60114ce52185412c24d5.jpg
-moms/index.jpg: moms-0f33f9729bad60114ce52185412c24d5.jpg
+moms.jpg: moms-9c5b85e736e848a5645d5d27e7314d9d.jpg
+moms/index.jpg: moms-9c5b85e736e848a5645d5d27e7314d9d.jpg
 noisetexture.png: noisetexture-b179edf2992b853c1d8287184620b2da.png
 noisetexture/index.png: noisetexture-b179edf2992b853c1d8287184620b2da.png
 park.jpg: park-a4fa683008766b0210ed12b598146d7d.jpg
@@ -51,6 +53,12 @@ recipe4.jpeg: recipe4-ed6c6fd5776537e929ea933f98f87267.jpeg
 recipe4/index.jpeg: recipe4-ed6c6fd5776537e929ea933f98f87267.jpeg
 sesame .jpg: sesame -c89b89f093408bf3620b8b92697a02f8.jpg
 sesame /index.jpg: sesame -c89b89f093408bf3620b8b92697a02f8.jpg
+slide3.JPG: slide3-964d9fe276345b12681297daa5fa149f.JPG
+slide3/index.JPG: slide3-964d9fe276345b12681297daa5fa149f.JPG
+slide4.JPG: slide4-f1b68066e26b1b6ccb5b23f3d2558539.JPG
+slide4/index.JPG: slide4-f1b68066e26b1b6ccb5b23f3d2558539.JPG
+slide5.JPG: slide5-da4965a293a21994b2601c4492c7e0df.JPG
+slide5/index.JPG: slide5-da4965a293a21994b2601c4492c7e0df.JPG
 tot1.jpg: tot1-eef330b21945ff7ae5ffc039e7611e02.jpg
 tot1/index.jpg: tot1-eef330b21945ff7ae5ffc039e7611e02.jpg
 tot3.jpg: tot3-a1a85886ad0d3aba6f1e81e1e2469efe.jpg

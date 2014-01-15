@@ -2,15 +2,11 @@
 <html>
 
 <body>
-	 
  
-
-<table class="table">
-
 	<table class="table">
 	
-		<tr><th> Account Details</th>
- 		</tr>
+ <h3>Account Details</h3> 
+ 	 
 		<tr>
 				<td>
 				<%= image_tag @member_user.memberphoto.url(:thumb) %>
@@ -40,7 +36,7 @@
 					<%= link_to( "Modify Profile Details", 
 		 { :controller=>"member", :action=>"editMember", :id=>@member_user.id},:class=>'btn') %>		 </td></tr>
 				
-			
+			</table>
  
 
 </body>

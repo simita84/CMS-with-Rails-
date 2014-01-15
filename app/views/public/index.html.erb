@@ -8,54 +8,102 @@
 </head>
 <body>
  
+	<%@homes.each do |home|%>
  
-	  
-	 
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	  <!-- Indicators -->
+	  <ol class="carousel-indicators">
+	    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+	    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+	    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	  </ol>
 
-		<div class="row">
-			 	<div class="span2">
-			<%=image_tag("/assets/img1.jpg")%>	
-			<%=image_tag("/assets/img2.jpg")%>
-			 
-		 
-			<%=image_tag("/assets/img5.jpg")%>
-					 
-				 </div>
-			
-			 	<div class="span7">
-		            
-	
-					<%@homes.each do |home|%>
-				
-		<center> 
-					<h1>	<%=home.title%> </h1>   <br>
-				
-	 				<%=image_tag("/assets/tots.jpg")%>
-					 <center>
-
-
-<div class="lead">
-<p>
-<%=simple_format(word_wrap(home.content,:line_width=>260))%> </p> </h2></div>
-	<%end%> 
- </div>
-	
-	
-			 <div class="span2">
-				<%=image_tag("/assets/img8.jpg")%>
+	  <!-- Wrapper for slides -->
+	  <div class="carousel-inner">
+	    <div class="item active"><%=image_tag("/assets/slide5.JPG")%> 
+	     
+	      		<div class='carousel-caption'>
+					<h2> <%=home.title%></h2>
+					<p>
 					
-						<%=image_tag("/assets/img7.jpg")%>
-							
-									<%=image_tag("/assets/img12.jpg")%>
-									 <%=image_tag("/assets/img6.jpg")%>
-							 
-			 
+					It's a small (But growing!) group of moms and tots who live in and around Mountain View and Sunnyvale. Here, we are 	making our kids more social and interactive...</p>
+					<!--<%=simple_format(word_wrap(home.content,:line_width=>260))%>-->
+					
+					
+					<p><a class='btn btn-large btn-primary'>Sign Up</a></p>
 				</div>
+	    </div>
+ 	<div class="item"> <%=image_tag("/assets/slide3.JPG")%> 
+			<div class='carousel-caption'>
+				<h2> <%=home.title%></h2>
+				<p>
+				
+				It's a small (But growing!) group of moms and tots who live in and around Mountain View and Sunnyvale. Here, we are 	making our kids more social and interactive...</p>
+				<!--<%=simple_format(word_wrap(home.content,:line_width=>260))%>-->
+				
+				
+				<p><a class='btn btn-large btn-primary'>Sign Up</a></p>
+			</div></div>
+<div class="item"> <%=image_tag("/assets/slide4.JPG")%> 				<div class='carousel-caption'>
+					<h2> <%=home.title%></h2>
+					<p>
+
+					It's a small (But growing!) group of moms and tots who live in and around Mountain View and Sunnyvale. Here, we are 	making our kids more social and interactive...</p>
+					<!--<%=simple_format(word_wrap(home.content,:line_width=>260))%>-->
+
+
+					<p><a class='btn btn-large btn-primary'>Sign Up</a></p>
+				</div>
+				</div>
+<div class="item"> 
+		<div class='carousel-caption'>
+			<h2> <%=home.title%></h2>
+			<p>
+			
+			It's a small (But growing!) group of moms and tots who live in and around Mountain View and Sunnyvale. Here, we are 	making our kids more social and interactive...</p>
+			<!--<%=simple_format(word_wrap(home.content,:line_width=>260))%>-->
+			
+			
+			<p><a class='btn btn-large btn-primary'>Sign Up</a></p>
+		</div>
+<%=image_tag("/assets/slide5.JPG")%> </div>
+ 
+	  </div>
+	
+
+	  <!-- Controls -->
+	  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left"></span>
+	  </a>
+	  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right"></span>
+	  </a>
 	</div>
- </div>
-	 
-	
-	
+
+
+
+
+
+	<%end%>
+
+ 
+
+
+
+
+
+
+
+
+	<script type='text/javascript'>
+	    $(document).ready(function() {
+	         $('.carousel').carousel({
+	             interval: 3500
+	         })
+	    });    
+	</script>
+
+
 	 
 
 </body>

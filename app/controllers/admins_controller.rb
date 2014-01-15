@@ -86,7 +86,9 @@ class AdminsController < ApplicationController
 #--------------Creating Members----------------
   
   def listMembers
-    @members=Member.order("members.created_at DESC").paginate(:page => params[:page],:per_page =>3)
+    @members=Member.all
+    #order("members.created_at DESC")
+    #.paginate(:page => params[:page],:per_page =>3)
     
   end
     

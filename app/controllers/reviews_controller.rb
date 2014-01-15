@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   # GET /reviews/new.json
   def new
-    @review = Review.new
+     @review=Review.new(:product_id=>@product.id)
 
     respond_to do |format|
       format.html # new.html.erb

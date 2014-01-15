@@ -1,4 +1,7 @@
 MomsAndTots::Application.routes.draw do
+  resources :admins
+
+
   get "member/showAccountInfo"
 
   get "member/newReviews"

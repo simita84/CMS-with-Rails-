@@ -1,4 +1,5 @@
 class PublicController < ApplicationController
+  layout 'application'
   def index
      @homes=Home.all
   end

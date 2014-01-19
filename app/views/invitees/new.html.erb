@@ -1,0 +1,24 @@
+
+<html>
+<body>
+
+ 
+
+<div>
+  <h2>Add Guest</h2>
+
+  <%= form_for(:invitee, :url => {:action => 'create', :event_id => @event.id}) do |f| %>
+  
+  <%= render(:partial => "form", :locals => {:f => f}) %>
+   
+	<%= f.submit "Add Guest",class:'btn' %> 
+ 
+	<%= link_to("Cancel", {:action => 'index', :event_id => @event.id},:class=>"btn") %>
+
+   
+  <% end %>
+ 
+<%=flash[:notice]%>
+
+</body>
+</html>

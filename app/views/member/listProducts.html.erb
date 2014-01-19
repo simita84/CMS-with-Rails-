@@ -6,20 +6,23 @@
  
 			<div><%= pluralize(@products.size, 'product') %> found</div>
 	
-<h3 align="center">Products Review  </h3>
-
-			 
+<h3 align="center">Products  Categories  </h3>
+<div class='row'>
+ <center>	 <div class='span10 offset1'>
 <%@products.each do |product|%> 	 
 
  
 
- <%=link_to(product.title,{:controller=>'member',:action=>'listReviews', :product_id=>product.id},:class=>'btn') %> 
+
+<%=link_to(product.title,{:controller=>'member',:action=>'listReviews', :product_id=>product.id},:class=>'btn') %>
+ 
 
  
 
-<%end%>
+<%end%></center>
  <h3><%=flash[:notice]%></h3> 
-
+</div>
+</div>
  
 </body>
 </html>

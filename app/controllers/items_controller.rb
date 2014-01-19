@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
+     before_filter :confirm_logged_in
+  layout 'admin'
   def index
     @items = Item.all
 

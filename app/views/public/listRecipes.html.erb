@@ -6,49 +6,44 @@
 <div class="container">
 		<div class="span2">
 			<h4> All Recipes</h4>
-			
-			<table class='table'> 
- 	<%@allrecipes.each do |recipe|%>
-          		 		 
- 	<tr>	
-<td><%=link_to(recipe.title,{:controller=>'public',:action=>'displayRecipes',:id=>recipe.id})%>
-	</td></tr>
-		</table>
-		<%end%>	
-	 	</div>
-			
-			
-			
-			<div class="span9">
+			<table class='table-hover'>
+		  
+ 					<%@allrecipes.each do |recipe|%>
+         	<tr>	 		 
+ 		<td> <%=simple_format(word_wrap(recipe.title))%> </td></tr>
+			 
+					<%end%>	</table>
+	 	 </div>
+		 
+		<div class="span9">
 			
 	 	<h2>Latest Recipes</h2>
 		 
   
 		<%= will_paginate @recipes %>
 			<table class="table"> 
- 	<%@recipes.each do |recipe|%>
+ 				<%@recipes.each do |recipe|%>
           		 		 
- 	<tr>	
-	<th class="text-error">
-		<h3><%=recipe.title%></h3></th></tr>
-		<tr>
-				<td>
-				<%= image_tag recipe.recipephoto.url(:medium) %>
-				</td>
-		</tr>
-		<tr>
-		<td><b>By </b> <%=recipe.member_username%> 
-				 	<b>On </b> <%=recipe.created_at.strftime("%B %e %Y") %></td>
-		
-		</tr> 
+ 				<tr>	
+					<td>
+						<h3 class="text-error"><%=recipe.title%></h3>
+							 <b>By </b> <%=recipe.member_username%> 
+					 				<b>On </b> <%=recipe.created_at.strftime("%B %e %Y") %></td>
+
+								</tr>
+						<tr>
+							<td>
+								<%= image_tag recipe.recipephoto.url(:medium) %>
+							</td>
+						</tr>
+					
 	 	 
-	<tr> 
+							<tr> 
 		<td> <%=simple_format(word_wrap(recipe.content,:line_width=>400))%> </td></tr>
 		
-		 
-		
+	 	
  		<%end%>
-	</table>
+		</table>
  				<%= will_paginate @recipes %>
   			 
  

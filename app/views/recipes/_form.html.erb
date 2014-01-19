@@ -8,15 +8,22 @@
   <div class="control-group">
     <%= f.label :content, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :content, :class => 'text_area' %>
+      <%= f.text_area :content, :class => 'text_area',:size=>"80*60" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :member_username, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :member_username, :class => 'text_field' %>
-    </div>
-  </div>
+    </div></div>
+	<div class="control-group"> 
+		<%= f.label :Picture, :class => 'control-label' %>
+		  <div class="controls">
+		<%= f.file_field :recipephoto %>
+	</div></div>
+
+
+  
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

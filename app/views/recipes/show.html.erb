@@ -8,8 +8,13 @@
   <dd><%= @recipe.title %></dd>
   <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
   <dd><%= @recipe.content %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:member_username) %>:</strong></dt>
+  <dt><strong><%= model_class.human_attribute_name(:UploadedBy) %>:</strong></dt>
   <dd><%= @recipe.member_username %></dd>
+<dt><strong><%= model_class.human_attribute_name(:Picture) %>:</strong></dt>  
+ <dd><%= image_tag @recipe.recipephoto.url(:medium) %></dd>
+
+
+
 </dl>
 
 <div class="form-actions">

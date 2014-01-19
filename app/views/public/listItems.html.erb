@@ -1,2 +1,70 @@
-<h1>Public#listItems</h1>
-<p>Find me in app/views/public/listItems.html.erb</p>
+<html>
+
+<body>
+ 
+ 
+ 
+		<div class="span2">
+			<h4> All Items  </h4>
+			 
+ 	<%@allItems.each do |item|%>
+          		 		 
+ <table class='table-hover'>
+ <tr><td>	<%=simple_format(word_wrap(item.name))%> </td></tr>
+ 
+		<%end%>	
+		</table>
+	 	</div>
+	 	<div class="span9">
+ 
+<h2>Latest Items for Sale  </h2>
+  
+	<br>
+		<%= will_paginate @items %>
+	
+<table class="table">
+ 
+	<%@items.each do |item|%> 	 
+	    
+	
+	<tr>
+			<td> 
+				<div >
+				 <h3 class="text-error"><%=item.name%></h3></div>
+				<b> Posted By: </b><%=item.member_username%>
+ 				<b> 	on </b> <%=item.created_at.strftime("%B %e %Y") %>
+			</td>
+		</tr>
+		<tr>
+				<td>
+				<%= image_tag item.itemphoto.url(:medium) %>
+				</td>
+		</tr>	 		  			 	   
+	
+		<tr>	
+				<td>	
+				
+		<div class="lead">			 
+			 	<p><%=simple_format(word_wrap(item.content,:line_width=>300))%></div></p>
+			
+			</td></tr>
+				
+							
+ 
+	
+		<%end%>
+			</tr>
+	
+<br>
+	
+	</table>
+	<%= will_paginate @items %>
+	 <h3><%=flash[:notice]%></h3> 
+	
+ 
+ 
+ </div>
+</body>
+	
+</html>
+ 

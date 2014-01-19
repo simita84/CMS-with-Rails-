@@ -1,7 +1,14 @@
+
+
 <%- model_class = Admin -%>
 <div class="page-header">
   <h2><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h2>
 </div>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_admin_path,
+            :class => 'btn' %>
+<%=link_to("Back",{:controller=>'access',:action=>'menu'},:class => 'btn')%>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -38,8 +45,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_admin_path,
-            :class => 'btn btn-primary' %>
-<%=link_to("Back",{:controller=>'access',:action=>'menu'},:class => 'btn btn-primary')%>

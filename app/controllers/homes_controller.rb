@@ -1,6 +1,8 @@
 class HomesController < ApplicationController
   # GET /homes
   # GET /homes.json
+     before_filter :confirm_logged_in
+  layout 'admin'
   def index
     @homes = Home.all
 

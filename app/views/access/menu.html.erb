@@ -13,10 +13,10 @@
 	<h3 align="left">Welcome Admin <%= session[:username]%> !</h3>
 	
 	
-<table class="table">
+<table class="table table-striped">
 	
 	<tr>
-		<td><h4><%=link_to("Manage Home",:controller=>'homes',:action=>'list')%></h4></td> 
+		<td><h4><%=link_to("Manage Home",:controller=>'homes',:action=>'index')%></h4></td> 
 	 	<td><h4><%=link_to("Manage Events",:controller=>'events',:action=>'index')%></h4></td>
 		<td><h4><%=link_to("Manage Reviews",:controller=>'products',:action=>'index')%></h4></td>
 	</tr>
@@ -28,7 +28,7 @@
 	   </tr>
  		 
  	<tr>	<td><h4><%=link_to("Manage Admins",:controller=>'admins',:action=>'index')%></h4></td>
-			<td><h4><%=link_to("Manage Members",:controller=>'admins',:action=>'listMembers')%></h4></td>
+			<td><h4><%=link_to("Manage Members",:controller=>'manage_members',:action=>'listMembers')%></h4></td>
 			<td><h4><%=link_to("Manage Sign Up",:controller=>' ',:action=>' ')%></h4></td>
 	
 	</tr>

@@ -2,7 +2,7 @@
  
 
 <body>
-	 
+		 
 	<div class="container">
 	 
  <div class='span2'>
@@ -23,29 +23,36 @@
 </div>	 
  
  <div class='span8'>
-	<h3>  Latest Reviews</h3><br>
+	<h2>  Latest Reviews</h2><br>
 	<%= will_paginate @reviews %>
 	<% @reviews.each do |review|%>
+	<table class='table'>
 		<tr>	
 
-			<td class='text-error'>
+			<td>
  
-				<h3>	 <%=review.title	%></h3></td>   
-				<td> <p> <b>Posted by : </b>
+				<h3 class='text-error'>	
+					 <%=review.title	%></h3> 
+					 <b>Posted by : </b>
 					<%=review.member_username%> 
 	  				On  
  
-					<%=review.created_at.strftime("%B %e %Y") %></p></td>     </tr>     				 
-	 		 
+					<%=review.created_at.strftime("%B %e %Y") %></td>     </tr>     				 
+						
+						<% if(review.reviewphoto) %> 		 		
+					<tr>
+							<td>
+							<%= image_tag (review.reviewphoto.url(:medium)) %>
+						
+							</td>
+					</tr>
+						<%end%>
 					<tr>
 						<td >	
 							<p><%= simple_format(review.content,:line_width=>300)%></p></td> </tr> 	 
 	
 		<tr> </tr>	  
-	
-		<tr> 
 		
-			</tr>
  
 			<%end%>	
 
@@ -55,10 +62,7 @@
 	
 	</div>
 	
-	
-
-
- 
+	 
 	</div>
   </body>
 	

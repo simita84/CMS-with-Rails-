@@ -1,2 +1,31 @@
-<h1>Public#listContacts</h1>
-<p>Find me in app/views/public/listContacts.html.erb</p>
+ <html>
+
+<body>
+ 
+<div class='row'>
+<div class='span4 offset3'>
+ <h2>Contact Us</h2> 
+	<%@contacts.each do |contact|%>
+ 
+
+<dl>
+	<dt>
+	 
+	  We Are known As: </dt>
+	<dd><%=contact.name%>     </dd>
+ 
+	 	<dt> Email Us at</dt>	  
+    <dd><%= contact.emailid%>   </dd>
+ 
+	   	<dt>  Meet  Us at </dt>			 
+    <dd> <%= contact.facebook%>   </dd>
+ 
+ 	 	
+	<%end%>
+</dl>
+ 
+	 </div>
+	</div>
+ 
+</body>
+</html>

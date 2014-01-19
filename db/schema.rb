@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115062348) do
+ActiveRecord::Schema.define(:version => 20140116203201) do
 
   create_table "admins", :force => true do |t|
     t.string   "first_name"
@@ -24,6 +24,31 @@ ActiveRecord::Schema.define(:version => 20140115062348) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "contacts", :force => true do |t|
+    t.string   "name"
+    t.string   "emailid"
+    t.string   "facebook"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name",                    :limit => 150
+    t.datetime "datetime"
+    t.string   "duration",                :limit => 150
+    t.string   "address",                 :limit => 300
+    t.text     "description"
+    t.string   "admin_username",                         :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "eventphoto_file_name"
+    t.string   "eventphoto_content_type"
+    t.integer  "eventphoto_file_size"
+    t.datetime "eventphoto_updated_at"
+  end
+
+  add_index "events", ["admin_username"], :name => "index_events_on_admin_username"
+
   create_table "homes", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -31,22 +56,44 @@ ActiveRecord::Schema.define(:version => 20140115062348) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "invitees", :force => true do |t|
+    t.string   "email",      :limit => 100
+    t.integer  "event_id",                                     :null => false
+    t.string   "firstname",  :limit => 30
+    t.boolean  "invited",                   :default => false
+    t.boolean  "responded",                 :default => false
+    t.string   "response",                  :default => "No"
+    t.integer  "adults"
+    t.integer  "kids"
+    t.text     "message"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
+
   create_table "items", :force => true do |t|
     t.string   "name"
     t.text     "content"
     t.string   "member_username"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.string   "itemphoto_file_name"
+    t.string   "itemphoto_content_type"
+    t.integer  "itemphoto_file_size"
+    t.datetime "itemphoto_updated_at"
   end
 
   create_table "members", :force => true do |t|
-    t.string   "username",        :limit => 50, :null => false
+    t.string   "username",                 :limit => 50, :null => false
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "hashed_password",               :null => false
+    t.string   "hashed_password",                        :null => false
     t.string   "salt"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "memberphoto_file_name"
+    t.string   "memberphoto_content_type"
+    t.integer  "memberphoto_file_size"
+    t.datetime "memberphoto_updated_at"
   end
 
   add_index "members", ["username"], :name => "index_members_on_username"
@@ -74,8 +121,15 @@ ActiveRecord::Schema.define(:version => 20140115062348) do
     t.string   "title"
     t.text     "content"
     t.string   "member_username"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.string   "reviewphoto_file_name"
+    t.string   "reviewphoto_content_type"
+    t.integer  "reviewphoto_file_size"
+    t.datetime "reviewphoto_updated_at"
   end
+
+  add_index "reviews", ["member_username"], :name => "index_reviews_on_member_username"
+  add_index "reviews", ["product_id"], :name => "index_reviews_on_product_id"
 
 end

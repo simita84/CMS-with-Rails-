@@ -1,6 +1,8 @@
 class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
+     before_filter :confirm_logged_in
+    layout 'admin'
   def index
     @recipes = Recipe.all
 

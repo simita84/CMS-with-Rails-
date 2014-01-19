@@ -1,87 +1,85 @@
 class ReviewsController < ApplicationController
-  # GET /reviews
-  # GET /reviews.json
-    before_filter :find_product
+  layout 'admin'
+    before_filter :confirm_logged_in,:except => [:login,:attempt_login]
+  before_filter :find_product
+  
   def index
-    @reviews = Review.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @reviews }
-    end
+    
+    list
+    render('list')
   end
 
-  # GET /reviews/1
-  # GET /reviews/1.json
-  def show
-    @review = Review.order("reviews.id DESC").where(:product_id=>@product.id) 
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @review }
-    end
+  def list
+  @reviews = Review.order("reviews.id DESC").where(:product_id=>@product.id).paginate(page: params[:page],per_page: 10)  
+   
   end
-
-  # GET /reviews/new
-  # GET /reviews/new.json
-  def new
-     @review=Review.new(:product_id=>@product.id)
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @review }
-    end
+  
+  
+  def newReviews
+       @review=Review.new(:product_id=>@product.id)
+      
   end
-
-  # GET /reviews/1/edit
+  def createReviews
+    #Instantiate a new object using for parameters
+           @product=Product.find_by_id(params[:product_id])
+           @review=Review.new(params[:review])
+           @review.update_attributes(:member_username=>session[:username],:product_id=>@product.id)
+  #Save the object
+         if @review.save    
+   #If save succeeds redirect to list 
+  # flash[:notice]= "Review for  --"+@review.title+"--added successfully"
+          flash[:notice]= "Review added successfully"
+          redirect_to(:action=>'list', :product_id => @review.product_id)
+  #else redislay the form so user can fix the problem
+         else
+              flash[:notice]= "Review for "+ @review.title+" cannot be added. "
+             render('newReviews')
+         end
+     end
+  
+  
+ 
+  
   def edit
-    @review = Review.find(params[:id])
-  end
+    #Find the object using form parameters
+    @review=Review.find(params[:id])
+    @review_count=Review.count
+    @products=Product.order('id DESC')
+    end
 
-  # POST /reviews
-  # POST /reviews.json
-  def create
-    @product=Product.find_by_id(params[:product_id])
-    @review = Review.new(params[:review])
-
-    respond_to do |format|
+ def update
+      #Find the object using form parameters
+      @review=Review.find(params[:id])
+      #update with new values
+      @review.update_attributes(params[:review])
+      #Save the object
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render json: @review, status: :created, location: @review }
+        #If update succeeds redirect to list 
+        flash[:notice]= "Review for --"+@review.title+"--updated successfully"
+        redirect_to(:action=>'list',:id=>@review.id,:product_id=>@product.id)
       else
-        format.html { render action: "new" }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+        #if save fails ,rediplay the form so user can fix problems
+        flash[:notice]= "Review for "+ @review.title+" cannot be updated. "
+        @review_count=Review.count
+        @products=Product.order('id ASC')
+        render('edit')
       end
-    end
   end
+        def delete
+          #Find the object using form parameters
+          @review=Review.find(params[:id])
+          end
+        def destroy
+             #Find the object using form parameters
+             @review=Review.find(params[:id])
+              if @review.destroy
+                flash[:notice]="Review for   "+@review.title+" deleted successfully"
+                 redirect_to(:action =>'list',:product_id=>@product.id)  
+                 else
+                    flash[:notice]="Review for    "+@review.title+" cannot be deleted"   
+              end
+        end
 
-  # PUT /reviews/1
-  # PUT /reviews/1.json
-  def update
-    @review = Review.find(params[:id])
-
-    respond_to do |format|
-      if @review.update_attributes(params[:review])
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /reviews/1
-  # DELETE /reviews/1.json
-  def destroy
-    @review = Review.find(params[:id])
-    @review.destroy
-
-    respond_to do |format|
-      format.html { redirect_to reviews_url }
-      format.json { head :no_content }
-    end
-  end
   private 
   
   def find_product
@@ -89,5 +87,5 @@ class ReviewsController < ApplicationController
       @product=Product.find_by_id(params[:product_id])
   end
 end
-  
+
 end

@@ -1,7 +1,10 @@
+
+
 <%- model_class = Home -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<%=link_to("Back",{:controller=>'access',:action=>'menu'},:class=>'btn')%>
 <table class="table table-striped">
   <thead>
     <tr>

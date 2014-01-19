@@ -1,56 +1,52 @@
 MomsAndTots::Application.routes.draw do
+  get "invitees/index"
+
+  get "invitees/new"
+
+  get "invitees/eventinfo"
+
+  get "invitees/editInvitee"
+
+  get "invitees/sendEventInvite"
+
+  get "invitees/memberResponseHandler"
+
+  get "invitees/deleteInvitee"
+
+  get "events/index"
+
+  get "events/listEvents"
+
+  get "events/newEvents"
+
+  get "events/showEvents"
+
+  get "events/editEvents"
+
+  get "events/deleteEvents"
+
+  get "reviews/list"
+
+  get "reviews/edit"
+
+  get "reviews/delete"
+
+  get "reviews/newReviews"
+
+  get "products/index"
+
+  get "products/list"
+
+  get "products/new"
+
+  get "products/edit"
+
+  get "products/delete"
+
+  resources :contacts
+
+
   resources :admins
-
-
-  get "member/showAccountInfo"
-
-  get "member/newReviews"
-
-  get "member/newRecipes"
-
-  get "member/newItems"
-
-  get "member/listReviews"
-
-  get "member/listRecipes"
-
-  get "member/listProducts"
-
-  get "member/listMembers"
-
-  get "member/listItems"
-
-  get "member/listEvents"
-
-  get "member/listContactInfo"
-
-  get "member/index"
-
-  get "member/eventDetails"
-
-  get "member/editReviews"
-
-  get "member/editRecipes"
-
-  get "member/editMember"
-
-  get "member/editItems"
-
-  get "member/deleteReviews"
-
-  get "member/deleteRecipes"
-
-  get "member/deleteItems"
-
-  get "access/attempt_login"
-
-  get "access/index"
-
-  get "access/listMembers"
-
-  get "access/login"
-
-  get "access/menu"
 
   resources :homes
  
@@ -58,9 +54,6 @@ MomsAndTots::Application.routes.draw do
 
 
   resources :recipes
-
-
-  resources :reviews
 
 
   resources :products

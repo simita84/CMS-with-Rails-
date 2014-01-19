@@ -3,6 +3,9 @@ class MemberController < ApplicationController
       before_filter :find_event
       before_filter :find_product
       before_filter :confirm_member_logged_in
+      
+      
+      
     def index
        @homes=Home.all
        render("index")
@@ -300,6 +303,9 @@ class MemberController < ApplicationController
            flash[:notice]=" Successfully logged out"
             redirect_to(:controller=>'public',:action=>'login')
      end
+     
+     
+     
    private 
     def find_product
         if (params[:product_id])

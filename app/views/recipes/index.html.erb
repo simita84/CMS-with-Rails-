@@ -2,23 +2,31 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_recipe_path,
+            :class => 'btn' %>
+
+<%=link_to("Back",{:controller=>'access',:action=>'menu'},:class => 'btn')%>
+
+
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:content) %></th>
-      <th><%= model_class.human_attribute_name(:member_username) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+ 
+      <th><%= model_class.human_attribute_name(:Recipe) %></th>
+       
+      <th><%= model_class.human_attribute_name(:Posted_By) %></th>
+      <th><%= model_class.human_attribute_name(:Created_At) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @recipes.each do |recipe| %>
       <tr>
-        <td><%= link_to recipe.id, recipe_path(recipe) %></td>
-        <td><%= recipe.title %></td>
-        <td><%= recipe.content %></td>
+      
+        <td><%=  simple_format(word_wrap(recipe.title)) %></td>
+ 
         <td><%= recipe.member_username %></td>
         <td><%=l recipe.created_at %></td>
         <td>
@@ -35,8 +43,3 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_recipe_path,
-            :class => 'btn btn-primary' %>
-
-<%=link_to("Back",{:controller=>'access',:action=>'menu'},:class => 'btn btn-primary')%>

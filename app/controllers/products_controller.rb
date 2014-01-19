@@ -1,83 +1,73 @@
 class ProductsController < ApplicationController
-  # GET /products
-  # GET /products.json
+  layout 'admin'
+  
+  
+    before_filter :confirm_logged_in,:except => [:login,:attempt_login]
+  
   def index
-    @products = Product.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @products }
-    end
+      list
+    render('list')
   end
 
-  # GET /products/1
-  # GET /products/1.json
-  def show
-    @product = Product.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @product }
-    end
+  def list   
+   @products=Product.order("products.created_at DESC").paginate(page:params[:page],per_page: 10) 
   end
-
-  # GET /products/new
-  # GET /products/new.json
+  
   def new
-    @product = Product.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @product }
-    end
+     
+    @product=Product.new()
   end
-
-  # GET /products/1/edit
-  def edit
-    @product = Product.find(params[:id])
-  end
-
-  # POST /products
-  # POST /products.json
+  
   def create
-    @product = Product.new(params[:product])
-
-    respond_to do |format|
+    #Instantiate a new object using for parameters
+      @product=Product.new(params[:product])
+    #Save the object
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render json: @product, status: :created, location: @product }
+    #If save succeeds redirect to list 
+    flash[:notice]= "Product --"+@product.title+"--added successfully"
+      redirect_to(:action=>'list')
+    #else redislay the form so user can fix the problem
       else
-        format.html { render action: "new" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        flash[:notice]= "Product"+ @product.title+" cannot be added. "
+          render('new')
       end
-    end
   end
+  def edit
+    #Find the object using form parameters
+    @product=Product.find(params[:id])
+    end
 
-  # PUT /products/1
-  # PUT /products/1.json
-  def update
-    @product = Product.find(params[:id])
-
-    respond_to do |format|
-      if @product.update_attributes(params[:product])
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { head :no_content }
+ def update
+      #Find the object using form parameters
+      @product=Product.find(params[:id])
+      #update with new values
+      @product.update_attributes(params[:product])
+      #Save the object
+      if @product.save
+        #If update succeeds redirect to list 
+        flash[:notice]= "Product --"+@product.title+"--updated successfully"
+        redirect_to(:action=>'list')
       else
-        format.html { render action: "edit" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+         flash[:notice]= "Product"+ @product.title+" cannot be updated. "
+        render('new')
       end
-    end
-  end
-
-  # DELETE /products/1
-  # DELETE /products/1.json
-  def destroy
-    @product = Product.find(params[:id])
-    @product.destroy
-
-    respond_to do |format|
-      format.html { redirect_to products_url }
-      format.json { head :no_content }
-    end
-  end
+      end
+  
+      def delete
+        #Find the object using form parameters
+        @product=Product.find(params[:id])
+        end
+      def destroy
+           #Find the object using form parameters
+           @product=Product.find(params[:id])
+            if @product.destroy
+              flash[:notice]="Product   "+@product.title+" deleted successfully"
+               redirect_to(:action =>'list')  
+               else
+                  flash[:notice]="Product   "+@product.title+" cannot be deleted"   
+            end
+      end
+  
+  
+  
 end

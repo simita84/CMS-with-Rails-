@@ -1,5 +1,7 @@
 class PublicController < ApplicationController
   layout 'application'
+  
+    before_filter :find_product
   def index
      @homes=Home.all
   end
@@ -30,20 +32,22 @@ class PublicController < ApplicationController
   def listProducts
      @products=Product.order("products.created_at DESC").paginate(:page => params[:page],:per_page =>50)
       @reviews = Review.order("reviews.created_at DESC").paginate(:page => params[:page],:per_page =>5)
+       
   end
 
   def listReviews
-     @products=Product.order("products.created_at ASC")
+     @products=Product.order("products.created_at DESC")
      @reviews = Review.order("reviews.created_at DESC").where(:product_id=>@product.id).paginate(:page => params[:page],:per_page =>1) 
-    
-  end
+   
+   
+end
 
   def listRecipes
     # @recipes=Recipe.order("recipes.created_at DESC").page(params[:recipe])
       # @recipes=Recipe.order("recipes.created_at DESC")
        # @users = User.search(query).page(params[:user_page])
 
-       @recipes = Recipe.order("recipes.created_at DESC").paginate(:page => params[:page],:per_page =>3)
+       @recipes = Recipe.order("recipes.created_at DESC").paginate(:page => params[:page],:per_page =>2)
           @allrecipes=Recipe.order("recipes.created_at DESC")
   end
 
@@ -71,16 +75,18 @@ class PublicController < ApplicationController
     @member = Member.new(params[:member])
     if @member.save
       
-     session[:member_id]=@member.id
-     session[:username]=@member.username
+     #session[:member_id]=@member.id
+     #session[:username]=@member.username
   
-     flash[:success] = 'Welcome to Momsntots.'
+     #flash[:success] = 'Welcome to Momsntots.'
    
-    redirect_to(:controller=>"member",:action=>'index')
-    
-      
-     sendemailToMember
-  #  Emailer.registration_email(@member).deliver
+   # redirect_to(:controller=>"member",:action=>'index')
+       
+    sendemailToMember
+   flash[:success] = 'Please verify the account'
+   redirect_to(:controller=>"public",:action=>'index')
+   
+  # Signup.registration_email(@member).deliver
    else
      render('newMember')
     end

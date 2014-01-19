@@ -1,0 +1,39 @@
+
+<html>
+ <body>
+
+ 
+
+<%=form_for(:invitee,:url=>{:action=>'updateInvitee',:id =>@invitee.id}) do |f| %>
+ 
+<table  class="table">
+	<tr>
+	  	<th>Email ID</th>
+			<td>
+		<%=f.text_field(:email)%></td>
+		</tr>
+			<tr>
+		<th>Name</th>
+			<td>
+		 	<%=f.text_field(:firstname)%></td>
+			</tr>
+		<tr>
+		  	 <td>
+			<td>
+				 
+			 <%=f.submit "Modify",class:'btn' %>  
+ 		 
+		 <%=link_to("Cancel",{:action=>'index',:id =>@invitee.id},:class=>"btn")%></td>
+	 		</tr>
+	
+	
+	<%end%>
+		
+		</table>
+ 
+		
+</body>
+</html>
+	
+	
+	

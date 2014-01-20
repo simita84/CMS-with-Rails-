@@ -28,7 +28,7 @@
       								<td><%= event.datetime %></td>
      								<td><%= event.duration %></td>
       								<td class="actions">
-        <%= link_to("Evite", {:controller => 'events_members',:action => 'eventdetails', :event_id => event.id }) %>
+        <%= link_to("Event Details", {:controller => 'member',:action => 'eventDetails', :event_id => event.id }) %>
       </td>
     </tr>
     <% end %>

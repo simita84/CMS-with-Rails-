@@ -42,6 +42,9 @@ MomsAndTots::Application.routes.draw do
   get "products/edit"
 
   get "products/delete"
+  
+  match '/eventdetails',to: 'member#eventDetails'
+    match '/admin',to: 'access#login'
 
   resources :contacts
 

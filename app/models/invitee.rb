@@ -1,5 +1,5 @@
 class Invitee < ActiveRecord::Base
-  attr_accessible :title, :body,:event_id,:firstname, :email
+  attr_accessible :title, :body,:event_id,:firstname, :email,:invited
    belongs_to :event
 
 

@@ -3,7 +3,7 @@
 
 <body>
 	
-	
+	 <h3><%=flash[:warning]%></h3> 	
  
 <h2>Event : <%= @event.name %></h2>
 
@@ -11,8 +11,10 @@
 
 <%= link_to("Back to Event", {:controller => 'events', :action => 'listEvents'},:class=>"btn") %>
 <%= link_to("Add New Guest", {:action => 'new', :event_id => @event.id},:class=>"btn") %>
-	
-	<h3>Guests list </h3>
+ 
+	<%if @invitees!=[]%>
+	<h3>Guests to be invited </h3>
+<%= will_paginate @invitees %>
 
 <table class="table">
    <tr>
@@ -20,6 +22,7 @@
      <th>Email</th>
      <th>Actions</th>
    </tr>
+ 	
    <% @invitees.each do |invitee| %>
    <tr>
      <td><%= invitee.firstname %></td>
@@ -31,19 +34,17 @@
    </tr>
  <% end %>
  </table>
+		
  
-
  <%= form_tag( { :action => 'sendEventInvite', :event_id => @event.id, :multipart => true }) %>
-<div class="btn">
-	
-	 <%= submit_tag( "Send Invite Now" ) %></div> 
+ <%= submit_tag  "Send Invite Now" ,:class=>'btn' %> 
+				<%end%>
  
  
-
 </hr>
 
  <h3>Invited Members  </h3>
-
+	<%= will_paginate @invitedinvitees %>
 <table class="table">
    <tr>
      <th>Name</th>
@@ -53,6 +54,7 @@
      <th>Number Of Kids</th>
      <th>Message</th>
    </tr>
+
    <% @invitedinvitees.each do |invitedinvitee| %>
    <tr>
      <td><%= invitedinvitee.firstname %></td>
@@ -65,7 +67,7 @@
 
   <% end %>
  </table>
-
+		
  
 </body>
 </html>

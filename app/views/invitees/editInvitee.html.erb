@@ -2,9 +2,10 @@
 <html>
  <body>
 
- 
-
-<%=form_for(:invitee,:url=>{:action=>'updateInvitee',:id =>@invitee.id}) do |f| %>
+ <div class='row'>
+	<div class='span5 offset2'>
+<h2> Modify </h2>
+ <%=form_for(:invitee,:url=>{:action=>'updateInvitee',:id =>@invitee.id}) do |f| %>
  
 <table  class="table">
 	<tr>
@@ -23,7 +24,7 @@
 				 
 			 <%=f.submit "Modify",class:'btn' %>  
  		 
-		 <%=link_to("Cancel",{:action=>'index',:id =>@invitee.id},:class=>"btn")%></td>
+		 <%=link_to("Cancel",{:controller=>'event',:action=>'index',:event_id =>@event.id},:class=>"btn")%></td>
 	 		</tr>
 	
 	

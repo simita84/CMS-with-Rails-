@@ -7,8 +7,8 @@ class InviteesController < ApplicationController
 
     def index
        
-      @invitees = Invitee.where(:event_id => @event.id, :invited => false)
-      @invitedinvitees = Invitee.where(:event_id => @event.id, :invited => true)
+ @invitees = Invitee.where(:event_id => @event.id, :invited => false).paginate(page:params[:page],per_page: 3) 
+ @invitedinvitees = Invitee.where(:event_id => @event.id, :invited => true).paginate(page:params[:page],per_page: 5) 
     end
  
 
@@ -36,7 +36,7 @@ class InviteesController < ApplicationController
         # Save the object
         if @invitee.save
           # If save succeeds, redirect to the list action
-          flash[:success] = "********* Invitee Added ************"
+          flash[:warning] = "********* Invitee Added ************"
           redirect_to(:action => 'index', :event_id => @invitee.event_id)
         else
           # If save fails, redisplay the form so user can fix problems
@@ -80,7 +80,7 @@ class InviteesController < ApplicationController
                  flash[:notice]="Invitee   "+@invitee.email+" deleted successfully"
                   redirect_to(:action =>'index')  
                   else
-                     flash[:notice]="Invitee   "+@item.email+" cannot be deleted"   
+                     flash[:notice]="Invitee   "+@invitee.email+" cannot be deleted"   
                end
          end
       
@@ -91,8 +91,9 @@ class InviteesController < ApplicationController
         if @invitees && @event
           Eventinviter.eventinvite(@invitees,@event).deliver
         end 
-        flash[:success] = "********* Email Sent ************"
-
+        flash[:warning] = "********* Email Sent ************"
+         redirect_to(:action =>'index', :event_id => @event.id)
+         
           @invitees.each do |invitee|
           invitee.update_attributes(:invited => true)
       end  

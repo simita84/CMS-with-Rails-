@@ -1,0 +1,18 @@
+ 
+
+<% if @member.errors.any? %>
+    
+                <div class="alert">
+               <p> This form contains <%= pluralize(@member.errors.count,"error") %>, which prohibited this record from being saved.<br>
+                See below for details.</p> 
+           
+        
+            <ul class='nav'>
+        <% @member.errors.full_messages.each do |msg| %>
+          <li>*<%= msg %></li>
+        <% end %>
+        </ul>
+        
+        
+<%end%>
+  

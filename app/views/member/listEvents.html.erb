@@ -1,77 +1,57 @@
 <html>
 
 <body>
- 
- 
-<div class="category list">
   
-  
-<table class="table">
-	<tr>
-<td><h3>Upcoming Events</h3></td></tr>
-<tr>
-  			
-	<td>
-
-<table class="table">
-    						<tr>
-      								<th>Event Name</th>
-      								<th>Event Address</th>
-      								<th>When </th>
-      								<th>Duration</th>
-      								<th>Actions</th>
-    							</tr>
-    							<% @upcoming_events_arr.each do |event| %>
-    							<tr class="<%= cycle('odd', 'even') %>">
-      								<td><%=raw event.name %></td>
-      								<td><%= event.address %></td>
-      								<td><%= event.datetime %></td>
-     								<td><%= event.duration %></td>
-      								<td class="actions">
-        <%= link_to("Event Details", {:controller => 'member',:action => 'eventDetails', :event_id => event.id }) %>
-      </td>
-    </tr>
+		  <table class="table"> 
+			<tr><td>
+  				<h3 class="events">Upcoming Events</h3></td></tr>
+  		<tr><td> <%= will_paginate   @upcoming_events %></td></tr>
+	
+  			 		<% @upcoming_events_arr.each do |event| %>
+    	
+ <tr> <td>		 
+<h4>  
+ * <%= link_to(event.name,{:controller => 'member',:action => 'eventDetails', :event_id => event.id }) %> </h4> <%= image_tag event.eventphoto.url(:thumb) %></td>
+	
+ 
+	<tr><td>
+       <img src="/assets/location.jpeg" width="20" height="20"> <%= event.address %>  </td> </tr>
+      					<tr><td>
+		<img src="/assets/clock.jpeg" width="20" height="20"> 
+	   	<%= event.datetime.strftime("%b %e %Y %I:%M %p") %> 
+     							  	for  <%= event.duration %> hours</td> </tr>
+      					 	
+        	
+      
     <% end %>
-  </table>
-</div>
-
-						<td>	</tr>
-					
  
-<tr>
-	<td>
 
-<h3>Past events</h3></td></tr>
+</table>
 
-<tr>
-	<td>
   
-  <table class="table">
-    <tr class="header">
-      <th>Name</th>
-      <th>Address</th>
-      <th>When </th>
-      <th>Duration</th>
-      <th>Actions</th>
-    </tr>
+  
+  <table class="table"> 
+	<tr><td>
+			<h3 class="events">Past events</h3>
+	</td></tr>
+	<tr><td><%= will_paginate  @past_events%> </td></tr>
+ 
+     
     <% @past_events_arr.each do |event| %>
-    <tr class="<%= cycle('odd', 'even') %>">
-      <td><%=raw event.name %></td>
-      <td><%= event.address %></td>
-      <td><%= event.datetime %></td>
-     <td><%= event.duration %></td>
-      <td class="actions">
-        <%= link_to("Event Details", {:controller => 'member',:action => 'eventDetails', :event_id =>event.id }) %>
-      </td>
-    </tr>
+  <tr> <td>	       						 
+<h4> 
+     * <%= link_to(event.name , {:controller => 'member',:action => 'eventDetails', :event_id =>event.id }) %></h4><%= image_tag event.eventphoto.url(:thumb) %><td></tr>
+   		<tr><td>
+	       <img src="/assets/location.jpeg" width="20" height="20">
+	   <%= event.address %> </td></tr>
+   	<tr><td>
+		<img src="/assets/clock.jpeg" width="20" height="20">  
+		<%= event.datetime.strftime("%b %e %Y %I:%M %p") %> for
+      	<%= event.duration %> hours</td></tr>
+       
     <% end %>
-  </table>
-
-</td>
-	</tr>
-	</table>
-
-
-</div>
+   </table>
+ 
+ 
 </body>
 </html>

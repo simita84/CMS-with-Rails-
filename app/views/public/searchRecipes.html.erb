@@ -1,0 +1,45 @@
+
+
+
+<div class="container">
+		<div class="span8">
+	 
+	
+				<%=link_to("Back to Recipes",{:controller=>'public',:action=>'listRecipes'},:class=>'btn')%>
+	
+	<table class="table"> 
+		<tr>	
+			<td>
+		<h3>Search Results for" <%=params[:search]%>" </h3></td>
+	
+
+ 	<%= will_paginate @recipes_Result %>
+		
+				<%@recipes_Result .each do |recipe|%>
+       		 		 
+				<tr>	
+					<td>
+						<h3 class="text-error"><%=recipe.title%></h3>
+							 <b>By </b> <%=recipe.member_username%> 
+					 				<b>On </b> <%=recipe.created_at.strftime("%B %e %Y") %></td>
+
+								</tr>
+						<tr>
+							<td>
+								<%= image_tag recipe.recipephoto.url(:medium) %>
+							</td>
+						</tr>
+					
+	 	 
+							<tr> 
+		<td> <%=simple_format(word_wrap(recipe.content,:line_width=>400))%> </td></tr>
+		
+	 	
+		<%end%>
+		</table>
+			 
+			 
+
+	
+</div>
+</div>

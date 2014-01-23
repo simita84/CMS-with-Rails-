@@ -12,8 +12,21 @@ class Member < ActiveRecord::Base
    has_many :reviews
    has_many :recipes
    has_many :items
+   before_save {|member| member.username = member.username.downcase}
 
+ #Member SignUp Validation
+     EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 
+     validates :first_name, :presence => true, :length => { :maximum => 30 }
+     validates :last_name, :presence => true, :length => { :maximum => 50 }
+     validates :username, :presence => true, :length => { :maximum => 100 }, 
+                :format => EMAIL_REGEX, :uniqueness => {:case_sensitive => false}
+
+     validates :password, :presence => true, :confirmation => true,
+                :length => { :minimum => 6 } , :on => :create  
+     #validates_length_of :password, :within => 6..25, 
+
+ 
      #authorizing the Member
      def self.authorize(username="",password="")
        member=Member.find_by_username(username)

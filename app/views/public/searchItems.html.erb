@@ -1,0 +1,53 @@
+
+<div class="container">
+	<div class="span8">
+
+<h3> Search Results for "<%=params[:search]%> " </h3>
+<%=link_to("Back to Items",{:controller=>'public',:action=>'listItems'},:class=>'btn')%>
+<br>
+	<%= will_paginate @items_Result %>
+
+<table class="table">
+
+<% @items_Result.each do |item|%> 	 
+    
+
+<tr>
+		<td> 
+			<div >
+			 <h3 class="text-error"><%=item.name%></h3></div>
+			<b> Posted By: </b><%=item.member_username%>
+			<b> 	on </b> <%=item.created_at.strftime("%B %e %Y") %>
+		</td>
+	</tr>
+	<tr>
+			<td>
+			<%= image_tag item.itemphoto.url(:medium) %>
+			</td>
+	</tr>	 		  			 	   
+
+	<tr>	
+			<td>	
+			
+	<div class="lead">			 
+		 	<p><%=simple_format(word_wrap(item.content,:line_width=>300))%></div></p>
+		
+		</td></tr>
+			
+						
+
+
+	<%end%>
+		</tr>
+
+<br>
+
+</table>
+<%= will_paginate  @items_Result %>
+ <h3><%=flash[:notice]%></h3> 
+
+
+
+</div>
+
+</div>

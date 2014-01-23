@@ -16,6 +16,7 @@
  
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
   </head>
   <body>
 
@@ -59,9 +60,28 @@
           <div class="span12">
 	 
 		<div class='hero-unit'>
+			
+			<div class="row">
+			 		<div class="span9">
+
+				<div class="container">  
+				<div class="leaderboard">
+			
+			
+			
 	
             <%= bootstrap_flash %>
             <%= yield %>
+
+
+
+
+			</div><!--leaderboard-->
+
+				</div><!--container-->
+			  </div><!--span-->
+			  </div><!--row-->
+
  			<footer>
 		       <center> <p>&copy; ClubbyKids 2014</p></center>
 		      </footer>

@@ -1,0 +1,52 @@
+<div class="container">
+<div class="span8">
+	 
+			<h2> Search Resuts for "<%=params[:search]%>" </h2>
+	 	 
+			<br>
+	
+			<%= will_paginate @reviews_Result %>
+			<table class="table" >
+ <%if @reviews_Result == []%>
+	<tr><td> <p class='lead'>	 <%="Not Reviewed yet"%></p></td></tr>
+		 <%else%>
+				<% @reviews_Result.each do |review|%>
+				<tr align ="left">	
+	
+					<td >
+  
+			
+			<h4 class="text-error">	 <%=review.title	%></h4> 
+	  <p> <b>Posted by : </b>
+		 		<%=review.member_username%> 
+				  On  
+			 
+				<%=review.created_at.strftime("%B %e %Y") %></p></td>     </tr>     				 
+           		 		 
+					<tr>
+							<td>
+							<%= image_tag review.reviewphoto.url(:medium) %>
+							</td>
+					</tr>
+						<tr align ="left">
+				<td class="lead">	
+				<p><%= word_wrap(review.content,:line_width=>500)%></p></td> </tr> 	 
+				
+					<tr> </tr>	  
+				
+					<tr> 
+					
+						</tr>
+
+						
+			 
+ 	<%end%>	
+ 
+					</table>
+					<%end%>
+	
+					<%= will_paginate @reviews_Result %>
+		 			<h3><%=flash[:notice]%></h3>
+		 
+ </div>
+ </div>

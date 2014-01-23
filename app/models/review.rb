@@ -12,5 +12,13 @@ class Review < ActiveRecord::Base
             validates_presence_of :content,:message=>"The title cannot be blank"
 
 
+            def self.search(search)
+               if search
+                 find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
+               else
+                 find(:all)
+               end
+             end
+
   
 end

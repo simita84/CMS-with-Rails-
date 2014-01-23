@@ -58,13 +58,14 @@ class ProductsController < ApplicationController
         @product=Product.find(params[:id])
         end
       def destroy
+        # Event.find(params[:id]).destroy
            #Find the object using form parameters
            @product=Product.find(params[:id])
             if @product.destroy
-              flash[:notice]="Product   "+@product.title+" deleted successfully"
+             flash[:notice]="Product   "+@product.title+" deleted successfully"
                redirect_to(:action =>'list')  
                else
-                  flash[:notice]="Product   "+@product.title+" cannot be deleted"   
+                  flash[:warning]="Product   "+@product.title+" cannot be deleted"   
             end
       end
   

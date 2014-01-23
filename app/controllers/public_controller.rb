@@ -37,7 +37,7 @@ class PublicController < ApplicationController
 
   def listReviews
      @products=Product.order("products.created_at DESC")
-     @reviews = Review.order("reviews.created_at DESC").where(:product_id=>@product.id).paginate(:page => params[:page],:per_page =>1) 
+     @reviews = Review.order("reviews.created_at DESC").where(:product_id=>@product.id).paginate(:page => params[:page],:per_page =>2) 
    
    
 end
@@ -47,13 +47,58 @@ end
       # @recipes=Recipe.order("recipes.created_at DESC")
        # @users = User.search(query).page(params[:user_page])
 
-       @recipes = Recipe.order("recipes.created_at DESC").paginate(:page => params[:page],:per_page =>2)
+       @recipes = Recipe.order("recipes.created_at DESC").paginate(:page => params[:page],:per_page =>5)
           @allrecipes=Recipe.order("recipes.created_at DESC")
   end
+  
+  #-------------searchRecipes-------------------------
+  def searchRecipes
+    
+    if (!params[:search].blank?)
+       @recipes_Result = Recipe.search(params[:search]).paginate(:page => params[:page],:per_page =>5)
+       render( 'searchRecipes')
+      
+     else
+     redirect_to(:controller=>"public",:action=>'listRecipes')
+      
+   end
+  end
+  
+  #-------------searchReviews-------------------------
+  def searchReviews
+    
+    if (!params[:search].blank?)
+       @reviews_Result = Review.search(params[:search]).paginate(:page => params[:page],:per_page =>5)
+       render( 'searchReviews')
+      
+     else
+     redirect_to(:controller=>"public",:action=>'listProducts')
+      
+   end
+  end
+  
+  #-------------searchItems-------------------------
+  def searchItems
+    
+    if (!params[:search].blank?)
+       @items_Result = Item.search(params[:search]).paginate(:page => params[:page],:per_page =>5)
+       render( 'searchItems')
+      
+     else
+     redirect_to(:controller=>"public",:action=>'listItems')
+      
+   end
+  end
+  
+  
+  
+  
+  
+  
 
   def listItems
      
-      @items = Item.order("items.created_at DESC").paginate(:page => params[:page],:per_page =>3)
+      @items = Item.order("items.created_at DESC").paginate(:page => params[:page],:per_page =>5)
       @allItems=Item.order("items.created_at DESC")
     
   end
@@ -64,6 +109,7 @@ end
  #-------------member registration-----------
   def newMember
      @member = Member.new
+     
   end
   
   def showMember
@@ -74,6 +120,9 @@ end
   def createMember
     @member = Member.new(params[:member])
     if @member.save
+      sendemailToMember
+      flash[:success] = 'A verification email has been send to your email account with login instructions'
+     redirect_to(:controller=>"public",:action=>'index')
       
      #session[:member_id]=@member.id
      #session[:username]=@member.username
@@ -82,10 +131,7 @@ end
    
    # redirect_to(:controller=>"member",:action=>'index')
        
-    sendemailToMember
-   flash[:success] = 'Please verify the account'
-   redirect_to(:controller=>"public",:action=>'index')
-   
+    
   # Signup.registration_email(@member).deliver
    else
      render('newMember')

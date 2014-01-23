@@ -6,7 +6,9 @@
   <body>
     <h1>Greetings, <%= @member.first_name %>!</h1>
     <p>
-      Thank you so much for registering to Momsntots.
+      Thank you so much for registering to Momsntots. <br>
+		Your username is <%=@member.username%>  <br>
+	Please Sign In @ <a href="http://localhost:3000/public/login">ClubbyKids</a> with your credentials	 
     </p>
   </body>
 </html>

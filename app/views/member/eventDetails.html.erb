@@ -1,5 +1,6 @@
-  <%=link_to("Back to Events",{:action=>'listEvents'},:class=>'btn')%>
- 		 
+  <%=link_to("Back ",{:action=>'listEvents'},:class=>'btn btn-primary')%>
+ 
+		 	 
   <dl align='center'>
  
 		<dt><h2><%= @event.name %></h2></dt>  
@@ -12,6 +13,12 @@
      
 </dl>
    
+</div>
+</div>
+
+
+	<div class="container">  
+	<div class="leaderboard">
   <table class='table'>
  		<tr> 
 	<td>
@@ -19,9 +26,6 @@
 			</td></tr>
 <%= form_for(:invitee, :url => {:action => 'memberresponsehandler',:id => @invitee.id, :event_id => @event.id, :email => session[:email_id]}) do |f| %>
  
-
-
-<tr><td>
  
   <tr>
     <th> Will you attend ?   </th>
@@ -46,7 +50,8 @@
 </tr>
 </table>
     
-
+</div>
+</div>
     
   <% end %>
 
@@ -57,8 +62,10 @@
 	<td>
  
 
+		<div class="container">  
+		<div class="leaderboard">
 
-<h2>Guests list for <%= @event.name %></h2>
+<h3><center>Guests list</center></h3>
 
 
 <table class="table">
@@ -85,3 +92,4 @@
  </td>
 </tr>
 </table>
+ 

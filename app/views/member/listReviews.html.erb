@@ -1,17 +1,17 @@
 <html>
 <body>
   
- 
+ 	 
 		
 		
-		<div><%= pluralize(@reviews.size, 'review') %> found</div>
-<div class="btn">	<%=link_to("Back to Product/Services Page",:controller=>'member',:action=>'listProducts')%></div>
- 
- 
-<h3> <%=@product.title%> Reviews</h3>
- 
-<div class="btn">
-		<%=link_to("Add Reviews",:controller=>'member',:action=>'newReviews',:product_id=>@product.id)%> </div>
+<h2> <%=@product.title%> Reviews</h2>
+  
+ 	<br>	<div><%= pluralize(@reviews.size, 'review') %> found</div>	<br>
+  
+		<%=link_to("Add Reviews",{:controller=>'member',:action=>'newReviews',:product_id=>@product.id},:class=>'btn')%> 
+		<%=link_to("Back",{:controller=>'member',:action=>'listProducts'},:class=>'btn')%>
+		
+		 	<br> 	<br>
 <table class="table">
  
 		
@@ -42,7 +42,7 @@
 	 	<%end%>	
 	</table>
 	 <h3><%=flash[:notice]%></h3> 
-	
+	 
  
 	  
 </body>

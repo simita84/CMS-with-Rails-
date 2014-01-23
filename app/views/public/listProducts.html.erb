@@ -4,9 +4,29 @@
 <body>
 		 
 	<div class="container">
-	 
- <div class='span2'>
-			
+	 <div class="row">
+ <div class='span3'>
+	
+	
+	<!--Search Functionality for Reviews-->
+
+	 <%=form_tag(:controller=>"public",:action=>'searchReviews') do %>
+
+
+	<%= text_field_tag(:search, params[:search], :placeholder => "Search Reviews", :id => "searchTag") %>  	  
+	<%= submit_tag "Search", :name => nil,:class=>'btn' %> 
+
+ <% end %> 
+				<!--End of Search Functionality for Reviews-->
+	
+	
+	
+	
+	
+	
+	
+	
+				<div class="leaderboard">
 				 <br>
 							    
 					<h4>Review<br> Categories</h4>
@@ -21,7 +41,7 @@
  	<%end%>
  	<%= will_paginate @products %>
 </div>	 
- 
+ </div>	 
  <div class='span8'>
 	<h2>  Latest Reviews</h2><br>
 	<%= will_paginate @reviews %>
@@ -64,6 +84,7 @@
 	
 	 
 	</div>
+		</div><!--row>-->
   </body>
 	
 </html>

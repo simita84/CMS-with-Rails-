@@ -3,9 +3,29 @@
 <body>
  
  
- 
-		<div class="span2">
-			<h4> All Items  </h4>
+ <div class="row">
+		<div class="span3">
+			
+			
+			
+			<!--Search Functionality for Items-->
+
+			 <%=form_tag(:controller=>"public",:action=>'searchItems') do %>
+
+
+			<%= text_field_tag(:search, params[:search], :placeholder => "Search Items", :id => "searchTag") %>  	  
+			<%= submit_tag "Search", :name => nil,:class=>'btn' %> 
+
+		 <% end %> 
+						<!--End of Search Functionality for Items-->
+
+			
+			
+			
+			
+			
+				<div class="leaderboard">
+			<h4> Top Items  </h4>
 			 
  	<%@allItems.each do |item|%>
           		 		 
@@ -15,9 +35,12 @@
 		<%end%>	
 		</table>
 	 	</div>
-	 	<div class="span9">
+	
+	</div>
+	
+	 	<div class="span8">
  
-<h2>Latest Items for Sale  </h2>
+<h2> Items for Sale  </h2>
   
 	<br>
 		<%= will_paginate @items %>
@@ -63,6 +86,7 @@
 	
  
  
+ </div>
  </div>
 </body>
 	

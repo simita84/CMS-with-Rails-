@@ -9,4 +9,15 @@ class Item < ActiveRecord::Base
         validates_presence_of :name,:message=>"The name cannot be blank"
              validates_presence_of :content,:message=>"The content cannot be blank"
 
+
+
+             def self.search(search)
+                if search
+                  find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+                else
+                  find(:all)
+                end
+              end
+
+
 end

@@ -16,8 +16,8 @@
  <div class='span5 '>
 
 					<%@homes.each do |home|%>
- 
-						<h2><center> <%=home.title%></center></h2>
+ 			
+						<h2 id="home"><center><img src='/assets/home.gif'> <%=home.title%></center></h2>
  	 
   <p class='lead'><center><%=simple_format(home.content)%></center> </p>
 	<p> <center>
@@ -27,17 +27,19 @@
 		
 		
 		</center></p>
-	
-	
-
+ 
 <%end%>
-			</div>
+ </div>
   
-
+		<br>	<br>	<br>
 	<div class='span5 offset1'>
- <table class='table'>
-	<tr><td>
-		<h3><center>Event highlights</center></h3></td></tr>
+
+  
+ 
+	 <center><h3 class="headEventHighlights">Event highlights</h3></center>
+	
+	<br>
+	<table>
 		<tr>	<td>
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
@@ -49,34 +51,22 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
+		
     <div class="item active">
-       <center>  <img class='img-rounded' src="/assets/slide3.JPG" class="img-rounded" alt="..."></center>
+
+       <center>   <img class='carimage' src="/assets/slide3.JPG" class="img-rounded"  ></center>
+     </div>
+	<div class="item">
+   <center>   <img src="/assets/slide4.JPG" class='carimage' >   </center>
        
     </div>
 	<div class="item">
-   <center>   <img src="/assets/slide4.JPG" class="img-rounded" alt="...">   </center>
+       <center>  <img src="/assets/slide5.JPG" class='carimage'  ></center>
        
     </div>
-	<div class="item">
-       <center>  <img src="/assets/slide5.JPG" class="img-rounded" alt="..."></center>
-       
-    </div>
-	<div class="item">
-       <center>  <img src="/assets/kid1.jpg" class="img-rounded" alt="..."></center>
-       
-    </div>
-	<div class="item">
-       <center>  <img src="/assets/kid2.jpg" class="img-rounded" alt="..."></center>
-       
-    </div>
-	<div class="item">
-       <center>  <img src="/assets/kid3.jpg" class="img-rounded" alt="..."></center>
-       
-    </div>
-	<div class="item">
-       <center>  <img src="/assets/kid5.jpg" class="img-rounded" alt="..."></center>
-       
-    </div>
+	 
+	
+ 
 	 
   
   </div>
@@ -93,9 +83,11 @@
 </td> </tr>
 
 
-</div>
-</div>
+</table>
 
+</div>
+</div>
+ 
  
  
 	<script type='text/javascript'>
@@ -108,6 +100,6 @@
 
 
 	 
-</div>
+
 </body>
 </html>

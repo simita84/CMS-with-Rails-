@@ -4,7 +4,11 @@
 <body>
  
 	
-<div class="hero-unit">
+ <div class='row'>
+		<div class='span2'>
+			<img src='/assets/danger.jpeg'>
+			</div>
+	<div class='span5 offset1'>
 
 
 <%=form_for(:product,:url=>{:action=>'destroy',:id =>@product.id}) do |f| %>
@@ -27,8 +31,9 @@
 <%=f.submit "Confirm",class:'btn' %>    
 	 <%=link_to("Cancel",{:action=>'list'},:class=>'btn')%></td>
 </table>
-
 </div>
+</div>
+ 
 <%end%>
 
 </div>

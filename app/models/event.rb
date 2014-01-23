@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   
   attr_accessible :eventphoto,:name,:datetime,:duration,:address,:description,:admin_username
   
-  has_attached_file :eventphoto, :styles => { :medium => "500x500>", :thumb => "100x100>" }
+  has_attached_file :eventphoto, :styles => { :medium => "500x500>", :thumb => "70x70>" }
   
   
   belongs_to :admin

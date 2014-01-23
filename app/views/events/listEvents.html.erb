@@ -32,7 +32,7 @@
 	    
 	      <td><%=raw event.name %></td>
 	       
-	      <td><%= event.datetime %></td>
+	      <td><%= event.datetime.strftime('%e %b %Y %H:%m:%S%p') %></td>
 	  
 	<td><%= event.duration %></td>
 	  	

@@ -1,53 +1,43 @@
+ <div class="container">	
 
+<h2> Join Clubby Kids</h2>
+  <div class='row'>
 
-<div class="span3">
-  <div class="hero-unit">
-  
-			<img src="/assets/img8.jpg" class="img-polaroid" /><br>
-			<img src="/assets/img10.gif" class="img-polaroid" /><br>
-			<img src="/assets/img12.jpg" class="img-polaroid" />
+	<div class='span4 offset1'>
+		<img src="/assets/mommyme.jpg">
+	</div>
 	
-	</div></div>
-	<div class="span5">
-	  <div class="hero-unit">
-<h3><% provide(:title, 'Sign up') %></h3>
-
-<h1>Sign up</h1>
+	<div class='span6'>
+ 		   <%= render 'shared/error_messages_html.erb' %>
+			<h2 class="signUp">Sign up</h2>
  
 
-  <div class="row">
-  <div class="span3 offset1">
- <%= form_for(@member,:url=>{:controller=>'public',:action =>'createMember'},
- 				:html => { :multipart => true }) do |f| %>
-      
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
+<%= form_for(@member,:url=>{:controller=>'public',:action =>'createMember'},
+				:html => { :multipart => true }) do |f| %>
+   
+   <%= f.label :first_name %>
+   <%= f.text_field :first_name %>
 
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
+   <%= f.label :last_name %>
+   <%= f.text_field :last_name %>
 
-      <%= f.label :EmailId %>
-      <%= f.text_field :username%>
+   <%= f.label :Username %>
+   <%= f.text_field :username, :placeholder => "Eg:someone@xxx.com"%>  
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
- 	
-	<%= f.label :UploadPicture %>
-	<%= f.file_field :memberphoto %>
-      
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-    <% end %>
+   <%= f.label :password %>
+   <%= f.password_field :password ,:placeholder =>"password"%><br>
+	 
+   <%= f.submit "Create my account", class: "btn btn-primary" %>
+ <% end %>
+
+
  
-</div>
-</div>
-</div>
-</div>
-<div class="span3">
-  <div class="hero-unit">
-  
-			<img src="/assets/img8.jpg" class="img-polaroid" /><br>
-			<img src="/assets/img10.gif" class="img-polaroid" /><br>
-			<img src="/assets/img12.jpg" class="img-polaroid" />
-	
-	</div></div>
 
+</div><!--span-->
+</div><!--row-->
+
+
+</div><!--container-->
+	
+	
+ 

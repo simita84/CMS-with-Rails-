@@ -12,6 +12,14 @@ class Recipe < ActiveRecord::Base
            validates_presence_of :content,:message=>"The content cannot be blank"
        #    validates_uniqueness_of :title,:message=>"Title already entered"
     
-    
+       def self.search(search)
+         if search
+           find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
+         else
+           find(:all)
+         end
+       end
  
 end
+
+ 

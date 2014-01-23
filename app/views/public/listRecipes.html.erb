@@ -1,27 +1,59 @@
 <html>
 
 <body>
- 
+ 	 
+		
 
-<div class="container">
-		<div class="span2">
-			<h4> All Recipes</h4>
+<div class="row">
+
+		<div class="span3">
+			
+ <!--Search Functionality for Recipes-->
+			
+ <%=form_tag(:controller=>"public",:action=>'searchRecipes') do %>
+
+
+<%= text_field_tag(:search, params[:search], :placeholder => "Search Recipes", :id => "searchTag") %> 
+  
+                   
+						  <%= submit_tag "Search", :name => nil,:class=>'btn' %> 
+						
+						 
+		 
+
+			 <% end %> 
+			<!--End of Search Functionality for Recipes-->
+			
+			
+				<div class="leaderboard">
+	 			
+			<img src='/assets/cooking.png'>
+			
+		
+			<h4> All Recipes</h4> 
+ 	
 			<table class='table-hover'>
 		  
  					<%@allrecipes.each do |recipe|%>
          	<tr>	 		 
  		<td> <%=simple_format(word_wrap(recipe.title))%> </td></tr>
 			 
-					<%end%>	</table>
+					<%end%>	</table>  
 	 	 </div>
+	
+	
+	</div>
 		 
-		<div class="span9">
-			
-	 	<h2>Latest Recipes</h2>
-		 
-  
+		<div class="span8">
+	 
+	<table class="table"> 
+		<tr>	
+			<td>
+		<h2>Latest Recipes</h2></td>
+	
+ 
 		<%= will_paginate @recipes %>
-			<table class="table"> 
+		
  				<%@recipes.each do |recipe|%>
           		 		 
  				<tr>	
@@ -50,6 +82,17 @@
 	
  </div>
 </div>
+
+
+</div>
+</div></div>
+</div>
+	
+	
+	
+	
+</div>	<!--<div class="row">-->
+	
 	
 	</body>
 	  

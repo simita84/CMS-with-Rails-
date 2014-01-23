@@ -1,23 +1,13 @@
- 
-  
- 
- 
-
-
- 
-	
-
-	
-		
- 
-	
+  	
 
 <div class='row'>
 	<div class='span7 offset2'>
+ 
 		<h2>Manage Products/Services</h2><br>
 			<%=link_to("Add Products/Services",{:action=>'new'},:class=>'btn')%>  
 				<%=link_to("Back to Admin Menu",{:controller=>'access',:action=>'menu'},:class=>'btn')%> 	<br><br>
 	<%= will_paginate%>
+		
 		
 <table class="table-condensed">
 
@@ -45,7 +35,7 @@
 	
 		<%= will_paginate%>
 		
-	 <h3><%=flash[:notice]%></h3> 
+
  
  
  

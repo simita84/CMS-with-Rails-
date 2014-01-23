@@ -4,31 +4,29 @@
  
  
 <div class="container">
-		<div class="span2">
-
-		<h4>Review Categories </h4>
+	
+	<div class="row">
+		<div class="span3">
+<div class="leaderboard">
+	
 					 <ul class='nav'>
-						
+						<li>	<h4>Review Categories </h4></li>
 					
 						<%@products.each do |product|%> 	 
  						 <li>
 						<%=link_to(product.title,:controller=>'public',:action=>'listReviews', 	:product_id=>product.id) %>  	 </li>
 						<%end%>
-						
-				 
- 					</div>
+						</ul>
+				 </div>	<!--leaderboard-->
+ 					</div><!--span3-->
  
-		 
-		
- 
-<div class="span9">
-					  
-		<%=link_to("Back",{:controller=>'public',:action=>'listProducts'},:class=>'btn')%>
-		
 	 
+		
+ 
+<div class="span8">
 	 
 			<h2> <%=@product.title%> 's  Reviews</h2>
-	 
+	 	 
 			<br>
 	
 			<%= will_paginate @reviews %>
@@ -76,7 +74,9 @@
 		 
  </div>
 
-</div>
+</div><!--row-->
+
+</div><!--container-->
  
 </body>
 	

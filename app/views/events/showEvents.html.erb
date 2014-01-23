@@ -3,14 +3,11 @@
  
 
 <body>
-	
-	
-<div class="hero-unit">
+ 
 
-
-<% @the_web_page_title = "Show category: #{@event.name}" %>
+ 
 <div class="btn">
-<%= link_to("Back to List", {:action => 'listEvents'}) %> </div>
+<%= link_to("Back", {:action => 'listEvents'}) %> </div>
 
 <div class="table">
   <h2>Show Event</h2>
@@ -30,7 +27,7 @@
     </tr>
     <tr>
       <th>When</th>
-      <td><%= @event.datetime%></td>
+      <td><%= @event.datetime.strftime('%e %b %Y %H:%m:%S%p')%></td>
     </tr>
 	<tr>
       <th>Event Description</th>
@@ -40,7 +37,7 @@
 
     <tr>
       <th>Created</th>
-      <td><%= @event.created_at %></td>
+      <td><%= @event.created_at.strftime('%e %b %Y %H:%m:%S%p') %></td>
     </tr>
  <tr>
       <th>Created By</th>
@@ -48,7 +45,7 @@
     </tr>
   </table>
   
-</div>
+ 
 
  
  

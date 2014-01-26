@@ -17,14 +17,20 @@ class PublicController < ApplicationController
             session[:member_id]=member.id
             session[:username]=member.username
 
+          if params[:remember_me]
+             cookies.permanent[:auth_token] = member.auth_token
+          else
+             cookies[:auth_token] = member.auth_token
+          end
+
           #Giving message of succesful login
-            flash[:notice]="You re logged in to Clubby kids"
+            flash[:success]="You re logged in to Clubby kids"
 
           #directing to authorized pages
            redirect_to(:controller=>"member",:action=>'index')
 
         else
-          flash[:notice]="Not able to  log in,please try again"
+          flash[:alert]="Invaid Username and password combination,Please try again"
             redirect_to(:controller=>'public',:action=>'login')
         end
   end
@@ -89,13 +95,7 @@ end
       
    end
   end
-  
-  
-  
-  
-  
-  
-
+   
   def listItems
      
       @items = Item.order("items.created_at DESC").paginate(:page => params[:page],:per_page =>5)
@@ -121,8 +121,11 @@ end
     @member = Member.new(params[:member])
     if @member.save
       sendemailToMember
-      flash[:success] = 'A verification email has been send to your email account with login instructions'
+      flash[:success] = ' Please confirm your email address by clicking the link that we just send to you in  email'
      redirect_to(:controller=>"public",:action=>'index')
+     
+     
+     
       
      #session[:member_id]=@member.id
      #session[:username]=@member.username

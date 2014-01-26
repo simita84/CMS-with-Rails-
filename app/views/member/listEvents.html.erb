@@ -5,6 +5,8 @@
 		  <table class="table"> 
 			<tr><td>
   				<h3 class="events">Upcoming Events</h3></td></tr>
+ 
+
   		<tr><td> <%= will_paginate   @upcoming_events %></td></tr>
 	
   			 		<% @upcoming_events_arr.each do |event| %>
@@ -25,8 +27,11 @@
       
     <% end %>
  
-
+ 
 </table>
+ 
+
+
 
   
   

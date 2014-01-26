@@ -1,8 +1,8 @@
 require "digest/sha1"
 class Member < ActiveRecord::Base
   # attr_accessible :title, :body
-  
-  attr_accessible :memberphoto,:username, :first_name,:last_name,:password
+  before_create { generate_token(:auth_token) }
+  attr_accessible :memberphoto,:username, :first_name,:last_name,:password,:password_confirmation
    has_attached_file :memberphoto, :styles => { :medium => "300x300>", :thumb =>"50x50>" }
    before_save :create_hashed_password
      after_save :clear_password
@@ -14,18 +14,28 @@ class Member < ActiveRecord::Base
    has_many :items
    before_save {|member| member.username = member.username.downcase}
 
- #Member SignUp Validation
-     EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+        #---------------Member SignUp Validation
+        EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 
      validates :first_name, :presence => true, :length => { :maximum => 30 }
      validates :last_name, :presence => true, :length => { :maximum => 50 }
-     validates :username, :presence => true, :length => { :maximum => 100 }, 
-                :format => EMAIL_REGEX, :uniqueness => {:case_sensitive => false}
+     validates :username, :presence => true, :length => { :maximum => 100 }, :format => EMAIL_REGEX, :uniqueness => {:case_sensitive => false}
+     validates :password, :presence => true, :confirmation => true, :length => { :minimum => 6 } ,:on => :create  
+    
+    #generate a random token for password reset functionality
+    def send_password_reset
+      generate_token(:password_reset_token)
+      self.password_reset_sent_at = Time.zone.now
+      save!
+      MemberMailer.password_reset(self).deliver
+    end  
 
-     validates :password, :presence => true, :confirmation => true,
-                :length => { :minimum => 6 } , :on => :create  
-     #validates_length_of :password, :within => 6..25, 
-
+    #generate a random tokem for remember me function.
+    def generate_token(column)
+       begin
+       self[column] = SecureRandom.urlsafe_base64
+       end while Member.exists?(column => self[column])
+    end
  
      #authorizing the Member
      def self.authorize(username="",password="")

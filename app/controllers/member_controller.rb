@@ -179,7 +179,7 @@ class MemberController < ApplicationController
             redirect_to(:action=>'listReviews', :product_id => @review.product_id)
     #else redislay the form so user can fix the problem
            else
-                flash[:notice]= "Review for "+ @review.title+" cannot be added. "
+                flash[:warning]= "Review  cannot be added. "
                render('newReviews')
            end
        end
@@ -203,7 +203,7 @@ class MemberController < ApplicationController
                 redirect_to(:action=>'listReviews',:id=>@review.id,:product_id=>@product.id)
            else
              #if save fails ,rediplay the form so user can fix problems
-             flash[:notice]= "Review for "+ @review.title+" cannot be updated. "
+             flash[:warning]= "Review for cannot be updated. "
               @review_count=Review.count
               @products=Product.order('id ASC')
               render('editReviews')
@@ -303,6 +303,7 @@ class MemberController < ApplicationController
       #storing session info
            session[:member_id]= nil
            session[:username]=nil
+           cookies.delete(:auth_token)
            flash[:notice]=" Successfully logged out"
             redirect_to(:controller=>'public',:action=>'login')
      end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116203201) do
+ActiveRecord::Schema.define(:version => 20140126061904) do
 
   create_table "admins", :force => true do |t|
     t.string   "first_name"
@@ -94,6 +94,9 @@ ActiveRecord::Schema.define(:version => 20140116203201) do
     t.string   "memberphoto_content_type"
     t.integer  "memberphoto_file_size"
     t.datetime "memberphoto_updated_at"
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   add_index "members", ["username"], :name => "index_members_on_username"

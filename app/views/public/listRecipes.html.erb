@@ -8,22 +8,23 @@
 
 		<div class="span3">
 			
- <!--Search Functionality for Recipes-->
-			
- <%=form_tag(:controller=>"public",:action=>'searchRecipes') do %>
+ 
+ 			<!--Search Functionality for Recipes-->
+
+			 <%=form_tag(:controller=>"public",:action=>'searchRecipes') do %>
 
 
-<%= text_field_tag(:search, params[:search], :placeholder => "Search Recipes", :id => "searchTag") %> 
-  
-                   
-						  <%= submit_tag "Search", :name => nil,:class=>'btn' %> 
-						
-						 
-		 
+			<%= text_field_tag(:search, params[:search], :placeholder => "Search Recipes", :id => "searchTag") %> 
 
-			 <% end %> 
-			<!--End of Search Functionality for Recipes-->
-			
+
+									  <%= submit_tag "Search", :name => nil,:class=>'btn' %> 
+
+
+
+
+						 <% end %> 
+						<!--End of Search Functionality for Recipes-->
+
 			
 				<div class="leaderboard">
 	 			

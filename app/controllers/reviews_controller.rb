@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
           redirect_to(:action=>'list', :product_id => @review.product_id)
   #else redislay the form so user can fix the problem
          else
-              flash[:notice]= "Review for "+ @review.title+" cannot be added. "
+              flash[:warning]= "Review for "+ @review.title+" cannot be added. "
              render('newReviews')
          end
      end
@@ -59,7 +59,7 @@ class ReviewsController < ApplicationController
         redirect_to(:action=>'list',:id=>@review.id,:product_id=>@product.id)
       else
         #if save fails ,rediplay the form so user can fix problems
-        flash[:notice]= "Review for "+ @review.title+" cannot be updated. "
+        flash[:warning]= "Review for "+ @review.title+" cannot be updated. "
         @review_count=Review.count
         @products=Product.order('id ASC')
         render('edit')
@@ -76,7 +76,7 @@ class ReviewsController < ApplicationController
                 flash[:notice]="Review for   "+@review.title+" deleted successfully"
                  redirect_to(:action =>'list',:product_id=>@product.id)  
                  else
-                    flash[:notice]="Review for    "+@review.title+" cannot be deleted"   
+                    flash[:warning]="Review for    "+@review.title+" cannot be deleted"   
               end
         end
 

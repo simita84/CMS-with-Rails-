@@ -15,8 +15,12 @@
 		<img src='/assets/mommyme.jpg'>
 		</div>
 	<div class='span6'>
+
  <div id="login">
+ 	 
 <%=form_tag(:controller=>'public',:action=>'attempt_login') do %>
+
+
 <table align="center">
  <tr>
 
@@ -30,16 +34,22 @@
 		<td><%=password_field_tag(:password)%>	</td></tr>
 		</tr>
 		<tr><td></td>
+ 
 	  <td>
 		 <%=submit_tag "Sign In",:class=>'btn btn-primary btn-large' %> 
 	  
 		 <%=link_to("Sign Up",{:action=>'newMember'},:class=>'btn btn-primary btn-large')%></td>
 		</tr>
-	 <tr><td></td></tr>
-		 <tr><td></td>
-			<td><%=link_to("Forgot password?",:action=>"",:class=>"btn btn-sml")%></td></tr>
+		<tr>
+		<td></td>
+		<td><%= link_to "Forgot password?", new_password_reset_path%><td>
+		</tr>
+
 	</table>
 	<%end%>
+
+
+	
 		 </div>
 		</div>
  

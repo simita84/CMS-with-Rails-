@@ -1,13 +1,14 @@
 <html>
 <body>
  
+ <h3>Create New Recipe</h3>
 <%=form_for(:recipe,:url=>{:action=>'createRecipes'},:html => { :multipart => true }) do |f| %>
 <table class="table">
  	<tr>
 		<th>Recipe Title</th>
 		<td><%=f.text_field(:title)%></td> </tr>
 		<tr>
-			<th>Instructions</th>
+			<th>Content</th>
 			<td>
 		<%=f.text_area :content,size: "60x12" %></td>
 			</tr>
@@ -17,20 +18,28 @@
 				<%= session[:username] %></td>
 				</tr>
 				
-				<tr><td>
-					
-				</td> <%= f.file_field :recipephoto %>
+				<tr>
+					<th>Upload Recipe Picture</th>
+					<td>
+					<%= f.file_field :recipephoto %></td>
 					</tr>
- 		 <tr><td>
-	<div class="btn">
-			<%=submit_tag("Create Recipe")%> 
-			</div></td> 
-		<td><div class="btn"><%=link_to("Cancel",:action=>'listRecipes') %></div></td>
+ 		 <tr>
+ 		 	<td>
+			<%=submit_tag "Create Recipe",:class=>'btn'%> 
+			</td> 
+		<td>
+			<%=link_to "Cancel",{:action=>'listRecipes'},:class=>'btn' %></td>
 		
 		</tr>
 	<%end%>
-<tr> <%=flash[:notice]%> </tr>
+ 
  </table>
+
+
+<% @recipe.errors.full_messages.each do |msg| %>
+        <li>*<%= msg %></li>
+      <% end %>
+
  
 	</body>
 	</html>

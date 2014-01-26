@@ -60,7 +60,7 @@ class AccessController < ApplicationController
      #Save the object
        if @member.save
      #If save succeeds redirect to list 
-     flash[:notice]= "Member --"+@member.username+"--created successfully"
+     flash.now[:success]= "Member --"+@member.username+"--created successfully"
        redirect_to(:action=>'list')
      #else redislay the form so user can fix the problem
        else

@@ -1,0 +1,21 @@
+
+<div class="row">
+	<div class="span5 ">
+		<div class="container">  
+				<div class="leaderboard">
+<h3>Reset Password</h3>
+
+<%= form_tag password_resets_path, :method => :post do %>
+  <div class="field">
+    <%= label_tag :username %>
+    <%= text_field_tag :username, params[:username],:placeholder=>'Email Address' %>
+  </div>
+  <div class="actions">
+  	<%= submit_tag "Reset Password" ,:class=>'btn'%>
+  	<%=link_to("Cancel",{:controller=>'public',:action=>'login'},:class=>'btn')%>
+  </div>
+<% end %>
+</div>
+</div>
+</div>
+</div>

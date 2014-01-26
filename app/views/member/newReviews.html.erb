@@ -1,28 +1,33 @@
 <html>
 <body>
-	<div> Logged in as <%= session[:username]%> </div>
- 
-	<div class="btn"><%=link_to("Back to list",{:action=>'listReviews',:product_id=>@product.id})%></div>
-	<h2>Create new Reviews</h2>
+  
+	<h2>Create new reviews</h2>
  	<%=form_for(:review, :url => {:action=>'createReviews', :product_id => @product.id}) do |f| %>
 
 	<table class="table">
  	<tr>
-    	<th>Title</th>
-        <td><%=f.text_field(:title)%></td>
+    	<th>Title</th><td> <%=f.text_field(:title)%></td>
 	</tr>
   	<th>Review</th>
 		<td><%=f.text_area(:content,size: "60x12")%></td>
     </tr>	
+	<th>Author</th>
+		<td><%= session[:username]%></td>
+    </tr>
+
+
  <tr><td>
-     <div class="btn">
-	    <%=submit_tag("Create Review")%> 
-     </div></td></tr>
+    
+	    <%=submit_tag "Create Review",:class=>'btn'%> 
+	<%=link_to("Cancel",{:action=>'listReviews',:product_id=>@product.id},:class=>'btn')%>
+     </td></tr>
  
  	</table>
 <% end %>
-<h3><%=flash[:notice]%></h3> 
 
+<% @review.errors.full_messages.each do |msg| %>
+        <li>*<%= msg %></li>
+      <% end %>
  
 	 </body>
 	</html>

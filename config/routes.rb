@@ -1,4 +1,6 @@
 MomsAndTots::Application.routes.draw do
+  get "password_resets/new"
+
   get "invitees/index"
 
   get "invitees/new"
@@ -44,7 +46,8 @@ MomsAndTots::Application.routes.draw do
   get "products/delete"
   
   match '/eventdetails',to: 'member#eventDetails'
-    match '/admin',to: 'access#login'
+  match '/admin',to: 'access#login'
+  match '/home',to: 'public#index'
 
   resources :contacts
 
@@ -60,6 +63,7 @@ MomsAndTots::Application.routes.draw do
 
 
   resources :products
+  resources :password_resets
   
 root :to =>"public#index"
 

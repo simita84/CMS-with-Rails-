@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Welcome</title>
+<title>Clubbykids</title>
  
 </head>
 <body>
@@ -15,9 +15,14 @@
 	
  <div class='span5 '>
 
-					<%@homes.each do |home|%>
+		<%@homes.each do |home|%>
  			
-						<h2 id="home"><center><img src='/assets/home.gif'> <%=home.title%></center></h2>
+		
+			
+			<center  id="home">
+				<img src='/assets/home.gif'>
+				<h2> <%=home.title%></h2>
+		</center>
  	 
   <p class='lead'><center><%=simple_format(home.content)%></center> </p>
 	<p> <center>

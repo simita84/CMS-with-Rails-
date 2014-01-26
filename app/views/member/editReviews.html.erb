@@ -17,18 +17,26 @@
 					<tr>
 							<th>Posted By</th>
 					 	<td>
-							<%=f.text_field(:member_username)%>
+							<%=@review.member_username%>
 							 </td>
 		 			</tr>
 			<tr>
 				<td> 	
-					<div class="btn"><%=submit_tag("Edit Reviews")%> 	</div>
+					<%=submit_tag "Edit Reviews",:class=>'btn'%> 	 
 				</td>
 	 	        <td>
-					<div class="btn">	<%=link_to("CANCEL",:action=>'listReviews',:product_id=>@product.id)%></div>
+				 	<%=link_to("CANCEL",:action=>'listReviews',:product_id=>@product.id},:class=>"btn")%></div>
 						</td>
 	 				</tr>
 	 
 					<%end%>
+					
+					</table>
+					
+					<div class="alert">
+					<% @review.errors.full_messages.each do |msg| %>
+					        <li>*<%= msg %></li>
+					      <% end %>
+					</div>
  	</body>
 	</html>

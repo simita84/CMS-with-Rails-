@@ -3,12 +3,9 @@
  
 
 <body>
-	
-	
- 
- 		<div class="btn">
-			<%=link_to("Logout",:controller=>'access',:action=>'logout')%></div>
-	<h2>Admin Panel</h2>
+	 
+ 		 
+	<h2 align="center">Admin Panel</h2>
  
 	<h3 align="left">Welcome Admin <%= session[:username]%> !</h3>
 	
@@ -29,7 +26,7 @@
  		 
  	<tr>	<td><h4><%=link_to("Manage Admins",:controller=>'admins',:action=>'index')%></h4></td>
 			<td><h4><%=link_to("Manage Members",:controller=>'manage_members',:action=>'listMembers')%></h4></td>
-			<td><h4><%=link_to("Manage Sign Up",:controller=>' ',:action=>' ')%></h4></td>
+			<td><h4><%=link_to("Logout",:controller=>'access',:action=>'logout')%></h4></td>
 	
 	</tr>
 		</table>

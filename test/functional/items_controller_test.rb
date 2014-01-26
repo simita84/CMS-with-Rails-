@@ -5,10 +5,12 @@ class ItemsControllerTest < ActionController::TestCase
     @item = items(:one)
   end
 
-  test "should get index" do
+  test "should_get_index" do
     get :index
     assert_response :success
     assert_not_nil assigns(:items)
+    assert_template :index
+    assert_template layout: "layouts/admin"
   end
 
   test "should get new" do

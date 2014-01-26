@@ -8,8 +8,10 @@ class Review < ActiveRecord::Base
      belongs_to :member
 
 
-       validates_presence_of :title,:message=>"The title cannot be blank"
-            validates_presence_of :content,:message=>"The title cannot be blank"
+       validates  :title,:presence=>true
+            validates :content,:presence=>true
+             validates :member_username,:presence=>true
+            
 
 
             def self.search(search)

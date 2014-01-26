@@ -1,12 +1,26 @@
 <html>
 
 <body>
-
+	
  	 
  	<%=link_to("Back Home",{:controller=>'member',:action=>'index'},:class=>'btn')%> 
 
  
 			<%=link_to("Create new Recipes",{:action=>'newRecipes'},:class=>'btn')%>  
+			
+ <!--Search Functionality for Recipes-->
+
+	 <%=form_tag(:controller=>"members",:action=>'searchRecipes') do %>
+
+<div align="right">
+	<%= text_field_tag(:search, params[:search], :placeholder => "Search Recipes", :id => "searchTag") %> 
+    <%= submit_tag "Search", :name => nil,:class=>'btn' %> 
+ 
+				 <% end %> 
+				<!--End of Search Functionality for Recipes--></div>
+
+
+
 			<br>
 				<br>
 				<h3 align="center">Recipes </h3>

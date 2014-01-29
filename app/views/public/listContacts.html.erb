@@ -18,6 +18,8 @@
  
 	 	<dt> Email Us at</dt>	  
     <dd><%= contact.emailid%>   </dd>
+    <dd><input type="text-area" name="message"/></dd>
+    <%=link_to("Send Email",{:controller=>"public",:action=>"sendemailToAdmin"},:class=>'btn')%>
  
 	   	<dt>  Meet  Us at </dt>			 
     <dd> <%= contact.facebook%>   </dd>

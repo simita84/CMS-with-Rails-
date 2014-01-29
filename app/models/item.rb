@@ -4,6 +4,7 @@ class Item < ActiveRecord::Base
     has_attached_file :itemphoto, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
       belongs_to :member
+      
 
 
         validates_presence_of :name,:message=>"The name cannot be blank"

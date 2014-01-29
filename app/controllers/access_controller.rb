@@ -3,7 +3,7 @@ class AccessController < ApplicationController
   layout 'admin'
     before_filter :confirm_logged_in,:except => [:login,:attempt_login]
   
-  
+  #-----------------------Admin Login-----------------------
   def index
     render('login')
   end
@@ -39,8 +39,11 @@ class AccessController < ApplicationController
   end
   
  
+  #-----------------------End of Admin Login-----------------------
   
-  
+   
+#-----------------------Managing Members from Admin console-----------------------
+
    #List all the member users
    def listMembers
 
@@ -68,6 +71,6 @@ class AccessController < ApplicationController
            render('new')
        end
    end
-  
+#-----------------------End of Managing Members from Admin console-----------------------  
   
 end

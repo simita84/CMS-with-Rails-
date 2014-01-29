@@ -84,6 +84,14 @@ class AdminsController < ApplicationController
     end
   end
 
-  
+  def manageProfile
+      @admin_user=Admin.find_by_username(session[:username])
+      @id=@admin_user.id
+
+  end
+
+
+
+
   
 end

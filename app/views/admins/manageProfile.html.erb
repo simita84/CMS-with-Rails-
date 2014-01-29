@@ -1,0 +1,50 @@
+
+<html>
+
+<body>
+  <div class="hero-unit">
+<table class="table">
+	
+ <h3>Account Details</h3> 
+ 	 
+
+  <%=form_for(:admin,:url=>{:action=>'update'}) do |f| %>
+	
+		<tr>
+				<td>
+				<!--<%= image_tag @admin_user.memberphoto.url(:thumb) %>-->
+				</td>
+		</tr>
+		<tr>
+			<td>Email ID: </td>
+			
+			<td><%=@admin_user.username%></td>
+		</tr>
+	
+		
+		<tr>
+			<td>First Name: </td>
+			<td><%=@admin_user.first_name%></td>
+		</tr>
+			
+				<tr>
+					<td>Last Name: </td>
+					<td><%=@admin_user.last_name%></td>
+				</tr>
+				<tr>
+					<td>Admin Since: </td>
+					<td><%=@admin_user.created_at.to_time.strftime('%e %b %Y %H:%m:%S')%></td>
+				</tr>
+				 
+			
+ </tr>
+				
+	 <td>
+	<div class="btn">	<%=submit_tag("Modify admin")%> </div></td>
+		<td><div class="btn"><%=link_to("access",:action=>'menu') %></div></td>
+		
+		</tr>
+		 </table>
+		 
+</body>
+</html>

@@ -6,11 +6,17 @@ class InviteesController < ApplicationController
  
 
     def index
-       
+      listInvitees
+  render('listInvitees')
+  end
+
+def listInvitees
+
  @invitees = Invitee.where(:event_id => @event.id, :invited => false).paginate(page:params[:page],per_page: 3) 
  @invitedinvitees = Invitee.where(:event_id => @event.id, :invited => true).paginate(page:params[:page],per_page: 5) 
     end
  
+
 
 
    def eventinfo

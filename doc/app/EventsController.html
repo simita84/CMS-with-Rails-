@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class EventsController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/events_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-createEvents">#createEvents</a>
+    
+    <li><a href="#method-i-deleteEvents">#deleteEvents</a>
+    
+    <li><a href="#method-i-destroyEvents">#destroyEvents</a>
+    
+    <li><a href="#method-i-editEvents">#editEvents</a>
+    
+    <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-listEvents">#listEvents</a>
+    
+    <li><a href="#method-i-newEvents">#newEvents</a>
+    
+    <li><a href="#method-i-showEvents">#showEvents</a>
+    
+    <li><a href="#method-i-updateEvents">#updateEvents</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./AccessController.html">AccessController</a>
+  
+    <li><a href="./AccessHelper.html">AccessHelper</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./AdminsController.html">AdminsController</a>
+  
+    <li><a href="./AdminsHelper.html">AdminsHelper</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Contact.html">Contact</a>
+  
+    <li><a href="./ContactsController.html">ContactsController</a>
+  
+    <li><a href="./ContactsHelper.html">ContactsHelper</a>
+  
+    <li><a href="./Event.html">Event</a>
+  
+    <li><a href="./Eventinviter.html">Eventinviter</a>
+  
+    <li><a href="./EventsController.html">EventsController</a>
+  
+    <li><a href="./EventsHelper.html">EventsHelper</a>
+  
+    <li><a href="./Home.html">Home</a>
+  
+    <li><a href="./HomesController.html">HomesController</a>
+  
+    <li><a href="./HomesHelper.html">HomesHelper</a>
+  
+    <li><a href="./Invitee.html">Invitee</a>
+  
+    <li><a href="./InviteesController.html">InviteesController</a>
+  
+    <li><a href="./InviteesHelper.html">InviteesHelper</a>
+  
+    <li><a href="./Item.html">Item</a>
+  
+    <li><a href="./ItemsController.html">ItemsController</a>
+  
+    <li><a href="./ItemsHelper.html">ItemsHelper</a>
+  
+    <li><a href="./ManageMembersController.html">ManageMembersController</a>
+  
+    <li><a href="./ManageMembersHelper.html">ManageMembersHelper</a>
+  
+    <li><a href="./Member.html">Member</a>
+  
+    <li><a href="./MemberController.html">MemberController</a>
+  
+    <li><a href="./MemberHelper.html">MemberHelper</a>
+  
+    <li><a href="./MemberMailer.html">MemberMailer</a>
+  
+    <li><a href="./PasswordResetsController.html">PasswordResetsController</a>
+  
+    <li><a href="./PasswordResetsHelper.html">PasswordResetsHelper</a>
+  
+    <li><a href="./Product.html">Product</a>
+  
+    <li><a href="./ProductsController.html">ProductsController</a>
+  
+    <li><a href="./ProductsHelper.html">ProductsHelper</a>
+  
+    <li><a href="./PublicController.html">PublicController</a>
+  
+    <li><a href="./PublicHelper.html">PublicHelper</a>
+  
+    <li><a href="./Recipe.html">Recipe</a>
+  
+    <li><a href="./RecipesController.html">RecipesController</a>
+  
+    <li><a href="./RecipesHelper.html">RecipesHelper</a>
+  
+    <li><a href="./Review.html">Review</a>
+  
+    <li><a href="./ReviewsController.html">ReviewsController</a>
+  
+    <li><a href="./ReviewsHelper.html">ReviewsHelper</a>
+  
+    <li><a href="./Signup.html">Signup</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class EventsController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-createEvents" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">createEvents</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="createEvents-source">
+            <pre><span class="ruby-comment"># File app/controllers/events_controller.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">createEvents</span>
+  <span class="ruby-comment"># Instantiate a new object using form parameters</span>
+      <span class="ruby-ivar">@event</span> = <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:event</span>])
+       <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-value">:admin_username=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">session</span>[<span class="ruby-value">:username</span>])
+      <span class="ruby-comment"># Save the object</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">save</span>
+        <span class="ruby-comment"># If save succeeds, redirect to the list action</span>
+        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&quot;********* Event created ************&quot;</span>
+        <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;listEvents&#39;</span>)
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-comment"># If save fails, redisplay the form so user can fix problems</span>
+        <span class="ruby-comment">#@event_count = Event.count + 1</span>
+        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&quot;********* Event not created ************&quot;</span>
+        <span class="ruby-comment">#@error_message = &quot;It seems there was a validation error. Please try again.&quot;</span>
+        <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;newEvents&#39;</span>)
+      <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- createEvents-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- createEvents-method -->
+
+    
+      <div id="method-i-deleteEvents" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">deleteEvents</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="deleteEvents-source">
+            <pre><span class="ruby-comment"># File app/controllers/events_controller.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">deleteEvents</span>
+   <span class="ruby-ivar">@event</span> = <span class="ruby-constant">Event</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+ <span class="ruby-keyword">end</span></pre>
+          </div><!-- deleteEvents-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- deleteEvents-method -->
+
+    
+      <div id="method-i-destroyEvents" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">destroyEvents</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="destroyEvents-source">
+            <pre><span class="ruby-comment"># File app/controllers/events_controller.rb, line 73</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroyEvents</span>
+  <span class="ruby-constant">Event</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&quot;********* Event destroyed ************&quot;</span>
+  <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;listEvents&#39;</span>)
+
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- destroyEvents-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- destroyEvents-method -->
+
+    
+      <div id="method-i-editEvents" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">editEvents</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="editEvents-source">
+            <pre><span class="ruby-comment"># File app/controllers/events_controller.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">editEvents</span>
+    <span class="ruby-ivar">@event</span> = <span class="ruby-constant">Event</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+   
+  <span class="ruby-keyword">end</span></pre>
+          </div><!-- editEvents-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- editEvents-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/events_controller.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-identifier">listEvents</span>
+      <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;listEvents&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+      <div id="method-i-listEvents" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">listEvents</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="listEvents-source">
+            <pre><span class="ruby-comment"># File app/controllers/events_controller.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">listEvents</span>
+  <span class="ruby-ivar">@events</span>=<span class="ruby-constant">Event</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;events.created_at DESC&quot;</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],<span class="ruby-identifier">per_page</span><span class="ruby-operator">:</span> <span class="ruby-value">10</span>)       
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- listEvents-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- listEvents-method -->
+
+    
+      <div id="method-i-newEvents" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">newEvents</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="newEvents-source">
+            <pre><span class="ruby-comment"># File app/controllers/events_controller.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">newEvents</span>
+    <span class="ruby-ivar">@event</span> = <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@event_count</span> = <span class="ruby-constant">Event</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+    
+  <span class="ruby-keyword">end</span></pre>
+          </div><!-- newEvents-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- newEvents-method -->
+
+    
+      <div id="method-i-showEvents" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">showEvents</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="showEvents-source">
+            <pre><span class="ruby-comment"># File app/controllers/events_controller.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">showEvents</span>
+    <span class="ruby-ivar">@event</span> = <span class="ruby-constant">Event</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-keyword">end</span></pre>
+          </div><!-- showEvents-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- showEvents-method -->
+
+    
+      <div id="method-i-updateEvents" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updateEvents</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="updateEvents-source">
+            <pre><span class="ruby-comment"># File app/controllers/events_controller.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">updateEvents</span>
+      <span class="ruby-ivar">@event</span> = <span class="ruby-constant">Event</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+    <span class="ruby-comment"># Save the object</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:event</span>])
+      <span class="ruby-comment"># If save succeeds, redirect to the list action</span>
+      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&quot;********* Event saved ************&quot;</span>
+     <span class="ruby-comment"># redirect_to(:action =&gt; &#39;show&#39;, :id =&gt; @event.id )</span>
+     <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;listEvents&#39;</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-comment"># If save fails, redisplay the form so user can fix problems</span>
+      <span class="ruby-comment">#@event_count = Event.count + 1</span>
+      <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;editEvents&#39;</span>)
+    <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">end</span></pre>
+          </div><!-- updateEvents-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- updateEvents-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

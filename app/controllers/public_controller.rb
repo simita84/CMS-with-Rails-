@@ -6,9 +6,12 @@ class PublicController < ApplicationController
      @homes=Home.all
   end
 
+
+#-----------------------Managing Member Login from Public Page-----------------------
   def login
      render('login')
   end
+
 
   def attempt_login
      member=Member.authorize(params[:username],params[:password])
@@ -34,6 +37,10 @@ class PublicController < ApplicationController
             redirect_to(:controller=>'public',:action=>'login')
         end
   end
+
+
+#-----------------------End of Managing Member Login from Public Page-----------------------
+
 
   def listProducts
      @products=Product.order("products.created_at DESC").paginate(:page => params[:page],:per_page =>50)
@@ -106,7 +113,7 @@ end
   def listContacts
      @contacts=Contact.all
   end
- #-------------member registration-----------
+ #-------------Member Sign Up / registration from Public Page-----------
   def newMember
      @member = Member.new
      
@@ -151,9 +158,20 @@ end
     end  
   end
   
-  #-------------member registration-----------
+
+
+ #-------------Member Sign Up / registration from Public Page-----------
+
+ 
   
+  #--------Contact Admin-------------
+def sendemailToAdmin
+
   
+
+end
+
+
   
   
    private 

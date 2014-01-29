@@ -3,6 +3,7 @@ class Admin < ActiveRecord::Base
 
   #mapping to events
   has_many :events
+  
   attr_accessor :password
   attr_protected :hashed_password,:salt
   

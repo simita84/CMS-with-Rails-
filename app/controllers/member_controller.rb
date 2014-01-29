@@ -246,8 +246,8 @@ class MemberController < ApplicationController
                           end
                        end
           #----------------Pagination---------------
-      @upcoming_events= @upcoming_events_arr.paginate(:page => params[:page],:per_page => 1)
-      @past_events=@past_events_arr.paginate(:page => params[:page], :per_page => 1)
+      @upcoming_events = @upcoming_events_arr.sort.paginate(:page => params[:page],:per_page => 1)
+      @past_events = @past_events_arr.sort.paginate(:page => params[:page], :per_page => 1)
        
      end
         

@@ -71,6 +71,11 @@ class ItemsController < ApplicationController
     end
   end
 
+
+  def delete
+         @item = Item.find(params[:id])
+       end 
+
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy

@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
    #Mapping between product and Reviews tables
    has_many :reviews
   
-  
+    #belongs_to :admin
    
    validates_presence_of :title,:message=>"The title cannot be blank"
     

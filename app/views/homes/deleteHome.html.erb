@@ -1,0 +1,31 @@
+
+<html>
+ <body>
+ 
+ 
+<%=form_for(:home,:url=>{:action=>'destroyHome',:id =>@home.id}) do |f| %>
+  	
+	
+
+<table class="table"> 
+	<tr>
+		<th>
+ 	<h3>Are you sure  you want to delete Home details from the records?</h3>
+		</th>
+	</tr>
+	 
+	 <tr>
+			<td>
+			 <%=submit_tag "Confirm" ,:class=>"btn"%>  
+ 					 <%=link_to("Cancel",{:action=>'index'},:class=>"btn")%>  
+			</td> 
+	</tr>
+	
+</table>
+
+	<%end%>
+		</div>
+
+</body>
+</html>
+

@@ -21,10 +21,10 @@
 			<tr align ="left">
 				<td>	<%= word_wrap(review.content,:line_width=>30)%></td> </tr> 	 
 				
-				<tr> <td> Posted by :<%=review.member_username%></td>
+				<tr> <td> Posted by :<%=review.posted_by%></td>
 					</tr>
 				
-		<% if review.member_username == session[:username]%>
+		<% if review.posted_by == session[:username]%>
  <tr>
  	<td> 
 		<div class="btn">

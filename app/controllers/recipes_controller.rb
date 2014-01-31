@@ -1,85 +1,99 @@
 class RecipesController < ApplicationController
-  # GET /recipes
-  # GET /recipes.json
-     before_filter :confirm_logged_in
-    layout 'admin'
-  def index
-    @recipes = Recipe.all
+  
+  layout 'admin'
+   before_filter :find_recipe
+   before_filter :confirm_logged_in,:except => [:login,:attempt_login,:listPublicRecipes]
+   
+   def index
+     listRecipes
+     render('listRecipes')
+   end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @recipes }
-    end
-  end
+   def listRecipes
+     @recipes=Recipe.order("recipes.created_at ASC")
+    @recipes=Recipe.paginate(page: params[:page],per_page: 10)
+     
+   end
+  
+   def listRecipe
+      @recipes=Recipe.order("recipes.created_at DESC").where(:id=>@recipe.id)       
+     
+   end
+   
+     
+   def newRecipe
+     @recipe=Review.new
+   end
+   
+   def createRecipe
+     @recipe=Recipe.new(params[:recipe]) 
+      
+    #Find admin using the admin session name
+  admin=Admin.find_by_username(session[:username])
+         #updating with admin email id
+  @recipe.update_attributes(:posted_by=>admin.emailId)
+ 
+     #Save the object
+       if @recipe.save
+     #If save succeeds redirect to list 
+     flash[:notice]= "Recipe --"+@recipe.title+"--created successfully"
+       redirect_to(:action=>'index')
+     #else redislay the form so user can fix the problem
+       else
+         flash[:notice]= "Recipe  "+ @recipe.title+"  cannot be added. "
+           render('newRecipe')
+       end
+   end
+   
+ 
+ def editRecipe
+   
+   @recipe=Recipe.find(params[:id])
+   
+ end
+ 
+  def updateRecipe
+       #Find the object using form parameters
+       @recipe=Recipe.find(params[:id])
+       #update with new values
+       @recipe.update_attributes(params[:recipe])
+       #Save the object
+       if @recipe.save
+         #If update succeeds redirect to list 
+         flash[:notice]= "Recipe --"+@recipe.title+"--updated successfully"
+         redirect_to(:action=>'index')
+       else
+          flash[:notice]= "Recipe"+ @recipe.title+" cannot be updated. "
+         render('editRecipe')
+       end
+       end
 
-  # GET /recipes/1
-  # GET /recipes/1.json
-  def show
-    @recipe = Recipe.find(params[:id])
+  def deleteRecipe
+         #Find the object using form parameters
+         @recipe=Recipe.find(params[:id])
+         end
+       def destroyRecipe
+            #Find the object using form parameters
+            @recipe=Recipe.find(params[:id])
+             if @recipe.destroy
+               flash[:notice]="Recipe   "+@recipe.title+" deleted successfully"
+                redirect_to(:action =>'index')  
+                else
+                   flash[:notice]="Recipe   "+@recipe.title+" cannot be deleted"   
+             end
+       end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @recipe }
-    end
-  end
+        
+  
+        private 
 
-  # GET /recipes/new
-  # GET /recipes/new.json
-  def new
-    @recipe = Recipe.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @recipe }
-    end
-  end
-
-  # GET /recipes/1/edit
-  def edit
-    @recipe = Recipe.find(params[:id])
-  end
-
-  # POST /recipes
-  # POST /recipes.json
-  def create
-    @recipe = Recipe.new(params[:recipe])
-
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
-        format.json { render json: @recipe, status: :created, location: @recipe }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        def find_recipe
+          if (params[:id])
+            @recipe=Recipe.find_by_id(params[:id])
+        end
       end
-    end
-  end
-
-  # PUT /recipes/1
-  # PUT /recipes/1.json
-  def update
-    @recipe = Recipe.find(params[:id])
-
-    respond_to do |format|
-      if @recipe.update_attributes(params[:recipe])
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /recipes/1
-  # DELETE /recipes/1.json
-  def destroy
-    @recipe = Recipe.find(params[:id])
-    @recipe.destroy
-
-    respond_to do |format|
-      format.html { redirect_to recipes_url }
-      format.json { head :no_content }
-    end
-  end
+  
+  
+  
+  
 end

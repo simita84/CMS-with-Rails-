@@ -1,0 +1,48 @@
+<html>
+ 
+
+<body>
+	
+		 
+		<%=form_for(:admin,:url=>{:action=>'createAdmin'}) do |f| %>
+ 
+			<table class="table ">
+			<tr>
+			<th>First Name</th>
+			<td>	
+				<%=f.text_field(:first_name)%></td>
+			<tr>
+<th>Last Name</th>
+<td>
+		<%=f.text_field(:last_name)%></td>
+		</tr>
+		<tr>
+<th>Username</th>
+		<td>
+				<%=f.text_field(:username)%></td>
+				</tr>
+				
+				<tr>
+					<th>EmailId</th>
+					<td>
+							<%=f.text_field(:emailId)%></td>
+							</tr>
+								<tr>
+								<th>Password</th>
+								<td>
+										<%=f.password_field(:password)%></td>
+										</tr>
+				
+	 <td>
+ 	<%=submit_tag "Create Admin user",:class=>"btn"%> </td>
+		<td><%=link_to("Cancel",{:action=>'index'},:class=>"btn") %></td>
+		
+		</tr>
+
+	<%end%>
+  </table>
+
+ 
+	</body>
+	</html>
+	 

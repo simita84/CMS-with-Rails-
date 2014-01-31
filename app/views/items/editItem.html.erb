@@ -1,0 +1,50 @@
+
+<html>
+ <body>
+
+	 
+  
+<%=form_for(:item,:url=>{:action=>'updateItem',:id =>@item.id,:id=>@item.id}) do |f| %>
+ 
+<table  class="table">
+	<tr>
+	  	<th>Item Name </th>
+			<td>
+		<%=f.text_field(:name)%></td>
+		</tr>
+		
+			<tr>
+		<th>Contents</th>
+			<td>
+		 	<%=f.text_area(:content,size: "60x12")%></td>
+			</tr>
+			<tr>	
+				<th>Posted_By</th>
+				<td>
+
+		 	<%=f.text_field :posted_by,:disabled=>true %>
+		 		</td>
+				</tr>
+			<tr>	
+				<th>Item Picture</th>
+				<td>
+
+		 <%=f.file_field(:itemphoto) %>	</td>
+				</tr>
+		<tr>
+		 
+			<td><%=submit_tag "Modify" ,:class=>'btn'%>  
+ 		 		<%=link_to("CANCEL",{:action=>'index',:id=>@item.id},:class=>'btn')%></td>
+	 		</tr>
+	
+	
+	<%end%>
+		
+		</table>
+	 
+		
+</body>
+</html>
+	
+	
+	

@@ -1,3 +1,4 @@
 class Home < ActiveRecord::Base
-  attr_accessible :content, :title
+  attr_accessible :title, :content
+
 end

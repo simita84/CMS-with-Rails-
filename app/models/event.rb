@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   has_attached_file :eventphoto, :styles => { :medium => "500x500>", :thumb => "70x70>" }
   
   
-  belongs_to :admin
+ 
   has_many :invitees
   
   

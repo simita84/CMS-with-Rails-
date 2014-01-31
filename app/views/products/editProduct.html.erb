@@ -1,0 +1,35 @@
+
+<html>
+ 
+
+<body>
+	 
+
+
+<h3>Modify</h3>
+
+
+<%=form_for(:product,:url=>{:action=>'updateProduct',:id =>@product.id}) do |f| %>
+ 
+<table class="table">
+ 
+<tr>
+<th>Category Title</th>
+<td>
+		<%=f.text_field(:title)%></td>
+		</tr>
+		<tr>
+		 
+			<tr>
+			<td> <%=f.submit "Modify",class:'btn' %> 
+	  <%=link_to("CANCEL",{:action=>'index'},:class=>'btn')%></td>
+	 </tr>
+ 
+	<%end%>
+	
+	 
+</body>
+</html>
+	
+	
+	

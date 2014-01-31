@@ -1,0 +1,50 @@
+<html>
+ 
+
+<body>
+ 
+ <h2>Manage Home Page</h2><br>
+ 
+
+<br>
+
+
+<%if @homes ==[]%>
+<%= link_to("Add Home",{ :action => "newHome"},:class=>'btn') %>
+<%end%>
+
+
+<% @homes.each do |home| %>
+<table class="table">
+	    <tr>
+	      <th>Welcome Page Title</th>
+	      <td><%=home.title %></td>
+	       </tr>
+	       <tr>
+	      <th>Content</th>
+	      <td><%=simple_format(home.content) %></td> </tr>
+	      <tr>
+	      <th>Created At</th>
+	      <td><%= home.created_at.strftime('%e %b %Y %H:%m:%S%p') %></td>    </tr>
+	      <tr>
+	      <th>Updated At</th>
+	      <td><%= home.updated_at.strftime('%e %b %Y %H:%m:%S%p') %></td>
+	   	
+	    </tr>
+	     <tr>
+	     <td></td>
+	     <td>
+	     	<%= link_to("Edit", {:action => 'editHome', :id => home.id},:class=>"btn") %>
+	        <%= link_to("Delete",{:action => 'deleteHome', :id => home.id},:class=>"btn") %>
+	        <%= link_to("Cancel", {:controller => 'access', :action => 'menu'},:class=>'btn') %>
+		</td>
+
+             
+	 		 
+	        
+	      
+
+
+	      </tr>
+	      			<% end %>
+	  </table>

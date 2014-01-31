@@ -1,0 +1,50 @@
+<html>
+ 
+
+<body>
+	
+	
+ 
+	 
+<%=form_for(:item,:url=>{:action=>'createItem'}) do |f| %>
+ 
+<table class="table table-striped">
+	 
+	
+<tr>
+		<th>Item Name</th>
+		<td>	<%=f.text_field(:name)%></td>
+		
+</tr>
+
+ 
+<tr>
+		<th>Item Content </th>
+			<td>	<%=f.text_area(:content,size: "60x12")%>
+			</td>
+</tr>
+<tr>
+
+	<th>Item Picture</th>
+<td>
+
+ <%=f.file_field(:itemphoto) %></td>
+	</tr>
+<tr>
+		<th>Posted By</th>
+		<td>
+				<%=session[:username]%>
+			</td></tr>
+			
+		 <tr>
+	 		<td class="btn">
+				<%=submit_tag("Create item")%> </td>
+			<td class="btn">
+				<%=link_to("CANCEL",:action=>'index',:id=>@item.id)%></td></tr>
+	
+	 <%end%>
+ 
+ </table>
+	</div>
+ </body>
+</html>

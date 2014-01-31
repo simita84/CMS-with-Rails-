@@ -1,0 +1,43 @@
+<html>
+ 
+
+<body>
+	
+	
+<div class="hero-unit">
+
+ 
+<%=form_for(:review,:url=>{:action=>'updateReview',:id =>@review.id,:product_id=>@product.id}) do |f| %>
+
+ 
+
+<table class="table">
+ 
+<tr>
+<th>Reviews Title</th>
+<td>
+		<%=f.text_field(:title)%></td>
+		</tr>
+		<tr>
+		<th>Reviews Contents</th>
+		<td>
+				<%=f.text_area(:content,size: "60x12")%></td>
+				</tr>
+		<tr>
+			<th>
+			Posted By</th>
+			<td><%=f.text_field(:posted_by,:disabled=>'true')%> </td>	 
+		 </tr>
+		<tr><td>	<%=f.file_field(:reviewphoto) %></td></tr>
+			<tr>
+			 <td></td><td>	<%=f.submit "Modify",class:'btn' %>  
+ 
+	 	<%=link_to("CANCEL",{:action=>'index',:product_id=>@product.id},:class=>'btn')%></td>
+	 </tr>
+	</div>
+	<%end%>
+
+	
+	
+	</body>
+	</html>

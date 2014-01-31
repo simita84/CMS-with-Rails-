@@ -1,0 +1,49 @@
+
+<html>
+ 
+
+<body>
+	
+	
+ 
+<%=form_for(:recipe,:url=>{:action=>'updateRecipe',:id =>@recipe.id}) do |f| %>
+ 
+ 
+<table  class="table">
+ 
+<tr>
+<th>Recipe Title</th>
+<td>
+		<%=f.text_field(:title)%></td>
+		</tr>
+		<tr><td>
+			
+		</td> <%= f.file_field :recipephoto %>
+			</tr>
+		<tr>
+		<th>Recipe Instructions</th>
+		<td > 
+				<%=f.text_area(:content,size: "60x12")%></td>
+				</tr>
+					<tr>
+						<th>
+						Posted By</th>
+						<td><%=f.text_field(:posted_by,:disabled=>'true')%> </td>	 
+					 </tr>
+		 
+			<tr>
+			 <td>  <%=f.submit "Edit Recipe",class:'btn' %> 
+					</td> 
+	
+<td> <%=link_to("CANCEL",{:action=>'index'},:class=>'btn')%> </td>
+	
+	 </tr>
+	 
+	<%end%>
+	
+	</body>
+	</html>
+	
+	
+	
+	

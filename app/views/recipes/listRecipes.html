@@ -1,0 +1,45 @@
+<html>
+ 
+
+<body>
+	
+	
+ 
+	<h3>Recipes List</h3>
+		<div class="btn">	<%=link_to("Add new Recipe ",:action=>'newRecipe')%> </div>
+	<div class="btn">
+			<%=link_to("Back to Admin Menu",:controller=>'access',:action=>'menu')%>
+			</div>
+
+		<table class="table">	
+			
+			<%= will_paginate%>
+ 
+		<%@recipes.each do |recipe|%>
+
+
+ 	 <tr>
+			<td>
+	  			<%=recipe.title%> </td> 
+	 	  	 		<td class="btn">	
+						<%=link_to("VIEW",:action=>'listRecipe',:id=>recipe.id)%>	 </td>
+				<td class="btn">	
+					<%=link_to("EDIT",:action=>'editRecipe',:id=>recipe.id)%>	 </td>
+			 <td class="btn"> 
+				<%=link_to("DELETE",:action=>'deleteRecipe',:id=>recipe.id)%></td>
+		 	</td>
+	</tr>
+ 		<%end%>
+	</table>
+				<%= will_paginate%>
+	
+	 <h3><%=flash[:notice]%></h3> 
+	
+	 
+	
+	</body>
+	  
+
+	
+</html>
+ 

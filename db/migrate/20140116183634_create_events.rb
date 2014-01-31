@@ -21,3 +21,5 @@ class CreateEvents < ActiveRecord::Migration
 end
 
 
+
+

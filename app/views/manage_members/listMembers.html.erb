@@ -3,28 +3,24 @@
  
 
 <body> 
-
-	
  
 
 <div class="page-header">
-<h2> Members</h2><br>
+<h2> Manage Members</h2><br>
  </div>
- <div class="btn">
-	<%=link_to("New",:action=>'newMember')%> </div>
-	<div class="btn">	<%=link_to("Back",:controller=>'access',:action=>'menu')%></div>
 
+
+ 
+	<%=link_to("New",{:action=>'newMember'},:class=>'btn')%>  
+ <%=link_to("Back",{:controller=>'access',:action=>'menu'},:class=>'btn')%>
+<br><br>
 	 
-<table class="table">
+<table class="table table-striped">
 
 	<th>		<%="First Name"%> </th>
 	<th>	<%="Last Name"%>  </th>   
 	<th>	<%="User Name"%>  </th>  
-	 
-	
-	 	 
-	 	 
-			<th>		<%="Actions"%></th>
+	<th>		<%="Actions"%></th>
 			 
  
 <tr>		<%= will_paginate @members %>
@@ -35,8 +31,8 @@
     		 		  
 	<td><%=member.username%>        </td>  
 	  	
-	 <td class="btn"> <%=link_to("EDIT",:action=>'editMember',:id=>member.id)%>	 </td>
-	 <td class="btn"> 		 <%=link_to("DELETE",:action=>'deleteMember',:id=>member.id)%>	</td>	  
+	 <td > <%=link_to("EDIT",{:action=>'editMember',:id=>member.id},:class=>'btn')%>	  
+	  <%=link_to("DELETE",{:action=>'deleteMember',:id=>member.id},:class=>'btn')%>	</td>	  
 			 	   
 		</tr>
 		
@@ -47,7 +43,7 @@
 		<%= will_paginate @members %>
 	 
 	 <h3><%=flash[:notice]%></h3> 
-	</div>
+	</body>
 
  
 </html>

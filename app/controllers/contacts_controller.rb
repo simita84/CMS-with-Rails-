@@ -1,85 +1,77 @@
 class ContactsController < ApplicationController
-  # GET /contacts
-  # GET /contacts.json
-     before_filter :confirm_logged_in
+  
   layout 'admin'
+    before_filter :confirm_logged_in,:except => [:login,:attempt_login]
+  
   def index
-    @contacts = Contact.all
+        showContact
+        render('showContact')
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @contacts }
-    end
   end
 
-  # GET /contacts/1
-  # GET /contacts/1.json
-  def show
-    @contact = Contact.find(params[:id])
+  def showContact
+     @contacts=Contact.all
+   end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @contact }
-    end
-  end
+    
+      def newContact
 
-  # GET /contacts/new
-  # GET /contacts/new.json
-  def new
-    @contact = Contact.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @contact }
-    end
-  end
-
-  # GET /contacts/1/edit
-  def edit
-    @contact = Contact.find(params[:id])
-  end
-
-  # POST /contacts
-  # POST /contacts.json
-  def create
-    @contact = Contact.new(params[:contact])
-
-    respond_to do |format|
-      if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
-        format.json { render json: @contact, status: :created, location: @contact }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+        @contact=Contact.new
       end
-    end
-  end
 
-  # PUT /contacts/1
-  # PUT /contacts/1.json
-  def update
-    @contact = Contact.find(params[:id])
-
-    respond_to do |format|
-      if @contact.update_attributes(params[:contact])
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+      def createContact
+        @contact=Contact.new(params[:contact]) 
+        
+        #Save the object
+          if @contact.save
+        #If save succeeds redirect to list 
+        flash[:notice]= "Contact created successfully"
+          redirect_to(:action=>'index')
+        #else redislay the form so user can fix the problem
+          else
+            flash[:notice]= "Contact cannot be added. "
+              render('newContact')
+          end
       end
-    end
-  end
+ 
 
-  # DELETE /contacts/1
-  # DELETE /contacts/1.json
-  def destroy
-    @contact = Contact.find(params[:id])
-    @contact.destroy
+  def editContact
+     #Find the object using form parameters
+     @contact=Contact.find(params[:id])
+     end
 
-    respond_to do |format|
-      format.html { redirect_to contacts_url }
-      format.json { head :no_content }
-    end
-  end
+  def updateContact
+       #Find the object using form parameters
+       @contact=Contact.find(params[:id])
+       #update with new values
+       @contact.update_attributes(params[:contact])
+       #Save the object
+       if @contact.save
+         #If update succeeds redirect to list 
+         flash[:success]= "Contact updated successfully"
+         redirect_to(:action=>'index')
+       else
+          flash[:warning]= "Contact cannot be updated. "
+         render('editContact')
+       end
+       end
+  
+
+
+   def deleteContact
+             #Find the object using form parameters
+             @contact=Contact.find(params[:id])
+             end
+           def destroyContact
+                #Find the object using form parameters
+                @contact=Contact.find(params[:id])
+                 if @contact.destroy
+                   flash[:success]="Contact deleted successfully"
+                    redirect_to(:action =>'index')  
+                    else
+                       flash[:warning]="Contact cannot be deleted"   
+                 end
+           end
+  
+  
 end

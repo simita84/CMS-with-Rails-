@@ -21,10 +21,10 @@
 					<tr align ="left">
 						<td>	<%= simple_format(item.content,:line_width=>30)%></td> </tr> 	 
 
-						<tr> <td> <b>Author:</b><%=item.member_username%></td> </tr>
+						<tr> <td> <b>Author:</b><%=item.posted_by%></td> </tr>
 
 					
-		<% if item.member_username == session[:username]%>
+		<% if item.posted_by == session[:username]%>
  
 			<tr><td> 	
 				<div class="btn">

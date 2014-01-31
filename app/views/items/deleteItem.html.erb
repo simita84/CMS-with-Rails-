@@ -1,0 +1,35 @@
+<html>
+ 
+
+<body>
+	
+	 
+
+<div class='row'>
+	<div class='span8 offset1'>
+	 
+<div class="category delete">
+  
+   
+
+  <%= form_for(:item, :url => {:action => 'destroyItem', :id => @item.id}) do |f| -%>
+<center>
+   	<h2> <img src='/assets/danger.jpeg' width="45" height="30"> 
+	Are you sure you want to permanently delete this item?
+  
+ 
+ " <%= @item.name %> " </h2> 
+  
+ 
+      <%= submit_tag "Delete Item" ,:class=>'btn' %>
+
+ 
+ 	<%= link_to("Cancel", {:action => 'index'}, :class => 'btn') %></center>
+    
+  <% end %>
+ 
+</div>
+ </div>
+</body>
+</html>
+ 

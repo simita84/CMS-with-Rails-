@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140126061904) do
+ActiveRecord::Schema.define(:version => 20140130214709) do
 
   create_table "admins", :force => true do |t|
     t.string   "first_name"
@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(:version => 20140126061904) do
   end
 
   create_table "contacts", :force => true do |t|
-    t.string   "name"
-    t.string   "emailid"
-    t.string   "facebook"
+    t.string   "name",       :null => false
+    t.string   "emailid",    :null => false
+    t.string   "facebook",   :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(:version => 20140126061904) do
   add_index "events", ["admin_username"], :name => "index_events_on_admin_username"
 
   create_table "homes", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
+    t.string   "title",      :null => false
+    t.text     "content",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -71,11 +71,11 @@ ActiveRecord::Schema.define(:version => 20140126061904) do
   end
 
   create_table "items", :force => true do |t|
-    t.string   "name"
-    t.text     "content"
-    t.string   "member_username"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.string   "name",                   :limit => 100, :null => false
+    t.string   "content",                               :null => false
+    t.string   "posted_by",                             :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.string   "itemphoto_file_name"
     t.string   "itemphoto_content_type"
     t.integer  "itemphoto_file_size"
@@ -108,11 +108,11 @@ ActiveRecord::Schema.define(:version => 20140126061904) do
   end
 
   create_table "recipes", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.string   "member_username"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.string   "title",                    :limit => 100, :null => false
+    t.text     "content",                                 :null => false
+    t.string   "posted_by",                               :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.string   "recipephoto_file_name"
     t.string   "recipephoto_content_type"
     t.integer  "recipephoto_file_size"
@@ -120,10 +120,10 @@ ActiveRecord::Schema.define(:version => 20140126061904) do
   end
 
   create_table "reviews", :force => true do |t|
-    t.integer  "product_id"
-    t.string   "title"
-    t.text     "content"
-    t.string   "member_username"
+    t.integer  "product_id",               :null => false
+    t.string   "title",                    :null => false
+    t.text     "content",                  :null => false
+    t.string   "posted_by",                :null => false
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
     t.string   "reviewphoto_file_name"
@@ -132,7 +132,6 @@ ActiveRecord::Schema.define(:version => 20140126061904) do
     t.datetime "reviewphoto_updated_at"
   end
 
-  add_index "reviews", ["member_username"], :name => "index_reviews_on_member_username"
   add_index "reviews", ["product_id"], :name => "index_reviews_on_product_id"
 
 end

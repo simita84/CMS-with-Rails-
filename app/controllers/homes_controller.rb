@@ -1,50 +1,79 @@
 class HomesController < ApplicationController
-  # GET /homes
-  # GET /homes.json
-     before_filter :confirm_logged_in
+  
   layout 'admin'
+    before_filter :confirm_logged_in,:except => [:login,:attempt_login]
+  
   def index
-    @homes = Home.all
+        showHome
+      render('showHome')
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @homes }
-    end
   end
 
-  # GET /homes/1
-  # GET /homes/1.json
-  def show
-    @home = Home.find(params[:id])
+  def showHome
+     @homes=Home.all
+   end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @home }
-    end
-  end
-
+   
   
-  # GET /homes/1/edit
-  def edit
-    @home = Home.find(params[:id])
-  end
+ #Create new    admin users
+      def newHome
 
-  
-
-  # PUT /homes/1
-  # PUT /homes/1.json
-  def update
-    @home = Home.find(params[:id])
-
-    respond_to do |format|
-      if @home.update_attributes(params[:home])
-        format.html { redirect_to @home, notice: 'Home was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @home.errors, status: :unprocessable_entity }
+        @home=Home.new
       end
-    end
-  end
 
+      def createHome
+        @home=Home.new(params[:home]) 
+        
+        #Save the object
+          if @home.save
+        #If save succeeds redirect to list 
+        flash[:notice]= "Home --created successfully"
+          redirect_to(:action=>'index')
+        #else redislay the form so user can fix the problem
+          else
+            flash[:notice]= "Home cannot be added. "
+              render('editHome')
+          end
+      end
+ 
+
+  def editHome
+     #Find the object using form parameters
+     @home=Home.find(params[:id])
+     end
+
+  def updateHome
+       #Find the object using form parameters
+       @home=Home.find(params[:id])
+       #update with new values
+       @home.update_attributes(params[:home])
+       #Save the object
+       if @home.save
+         #If update succeeds redirect to list 
+         flash[:notice]= "Home --"+@home.title+"--updated successfully"
+         redirect_to(:action=>'index')
+       else
+          flash[:notice]= "Home"+ @home.title+" cannot be updated. "
+         render('editHome')
+       end
+       end
+  
+
+
+   def deleteHome
+             #Find the object using form parameters
+             @home=Home.find(params[:id])
+             end
+           def destroyHome
+                #Find the object using form parameters
+                @home=Home.find(params[:id])
+                 if @home.destroy
+                   flash[:notice]="Home deleted successfully"
+                    redirect_to(:action =>'index')  
+                    else
+                       flash[:notice]="Home cannot be deleted"   
+                 end
+           end
+  
+  
 end

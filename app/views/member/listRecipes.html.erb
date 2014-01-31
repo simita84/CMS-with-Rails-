@@ -34,7 +34,7 @@
 		<h2><%=recipe.title	%> </h2>
 		
 		<p><b>Posted  by: </b>
-		 <%=recipe.member_username%> 
+		 <%=recipe.posted_by%> 
 	 <b>On :</b> <%=recipe.created_at.strftime("%B %e %Y %I %p") %></p>
 	</th>       
 			 	</tr>     				 
@@ -47,7 +47,7 @@
 
 						 
 					
-		<% if recipe.member_username == session[:username]%>
+		<% if recipe.posted_by == session[:username]%>
  
 			<tr><td> 	
 				<div class="btn">

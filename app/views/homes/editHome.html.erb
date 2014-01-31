@@ -1,0 +1,32 @@
+<html>
+ <body>		
+ 
+ <%=form_for(:home,:url=>{:action=>'updateHome',:id =>@home.id}) do |f| %>
+ 
+<h3>Modify Home Details </h3>
+	<table class="table">
+		 
+			<tr>
+				<th>Home Title</th>
+				<td>
+					<%=f.text_field(:title )%></td>
+				</tr>
+				<tr>
+					<th>Home Content</th>
+					
+					<td><%=f.text_area(:content )%></td>
+				</tr>
+					 
+					 <tr><td></td>
+
+					 	<td> <%=submit_tag "Modify" ,:class=>"btn" %> 	 
+ 
+		 	<%=link_to("CANCEL",{:action=>'index'},:class=>"btn")%> </td>
+					 	
+					 </tr>
+						 
+	 </tr>
+		 
+					<%end%>
+ 	</body>
+	</html>

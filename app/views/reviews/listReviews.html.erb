@@ -1,0 +1,49 @@
+<html>
+ 
+<body>
+ 	
+ 
+ 
+<h3> Reviews for <%=@product.title%> </h3>
+ 	<%=link_to("Add Reviews",{:action=>'newReview',:product_id=>@product.id},:class=>'btn')%>  
+	
+ 	<%=link_to("Cancel",{:controller=>'products',:action=>'index'},:class=>'btn')%> 
+
+<br><br>
+	 
+	<%= will_paginate%>
+
+
+	<table class="table table-striped">
+
+
+	<% @reviews.each do |review|%>
+ 
+
+ 		<tr>       				 
+        	<td>	<%=review.title	%></td> 
+		 
+		 	 
+				<td>
+
+					 			<%=link_to("EDIT",{:action=>'editReview',:id=>review.id,:product_id=>@product.id},:class=>'btn')%>
+							  
+<%=link_to("DELETE",{:action=>'deleteReview',:id=>review.id,:product_id=>@product.id},:class=>'btn  btn-danger')%>	   </td>	
+			 	   
+		</tr>
+		
+		
+	<%end%>
+
+	
+	</table>
+	
+		<%= will_paginate%>
+
+	<h3><%=flash[:notice]%></h3> 
+ 
+	  
+
+	
+</html>
+ 

@@ -1,90 +1,96 @@
 class ItemsController < ApplicationController
-  # GET /items
-  # GET /items.json
-     before_filter :confirm_logged_in
   layout 'admin'
-  def index
-    @items = Item.all
+    
+    before_filter :find_item
+    before_filter :confirm_logged_in,:except => [:login,:attempt_login]
+     
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @items }
-    end
-  end
+     def index
+       listItems
+       render('listItems')
+     end
 
-  # GET /items/1
-  # GET /items/1.json
-  def show
-    @item = Item.find(params[:id])
+     def listItems
+ 
+      @items=Item.order("items.created_at DESC").paginate(page: params[:page],per_page: 10) 
+     end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @item }
-    end
-  end
-
-  # GET /items/new
-  # GET /items/new.json
-  def new
-    @item = Item.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @item }
-    end
-  end
-
-  # GET /items/1/edit
-  def edit
-    @item = Item.find(params[:id])
-  end
-
-  # POST /items
-  # POST /items.json
-  def create
-    @item = Item.new(params[:item])
-
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render json: @item, status: :created, location: @item }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+     def listItem
+      @items=Item.order("items.created_at DESC").where(:id=>@item.id)
       end
-    end
+
+     def newItem
+
+       @item=Item.new
+     end
+
+     def createItem
+       #Instantiate a new object using for parameters
+         @item=Item.new(params[:item])
+         #Find admin using the admin session name
+         admin=Admin.find_by_username(session[:username])
+         #updating with admin email id
+          @item.update_attributes(:posted_by=>admin.emailId)
+       #Save the object
+         if @item.save
+       #If save succeeds redirect to list 
+       flash[:success]= "Item --"+@item.name+"--added successfully"
+         redirect_to(:action=>'index')
+       #else redislay the form so user can fix the problem
+         else
+           flash[:warning]= "item"+ @item.name+" cannot be added. "
+             render('newItem')
+         end
+     end
+     def editItem
+       #Find the object using form parameters
+       @item=Item.find(params[:id])
+       end
+
+    def updateItem
+         #Find the object using form parameters
+         @item=Item.find(params[:id])
+         #update with new values
+         @item.update_attributes(params[:item])
+         #Save the object
+         if @item.save
+           #If update succeeds redirect to list 
+           flash[:success]= "item --"+@item.name+"--updated successfully"
+           redirect_to(:action=>'index')
+         else
+            flash[:warning]= "item"+ @item.name+" cannot be updated. "
+           render('editItem')
+         end
+         end
+
+         
+
+
+ def deleteItem
+               #Find the object using form parameters
+               @item=Item.find(params[:id])
   end
 
-  # PUT /items/1
-  # PUT /items/1.json
-  def update
-    @item = Item.find(params[:id])
+      def destroyItem
+                  #Find the object using form parameters
+                  @item=Item.find(params[:id])
+                   if @item.destroy
+                     flash[:success]="Item   "+@item.name+" deleted successfully"
+                      redirect_to(:action =>'index')  
+                      else
+                        flash[:warning]="Item   "+@item.name+" cannot be deleted"   
+                   end
+             end
 
-    respond_to do |format|
-      if @item.update_attributes(params[:item])
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  
+         private 
 
-
-  def delete
-         @item = Item.find(params[:id])
-       end 
-
-  # DELETE /items/1
-  # DELETE /items/1.json
-  def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
-
-    respond_to do |format|
-      format.html { redirect_to items_url }
-      format.json { head :no_content }
-    end
-  end
+         def find_item
+           if (params[:id])
+             @item=Item.find_by_id(params[:id])
+         end
+       end
+  
 end
+
+ 

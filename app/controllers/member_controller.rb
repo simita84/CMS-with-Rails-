@@ -36,7 +36,7 @@ class MemberController < ApplicationController
 
      def createRecipes
        @recipe=Recipe.new(params[:recipe]) 
-        @recipe.update_attributes(:member_username=>session[:username])
+        @recipe.update_attributes(:posted_by=>session[:username])
        #Save the object
          if @recipe.save
        #If save succeeds redirect to list 
@@ -100,7 +100,7 @@ class MemberController < ApplicationController
 
   def createItems
           @item=Item.new(params[:item]) 
-          @item.update_attributes(:member_username=>session[:username])
+          @item.update_attributes(:posted_by=>session[:username])
       #Save the object
           if @item.save
       #If save succeeds redirect to list 
@@ -170,7 +170,7 @@ class MemberController < ApplicationController
       #Instantiate a new object using for parameters
              @product=Product.find_by_id(params[:product_id])
              @review=Review.new(params[:review])
-             @review.update_attributes(:member_username=>session[:username],:product_id=>@product.id)
+             @review.update_attributes(:posted_by=>session[:username],:product_id=>@product.id)
     #Save the object
            if @review.save    
      #If save succeeds redirect to list 

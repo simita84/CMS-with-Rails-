@@ -2,7 +2,13 @@ class ManageMembersController < ApplicationController
   
    before_filter :confirm_logged_in
    layout 'admin'
-   #--------------Creating Members----------------
+    
+
+
+def index
+  listMembers
+  render('listMembers')
+end
 
      def listMembers
        @members=Member.order("members.created_at DESC").paginate(:page => params[:page],:per_page =>3)
@@ -21,7 +27,7 @@ class ManageMembersController < ApplicationController
          if @member.save
        #If save succeeds redirect to list 
        flash[:notice]= "Member --"+@member.username+"--created successfully"
-         redirect_to(:action=>'listMembers')
+         redirect_to(:action=>'index')
        #else redislay the form so user can fix the problem
          else
            flash[:notice]= "Member "+ @member.username+" cannot be added. "
@@ -43,7 +49,7 @@ class ManageMembersController < ApplicationController
             if @member.save
               #If update succeeds redirect to list 
               flash[:notice]= "Member details for --"+@member.last_name+"--updated successfully"
-              redirect_to(:action=>'listMembers')
+              redirect_to(:action=>'index')
             else
                flash[:notice]= "Member details for"+ @member.last_name+" cannot be updated. "
               render('newMember')
@@ -61,13 +67,13 @@ class ManageMembersController < ApplicationController
                   @member=Member.find(params[:id])
                    if @member.destroy
                      flash[:notice]="Member   "+@member.first_name+" deleted successfully"
-                      redirect_to(:action =>'list')  
+                      redirect_to(:action =>'index')  
                       else
                          flash[:notice]="Member   "+@member.first_name+" cannot be deleted"   
                    end
              end
 
-#-----------------------------------------------------------------
+ 
 
   
 end

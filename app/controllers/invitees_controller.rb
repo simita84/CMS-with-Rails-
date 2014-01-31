@@ -29,14 +29,14 @@ def listInvitees
 
 
 
-    def new
+    def newInvitee
       @events = Event.all
       @invitee = Invitee.new(:event_id => @event.id)
 
     end
 
 
-    def create
+    def createInvitee
         # Instantiate a new object using form parameters
         @invitee = Invitee.new(params[:invitee])
         # Save the object
@@ -49,7 +49,7 @@ def listInvitees
           #@event_count = Event.count + 1
           flash[:notice] = "Sorry, Event cannot  be created, Please check the fields and try again"
           @error_message = "It seems there was a validation error. Please try again."
-          render('new')
+          render('newInvitee')
         end
     end
     
@@ -70,7 +70,7 @@ def listInvitees
           redirect_to(:action=>'index', :event_id => @invitee.event_id)
         else
            flash[:notice]= "Invitee"+ @invitee.email+" cannot be updated. "
-          render('new')
+          render('editInvitee')
         end
       end
     

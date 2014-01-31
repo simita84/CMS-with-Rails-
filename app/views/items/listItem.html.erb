@@ -1,0 +1,38 @@
+
+<html>
+ <body>
+
+  
+ <%=link_to("Back",{:action=>'index'},:class=>'btn')%>
+
+		<table class="table">
+
+
+<%@items.each do |item|%>
+
+<tr> 
+	<td>  <div class="text-error"><h3><%= item.name%></h3> </div>     </td> </tr>        				      		  
+		<tr>
+				<td>
+				<%= image_tag item.itemphoto.url(:medium) %>
+				</td>
+		</tr>
+	
+	
+	<tr> 
+		<td>
+			 <%=simple_format(word_wrap(item.content,:line_width=>300))%> 		</td>
+			</tr>	
+			<tr><td>Posted By:<%=item.posted_by %></td></tr>
+					<tr> 
+						<td>Created @<%=item.created_at %> && 
+							 Updated @<%=item.updated_at %></td>
+							</tr>
+<%end%>
+
+ 	
+	
+ 
+</table>
+
+</html>

@@ -1,67 +1,17 @@
 MomsAndTots::Application.routes.draw do
-  get "password_resets/new"
-
-  get "invitees/index"
-
-  get "invitees/new"
-
-  get "invitees/eventinfo"
-
-  get "invitees/editInvitee"
-
-  get "invitees/sendEventInvite"
-
-  get "invitees/memberResponseHandler"
-
-  get "invitees/deleteInvitee"
-
-  get "events/index"
-
-  get "events/listEvents"
-
-  get "events/newEvents"
-
-  get "events/showEvents"
-
-  get "events/editEvents"
-
-  get "events/deleteEvents"
-
-  get "reviews/list"
-
-  get "reviews/edit"
-
-  get "reviews/delete"
-
-  get "reviews/newReviews"
-
-  get "products/index"
-
-  get "products/list"
-
-  get "products/new"
-
-  get "products/edit"
-
-  get "products/delete"
+   
   
+   
+
   match '/eventdetails',to: 'member#eventDetails'
   match '/admin',to: 'access#login'
   match '/home',to: 'public#index'
-
-  resources :contacts
-
+  match '/contacts',to: 'contacts#index'
 
   resources :admins
 
   resources :homes
  
-  resources :items
-
-
-  resources :recipes
-
-
   resources :products
   resources :password_resets
   

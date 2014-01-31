@@ -1,0 +1,41 @@
+<html>
+ 
+
+<body>
+ 
+	
+ <div class='row'>
+		<div class='span2'>
+			<img src='/assets/danger.jpeg'>
+			</div>
+	<div class='span5 offset1'>
+
+
+<%=form_for(:product,:url=>{:action=>'destroyProduct',:id =>@product.id}) do |f| %>
+ 
+ 
+	
+ 
+
+<table class="table"> 
+	<tr>
+	 <th>
+ <h4>Are you sure  u want to delete the Reviews for " 	<%=@product.title%>"  ?</h4>
+
+</th></td>
+ 
+	</tr>
+	
+		<tr>
+			<td >
+<%=f.submit "Confirm",class:'btn' %>    
+	 <%=link_to("Cancel",{:action=>'index'},:class=>'btn')%></td>
+</table>
+</div>
+</div>
+ 
+<%end%>
+
+</div>
+</body>
+</html>

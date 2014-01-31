@@ -1,8 +1,7 @@
 class Admin < ActiveRecord::Base
   attr_accessible :emailId, :first_name, :hashed_password, :last_name, :salt, :username
 
-  #mapping to events
-  has_many :events
+   
   
   attr_accessor :password
   attr_protected :hashed_password,:salt

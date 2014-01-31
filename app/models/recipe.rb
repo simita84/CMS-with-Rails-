@@ -1,17 +1,17 @@
 class Recipe < ActiveRecord::Base
    
-   attr_accessible :recipephoto,:title, :content,:member_username
+   attr_accessible :recipephoto,:title, :content,:posted_by
    has_attached_file :recipephoto, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   
   
-  #Mapping between Member and Recipes tables
-    belongs_to :member
+ 
+    
     
       validates :title,:presence => true
       
      validates  :content,:presence => true
        
-     validates :member_username, :presence => true
+     validates :posted_by, :presence => true
     
     
     

@@ -1,0 +1,39 @@
+<html>
+<body>
+	
+ 
+ 
+	<h2>Create new Reviews</h2>
+ 	<%=form_for(:review, :url => {:action=>'createReview', :product_id => @product.id}) do |f| %>
+
+	<table class="table">
+ 	<tr>
+    	<th>Title</th>
+        <td><%=f.text_field(:title)%></td>
+	</tr>
+  	<th>Review</th>
+		<td><%=f.text_area(:content,size: "40x12")%></td>
+    </tr>	
+ <tr>
+ 	<th>Add Picture</th>
+	<td>
+	 <%= f.file_field(:reviewphoto) %><td></tr>
+	 <tr>
+ 	<th>Posted_By</th>
+	<td>
+	 <%= session[:username]%><td></tr>
+     
+	    <tr><td>
+		<%=f.submit "Create",class:'btn' %> </td>
+		<td>
+
+		<%=link_to("Cancel",{:action=>'index',:product_id=>@product.id},:class=>'btn')%>
+ </td></tr>
+ 
+ 	</table>
+<% end %>
+<h3><%=flash[:notice]%></h3> 
+
+ 
+	 </body>
+	</html>

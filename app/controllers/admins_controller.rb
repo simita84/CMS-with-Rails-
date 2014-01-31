@@ -1,97 +1,79 @@
 class AdminsController < ApplicationController
-  # GET /admins
-  # GET /admins.json
-     before_filter :confirm_logged_in
-   layout 'admin'
- 
-  def index
-    @admins = Admin.order("admins.created_at DESC").paginate(:page => params[:page],:per_page =>10)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @admins }
-    end
-  end
-
-  # GET /admins/1
-  # GET /admins/1.json
-  def show
-    @admin = Admin.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @admin }
-    end
-  end
-
-  # GET /admins/new
-  # GET /admins/new.json
-  def new
-    @admin = Admin.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @admin }
-    end
-  end
-
-  # GET /admins/1/edit
-  def edit
-    @admin = Admin.find(params[:id])
-  end
-
-  # POST /admins
-  # POST /admins.json
-  def create
-    @admin = Admin.new(params[:admin])
-
-    respond_to do |format|
-      if @admin.save
-        format.html { redirect_to @admin, notice: 'Admin was successfully created.' }
-        format.json { render json: @admin, status: :created, location: @admin }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @admin.errors, status: :unprocessable_entity }
+  layout 'admin'
+  
+      def index
+        listAdmins
+        render('listAdmins')
       end
-    end
-  end
 
-  # PUT /admins/1
-  # PUT /admins/1.json
-  def update
-    @admin = Admin.find(params[:id])
+       #List all the admin users
+      def listAdmins
 
-    respond_to do |format|
-      if @admin.update_attributes(params[:admin])
-        format.html { redirect_to @admin, notice: 'Admin was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @admin.errors, status: :unprocessable_entity }
+       @admins=Admin.order("admins.created_at DESC").paginate(:page => params[:page],:per_page =>10)
       end
-    end
-  end
 
-  # DELETE /admins/1
-  # DELETE /admins/1.json
-  def destroy
-    @admin = Admin.find(params[:id])
-    @admin.destroy
+       #Create new    admin users
+      def newAdmin
 
-    respond_to do |format|
-      format.html { redirect_to admins_url }
-      format.json { head :no_content }
-    end
-  end
+        @admin=Admin.new
+      end
 
-  def manageProfile
-      @admin_user=Admin.find_by_username(session[:username])
-      @id=@admin_user.id
+      def createAdmin
+        @admin=Admin.new(params[:admin]) 
+        
+        #Save the object
+          if @admin.save
+        #If save succeeds redirect to list 
+        flash[:notice]= "Admin --"+@admin.username+"--created successfully"
+          redirect_to(:action=>'index')
+        #else redislay the form so user can fix the problem
+          else
+            flash[:notice]= "Admin "+ @admin.username+" cannot be added. "
+              render('newAdmin')
+          end
+      end
+      
+      
+      
+      def editAdmin
+         #Find the object using form parameters
+         @admin=Admin.find(params[:id])
+         end
 
-  end
+      def updateAdmin
+           #Find the object using form parameters
+           @admin=Admin.find(params[:id])
+           #update with new values
+           @admin.update_attributes(params[:admin])
+           #Save the object
+           if @admin.save
+             #If update succeeds redirect to list 
+             flash[:notice]= "Admin details for --"+@admin.last_name+"--updated successfully"
+             redirect_to(:action=>'index')
+           else
+              flash[:notice]= "Admin details for"+ @admin.last_name+" cannot be updated. "
+             render('editAdmin')
+           end
+           end
+
+           def deleteAdmin
+             #Find the object using form parameters
+             @admin=Admin.find(params[:id])
+             end
+           def destroyAdmin
+                #Find the object using form parameters
+                @admin=Admin.find(params[:id])
+                 if @admin.destroy
+                   flash[:notice]="Admin   "+@admin.first_name+" deleted successfully"
+                    redirect_to(:action =>'index')  
+                    else
+                       flash[:notice]="Admin   "+@admin.first_name+" cannot be deleted"   
+                 end
+           end
 
 
+       
 
-
+  
   
 end

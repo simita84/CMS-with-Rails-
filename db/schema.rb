@@ -14,15 +14,17 @@
 ActiveRecord::Schema.define(:version => 20140130214709) do
 
   create_table "admins", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "username"
-    t.string   "emailId"
+    t.string   "first_name",      :limit => 50, :null => false
+    t.string   "last_name",       :limit => 50, :null => false
+    t.string   "username",        :limit => 50, :null => false
+    t.string   "emailId",                       :null => false
     t.string   "hashed_password"
     t.string   "salt"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
+
+  add_index "admins", ["username"], :name => "index_admins_on_username"
 
   create_table "contacts", :force => true do |t|
     t.string   "name",       :null => false
@@ -34,9 +36,9 @@ ActiveRecord::Schema.define(:version => 20140130214709) do
 
   create_table "events", :force => true do |t|
     t.string   "name",                    :limit => 150
-    t.datetime "datetime"
-    t.string   "duration",                :limit => 150
-    t.string   "address",                 :limit => 300
+    t.datetime "datetime",                               :null => false
+    t.integer  "duration"
+    t.string   "address",                 :limit => 400
     t.text     "description"
     t.string   "admin_username",                         :null => false
     t.datetime "created_at",                             :null => false
@@ -72,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20140130214709) do
 
   create_table "items", :force => true do |t|
     t.string   "name",                   :limit => 100, :null => false
-    t.string   "content",                               :null => false
+    t.text     "content",                               :null => false
     t.string   "posted_by",                             :null => false
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
@@ -84,9 +86,9 @@ ActiveRecord::Schema.define(:version => 20140130214709) do
 
   create_table "members", :force => true do |t|
     t.string   "username",                 :limit => 50, :null => false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "hashed_password",                        :null => false
+    t.string   "first_name",               :limit => 50, :null => false
+    t.string   "last_name",                :limit => 50, :null => false
+    t.string   "hashed_password"
     t.string   "salt"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false

@@ -7,6 +7,7 @@ MomsAndTots::Application.routes.draw do
   match '/admin',to: 'access#login'
   match '/home',to: 'public#index'
   match '/contacts',to: 'contacts#index'
+   match '/homes',to: 'homes#index'
 
   resources :admins
 

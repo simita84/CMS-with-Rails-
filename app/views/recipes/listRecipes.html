@@ -1,39 +1,40 @@
 <html>
- 
-
 <body>
-	
-	
- 
-	<h3>Recipes List</h3>
-		<div class="btn">	<%=link_to("Add new Recipe ",:action=>'newRecipe')%> </div>
-	<div class="btn">
-			<%=link_to("Back to Admin Menu",:controller=>'access',:action=>'menu')%>
-			</div>
+		
+ <div  class='page-header'>
+	<h2>Recipes List</h2>
+</div>
 
-		<table class="table">	
+	<%=link_to("Add new Recipe ",{:action=>'newRecipe'},:class=>'btn')%> 
+ 	<%=link_to("Cancel",{:controller=>'access',:action=>'menu'},:class=>'btn')%>
+			 
+<br><br>
+	<table class="table table-striped">
+
+			<tr>
+				<th>Recipe Title</th>
+				<th>Actions</th>
+			</tr>
 			
 			<%= will_paginate%>
  
 		<%@recipes.each do |recipe|%>
-
-
- 	 <tr>
-			<td>
-	  			<%=recipe.title%> </td> 
-	 	  	 		<td class="btn">	
-						<%=link_to("VIEW",:action=>'listRecipe',:id=>recipe.id)%>	 </td>
-				<td class="btn">	
-					<%=link_to("EDIT",:action=>'editRecipe',:id=>recipe.id)%>	 </td>
-			 <td class="btn"> 
-				<%=link_to("DELETE",:action=>'deleteRecipe',:id=>recipe.id)%></td>
-		 	</td>
-	</tr>
+<tr><td>
+	  			<%=simple_format(recipe.title)%> 
+	 </td> 
+	 	  	<td>	
+	<%=link_to("VIEW",{:action=>'listRecipe',:id=>recipe.id},:class=>'btn')%>	
+	<%=link_to("EDIT",{:action=>'editRecipe',:id=>recipe.id},:class=>'btn')%>	
+	<%=link_to("DELETE",{:action=>'deleteRecipe',:id=>recipe.id},:class=>'btn btn-danger')%>
+			 </td>
+</tr>
  		<%end%>
 	</table>
 				<%= will_paginate%>
 	
-	 <h3><%=flash[:notice]%></h3> 
+	 <h3>
+	 	<%=flash[:notice]%>
+	 </h3> 
 	
 	 
 	

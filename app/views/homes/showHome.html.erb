@@ -10,12 +10,12 @@
 
 
 <%if @homes ==[]%>
-<%= link_to("Add Home",{ :action => "newHome"},:class=>'btn') %>
+<%= link_to("Add Home",{:action =>'newHome'},:class=>'btn') %>
 <%end%>
 
 
 <% @homes.each do |home| %>
-<table class="table">
+	<table class="table">
 	    <tr>
 	      <th>Welcome Page Title</th>
 	      <td><%=home.title %></td>

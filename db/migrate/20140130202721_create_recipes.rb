@@ -7,5 +7,10 @@ class CreateRecipes < ActiveRecord::Migration
 
       t.timestamps
     end
-  end
+end
+    def self.down
+      # instratuction for changing db back to previous state
+      drop_table :recipes
+    end
+ 
 end

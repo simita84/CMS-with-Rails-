@@ -1,6 +1,9 @@
 <% @the_web_page_title = "Edit category: #{@event.name}" %>
 
 
+ 
+<%= render 'shared/event_error_messages_html.erb' %>
+
 <div class="subject edit">
   <h2>Edit Event</h2>
 
@@ -13,6 +16,6 @@
  
       <%= submit_tag "Update Event",:class=>'btn' %>
  
-    <%= link_to("Back", {:action => 'index'}, :class => 'btn') %>
+    <%= link_to("Cancel", {:action => 'index'}, :class => 'btn') %>
   <% end %>
 </div>

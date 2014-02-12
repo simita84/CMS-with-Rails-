@@ -3,7 +3,15 @@ class Member < ActiveRecord::Base
   # attr_accessible :title, :body
   before_create { generate_token(:auth_token) }
   attr_accessible :memberphoto,:username, :first_name,:last_name,:password,:password_confirmation
-   has_attached_file :memberphoto, :styles => { :medium => "300x300>", :thumb =>"50x50>" }
+   
+   #Paperclip
+   has_attached_file :memberphoto, :styles =>
+                                   { :medium => "300x300>", :thumb =>"50x50>" }
+   validates_attachment_content_type :memberphoto, 
+                               :content_type => %w(image/jpeg image/jpg image/png  image/gif)
+
+
+
    before_save :create_hashed_password
      after_save :clear_password
      attr_accessor :password

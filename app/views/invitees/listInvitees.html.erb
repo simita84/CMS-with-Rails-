@@ -9,8 +9,9 @@
 
 
 
-<%= link_to("Back to Event", {:controller => 'events', :action => 'listEvents'},:class=>"btn") %>
-<%= link_to("Add New Guest", {:action => 'newInvitee', :event_id => @event.id},:class=>"btn") %>
+<%= link_to("Back to Event", {:controller => 'events', :action => 'listEvents'},
+            :class=>"btn") %>
+<%= link_to("Add New Guest", {:action => 'new', :event_id => @event.id},:class=>"btn") %>
  
 	<%if @invitees!=[]%>
 	<h3>Guests to be invited </h3>
@@ -28,8 +29,8 @@
      <td><%= invitee.firstname %></td>
      <td><%= invitee.email %></td>
      <td>
-       <%= link_to("Edit", {:action => 'editInvitee', :id => invitee.id, :event_id => @event.id},:class=>"btn") %>
-       <%= link_to("Delete", {:action => 'deleteInvitee', :id => invitee.id, :event_id => @event.id},:class=>"btn") %>
+       <%= link_to("Edit", {:action => 'edit', :id => invitee.id, :event_id => @event.id},:class=>"btn") %>
+       <%= link_to("Delete", {:action => 'delete', :id => invitee.id, :event_id => @event.id},:class=>"btn") %>
      </td>
    </tr>
  <% end %>
@@ -43,6 +44,8 @@
  
 </hr>
 
+ 
+
  <h3>Invited Members  </h3>
 	<%= will_paginate @invitedinvitees %>
 <table class="table">
@@ -54,7 +57,7 @@
      <th>Number Of Kids</th>
      <th>Message</th>
    </tr>
-
+ 
    <% @invitedinvitees.each do |invitedinvitee| %>
    <tr>
      <td><%= invitedinvitee.firstname %></td>
@@ -66,6 +69,7 @@
    </tr>
 
   <% end %>
+   
  </table>
 		
  

@@ -48,10 +48,10 @@ class AdminsController < ApplicationController
            #Save the object
            if @admin.save
              #If update succeeds redirect to list 
-             flash[:notice]= "Admin details for --"+@admin.last_name+"--updated successfully"
+             flash[:success]= "Admin details for --"+@admin.last_name+"--updated successfully"
              redirect_to(:action=>'index')
            else
-              flash[:notice]= "Admin details for"+ @admin.last_name+" cannot be updated. "
+              flash[:warning]= "Admin details for"+ @admin.last_name+" cannot be updated. "
              render('editAdmin')
            end
            end

@@ -1,0 +1,13 @@
+<% if @invitee.errors.any? %>
+    
+               
+           
+        
+            <ul class='nav'>
+        <% @invitee.errors.full_messages.each do |msg| %>
+        <b> <li class="text-error">*<%= msg %></li></b>
+        <% end %>
+        </ul>
+        
+        
+<%end%>

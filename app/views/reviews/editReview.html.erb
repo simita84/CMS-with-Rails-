@@ -2,9 +2,10 @@
  
 
 <body>
+	 <div class="alert">
+<%= render 'shared/review_error_messages.html.erb' %></div>
 	
-	
-<div class="hero-unit">
+	 <h3 class="page-header">Edit  Product Review</h3>
 
  
 <%=form_for(:review,:url=>{:action=>'updateReview',:id =>@review.id,:product_id=>@product.id}) do |f| %>
@@ -34,7 +35,7 @@
  
 	 	<%=link_to("CANCEL",{:action=>'index',:product_id=>@product.id},:class=>'btn')%></td>
 	 </tr>
-	</div>
+	 
 	<%end%>
 
 	

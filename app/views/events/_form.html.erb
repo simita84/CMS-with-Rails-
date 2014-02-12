@@ -9,11 +9,19 @@
     <td><%= f.text_field(:address) %></td>
   </tr>
   <tr>
-    <th>When</th>
+    <th>When(PST)</th>
     <td><%= f.datetime_select(:datetime) %></td>
   </tr>
   <tr>
     <th>Duration</th>
     <td><%= f.text_field(:duration) %></td>
   </tr>
+  <tr>
+    <th>Event Picture</th>
+    <td><%= f.file_field :eventphoto %></td>
+  </tr>
 </table>
+
+
+
+ 

@@ -2,13 +2,13 @@
  
 
 <body>
+	 <h3 class="page-header">Create New Item</h3>
 	
-	
- 
+ <%= render 'shared/item_error_message.html.erb' %>
 	 
 <%=form_for(:item,:url=>{:action=>'createItem'}) do |f| %>
  
-<table class="table table-striped">
+<table class="table">
 	 
 	
 <tr>
@@ -37,10 +37,10 @@
 			</td></tr>
 			
 		 <tr>
-	 		<td class="btn">
-				<%=submit_tag("Create item")%> </td>
-			<td class="btn">
-				<%=link_to("CANCEL",:action=>'index',:id=>@item.id)%></td></tr>
+		 	<td></td>
+	 		<td >
+				<%=submit_tag "Create item",:class=>"btn"%>  
+				<%=link_to("CANCEL",{:action=>'index',:id=>@item.id},:class=>"btn")%></td></tr>
 	
 	 <%end%>
  

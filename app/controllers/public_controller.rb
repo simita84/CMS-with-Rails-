@@ -1,4 +1,4 @@
-class PublicController < ApplicationController
+  class PublicController < ApplicationController
   layout 'application'
   
     before_filter :find_product
@@ -15,7 +15,7 @@ class PublicController < ApplicationController
 
   def attempt_login
      member=Member.authorize(params[:username],params[:password])
-        if member 
+        if member && member.verified_user
           #storing session info
             session[:member_id]=member.id
             session[:username]=member.username
@@ -33,7 +33,7 @@ class PublicController < ApplicationController
            redirect_to(:controller=>"member",:action=>'index')
 
         else
-          flash[:alert]="Invaid Username and password combination,Please try again"
+          flash[:alert]="Invaid Username and password combination,Please try again. Or you have not activated your account yet."
             redirect_to(:controller=>'public',:action=>'login')
         end
   end
@@ -114,7 +114,7 @@ end
      @contacts=Contact.all
   end
  #-------------Member Sign Up / registration from Public Page-----------
-  def newMember
+  def new
      @member = Member.new
      
   end
@@ -130,6 +130,14 @@ end
       sendemailToMember
       flash[:success] = ' Please confirm your email address by clicking the link that we just send to you in  email'
      redirect_to(:controller=>"public",:action=>'index')
+
+       def verifymember
+         @member = Member.find_by_auth_token!(params[:auth_token])
+         @member.verified_user = true
+         @member.save
+         redirect_to root_url, :notice => "Your account has been activated. 
+         Please sign-in with your email_id."
+       end
      
      
      
@@ -144,7 +152,7 @@ end
     
   # Signup.registration_email(@member).deliver
    else
-     render('newMember')
+     render('new')
     end
 
    # Emailer.registration_email(@member).deliver
@@ -157,6 +165,8 @@ end
       Signup.registration_email(@member).deliver
     end  
   end
+
+  
   
 
 
@@ -165,6 +175,9 @@ end
  
   
   #--------Contact Admin-------------
+
+ 
+
 def sendemailToAdmin
 
   

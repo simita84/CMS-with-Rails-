@@ -1,9 +1,13 @@
 <html>
 <body>
 	
+	<div class="alert">
+	<%= render 'shared/review_error_messages.html.erb' %></div>
+
  
+	<h2 class="page-header">Create new Reviews</h2>
  
-	<h2>Create new Reviews</h2>
+
  	<%=form_for(:review, :url => {:action=>'createReview', :product_id => @product.id}) do |f| %>
 
 	<table class="table">

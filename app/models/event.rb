@@ -4,6 +4,8 @@ class Event < ActiveRecord::Base
   attr_accessible :eventphoto,:name,:datetime,:duration,:address,:description,:admin_username
   
   has_attached_file :eventphoto, :styles => { :medium => "500x500>", :thumb => "70x70>" }
+  validates_attachment_content_type :eventphoto, 
+                              :content_type => %w(image/jpeg image/jpg image/png image/gif)
   
   
  
@@ -11,10 +13,14 @@ class Event < ActiveRecord::Base
   
   
   
-   
-      validates_presence_of :name,:message=>"The title cannot be blank"
-       validates_presence_of :description,:message=>"The content cannot be blank"
-        
+   validates :name, :presence => { :message => "missing" }, :length => { :maximum => 150 }
+    validates :datetime, :presence => { :message => "missing" }
+     validates :duration, :presence => { :message => "missing" }
+     validates :address, :presence => { :message => "missing" }
+     validates :description, :presence => { :message => "missing" }
+    
+    
+    
   
   
 end

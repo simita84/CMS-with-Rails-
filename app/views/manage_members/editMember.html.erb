@@ -1,6 +1,7 @@
 <html>
- <body>		
-<div class="hero-unit">
+ <body>	
+
+ <%= render 'shared/member_error_messages_html.erb' %>
  <%=form_for(:member,:url=>{:action=>'updateMember',:id =>@member.id}) do |f| %>
  
 <h3>Modify Member Details </h3>

@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
   end
   
   
-  def newReview
+  def new
        @review=Review.new(:product_id=>@product.id)
       
   end
@@ -34,8 +34,8 @@ class ReviewsController < ApplicationController
           redirect_to(:action=>'index', :product_id => @review.product_id)
   #else redislay the form so user can fix the problem
          else
-              flash[:warning]= "Review for "+ @review.title+" cannot be added. "
-             render('newReviews')
+              flash[:warning]= "Review cannot be added. "
+             render('new')
          end
      end
   
@@ -61,7 +61,7 @@ class ReviewsController < ApplicationController
         redirect_to(:action=>'index',:id=>@review.id,:product_id=>@product.id)
       else
         #if save fails ,rediplay the form so user can fix problems
-        flash[:warning]= "Review for "+ @review.title+" cannot be updated. "
+        flash[:warning]= "Review for  cannot be updated. "
         @review_count=Review.count
         @products=Product.order('id ASC')
         render('editReview')

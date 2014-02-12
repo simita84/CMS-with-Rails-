@@ -21,11 +21,6 @@
 	
 	
 	
-	
-	
-	
-	
-	
 				<div class="leaderboard">
 				 <br>
 							    
@@ -54,10 +49,10 @@
 				<h3 class='text-error'>	
 					 <%=review.title	%></h3> 
 					 <b>Posted by : </b>
-					<%=review.member_username%> 
+					<%=review.posted_by%> 
 	  				On  
  
-					<%=review.created_at.strftime("%B %e %Y") %></td>     </tr>     				 
+					<%=review.created_at.strftime("%e %b %Y %I:%M %p") %></td>     </tr>     				 
 						
 						<% if(review.reviewphoto) %> 		 		
 					<tr>

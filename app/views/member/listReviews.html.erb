@@ -1,10 +1,8 @@
 <html>
 <body>
   
- 	 
-		
-		
-<h2> <%=@product.title%> Reviews</h2>
+  		
+<h2 class="page-header"> <%=@product.title%> Reviews</h2>
   
  	<br>	<div><%= pluralize(@reviews.size, 'review') %> found</div>	<br>
   
@@ -16,13 +14,23 @@
  
 		
 	<% @reviews.each do |review|%>
-	<tr align ="left">	<th><%=review.title	%></th>         </tr>     				 
+	<tr >	<td>
+		<h4 class="text-error">
+			<%=review.title	%> </h4></td>  
+			<td>Posted by :<%=review.posted_by%> On:<%=review.created_at.strftime("%e %b %Y %I:%M %p") %></td>     
+			  </tr>     				 
            		 		 
-			<tr align ="left">
-				<td>	<%= word_wrap(review.content,:line_width=>30)%></td> </tr> 	 
-				
-				<tr> <td> Posted by :<%=review.posted_by%></td>
+
+				<tr>
+							<td>
+							<%= image_tag(review.reviewphoto.url(:medium)) %>
+							</td>
 					</tr>
+					<tr align ="left">
+				<td>	<%= word_wrap(review.content,:line_width=>30)%></td>
+				 </tr> 
+				
+			
 				
 		<% if review.posted_by == session[:username]%>
  <tr>

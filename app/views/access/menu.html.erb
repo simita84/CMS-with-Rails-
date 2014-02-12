@@ -6,7 +6,7 @@
 	 
  		 
 	<h2 align="center">Admin Panel</h2>
- <div align="right"><%=link_to("Logout",{:controller=>'access',:action=>'logout'},:class=>"btn btn-primary")%></div>
+ <div align="right"></div>
 	<h3 align="left">Welcome Admin <%= session[:username]%> !</h3>
 	
 	
@@ -31,9 +31,12 @@
 	   </tr>
  		 
  	<tr>	
- 		<td><h4><%=link_to("Manage Admins",:controller=>'admins',:action=>'index')%></h4></td>
+ 		<td><h4><%=link_to("Manage Admin Profile",:controller=>'admins',:action=>'index')%></h4></td>
 	<td><h4><%=link_to("Manage Members",:controller=>'manage_members',:action=>'index')%></h4></td>
-			<td><h4><%=link_to("Manage Profile",:controller=>'admins',:action=>'manageProfile')%></h4></td>
+			<td><h4>
+		<%=link_to("Logout",{:controller=>'access',:action=>'logout'},:class=>"btn btn-primary")%>
+			</h4>
+			</td>
 	
 	</tr>
 		</table>

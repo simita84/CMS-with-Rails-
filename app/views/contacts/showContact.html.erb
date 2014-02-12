@@ -15,7 +15,7 @@
 
 
 <% @contacts.each do |contact| %>
-<table class="table">
+<table class="table ">
 	    <tr>
 	      <th>Contact Us Page Title</th>
 	      <td><%=contact.name %></td>
@@ -39,13 +39,7 @@
 	        <%= link_to("Delete",{:action => 'deleteContact', :id => contact.id},:class=>"btn") %>
 	        <%= link_to("Cancel", {:controller => 'access', :action => 'menu'},:class=>'btn') %>
 		</td>
-
-             
-	 		 
-	        
-	      
-
-
+ 
 	      </tr>
 	      			<% end %>
 	  </table>

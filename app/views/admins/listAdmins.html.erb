@@ -4,11 +4,13 @@
 <body>
   
 
-<h2>Manage Admins</h2>
+<h2>Manage Admin Profile</h2>
  
  <br>	<br>
+ 
+ <%if @admins==[]%>
 	<%=link_to("Create Admin",{:action=>'newAdmin'},:class=>"btn")%>  
- <%=link_to("Cancel",{:controller=>'access',:action=>'menu'},:class=>"btn")%> 
+<%end%>
 
 	
 	<br>	<br>
@@ -26,14 +28,17 @@
  
 <tr>
 			<%= will_paginate @admins %>
-	<%@admins.each do |admin|%>
-	<td><%=admin.first_name%>        </td>  
+			<%@admins.each do |admin|%>
+		<td><%=admin.first_name%>        </td>  
 	   	<td><%=admin.last_name%>        </td>      				 
-        	<td><%=admin.username%>        </td>    		 		  
-	<td><%=admin.emailId%>        </td>  	 
+        <td><%=admin.username%>        </td>    		 		  
+		<td><%=admin.emailId%>        </td>  	 
 	  		<td><%=admin.created_at.to_time.strftime('%e %b %Y %H:%m')%>        </td> 
 	 <td > <%=link_to("EDIT",{:action=>'editAdmin',:id=>admin.id},:class=>"btn")%> 
-		 <%=link_to("DELETE",{:action=>'deleteAdmin',:id=>admin.id},:class=>"btn")%>	</td>	  
+	 	 <%=link_to("Cancel",{:controller=>'access',:action=>'menu'},:class=>"btn")%> 
+
+		<!-- <%=link_to("DELETE",{:action=>'deleteAdmin',:id=>admin.id},:class=>"btn")%>-->
+			</td>	  
 			 	   
 		</tr>
 		

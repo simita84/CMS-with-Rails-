@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th>When</th>
-      <td><%= @event.datetime.strftime('%e %b %Y %H:%m:%S%p')%></td>
+      <td><%= @event.datetime.strftime("%e %b %Y %I:%M %p") %></td>
     </tr>
 	<tr>
       <th>Event Description</th>
@@ -37,7 +37,7 @@
 
     <tr>
       <th>Created</th>
-      <td><%= @event.created_at.strftime('%e %b %Y %H:%m:%S%p') %></td>
+      <td><%= @event.created_at.strftime("%e %b %Y %I:%M %p") %></td>
     </tr>
  <tr>
       <th>Created By</th>

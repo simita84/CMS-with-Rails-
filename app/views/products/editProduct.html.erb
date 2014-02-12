@@ -3,11 +3,10 @@
  
 
 <body>
-	 
+ <h3 class="page-header">Modify Product Category</h3>
 
-
-<h3>Modify</h3>
-
+ 
+<%= render 'shared/product_error_messages.html.erb' %>
 
 <%=form_for(:product,:url=>{:action=>'updateProduct',:id =>@product.id}) do |f| %>
  

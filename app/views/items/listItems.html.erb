@@ -8,7 +8,7 @@
  </div>
 
  
-		<%=link_to("Add item ",{:action=>'newItem'},:class=>'btn')%> 
+		<%=link_to("Add item ",{:action=>'new'},:class=>'btn')%> 
 	  <%=link_to(" Cancel",{:controller=>'access',:action=>'menu'},:class=>'btn')%> 
  <br>
  <br>
@@ -19,15 +19,20 @@
 		 
  
 	<table class="table table-striped">
+		<tr><th>Item title</th>
+			<th>Posted By</th>
+			<th>Action</th></tr>
 <% @items.each do |item|%>
 	 <tr>
 	 <td><%=item.name%></td>
+	 	 <td><%=item.posted_by%></td>
 	<td> 
 		<%=link_to("VIEW",{:action=>'listItem',:id=>item.id},:class=>"btn ")%>	  	
  
 	 	<%=link_to("EDIT",{:action=>'editItem',:id=>item.id},:class=>"btn")%>	 
  
-	  <%=link_to("DELETE",{:action=>'deleteItem',:id=>item.id},:class=>"btn btn-danger")%>	</td>	  
+	  <%=link_to("DELETE",{:action=>'deleteItem',:id=>item.id},:class=>"btn btn-danger")%>	
+	</td>	  
 			 	   
 		</tr>
 		

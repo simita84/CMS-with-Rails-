@@ -5,7 +5,7 @@
 	<h2>Recipes List</h2>
 </div>
 
-	<%=link_to("Add new Recipe ",{:action=>'newRecipe'},:class=>'btn')%> 
+	<%=link_to("Add new Recipe ",{:action=>'new'},:class=>'btn')%> 
  	<%=link_to("Cancel",{:controller=>'access',:action=>'menu'},:class=>'btn')%>
 			 
 <br><br>
@@ -13,15 +13,18 @@
 
 			<tr>
 				<th>Recipe Title</th>
+				<th>Posted By</th>
 				<th>Actions</th>
 			</tr>
 			
 			<%= will_paginate%>
  
 		<%@recipes.each do |recipe|%>
-<tr><td>
-	  			<%=simple_format(recipe.title)%> 
-	 </td> 
+<tr>
+<td><%=simple_format(recipe.title)%> </td>
+<td><%=simple_format(recipe.posted_by)%> </td>
+	  			
+	  		
 	 	  	<td>	
 	<%=link_to("VIEW",{:action=>'listRecipe',:id=>recipe.id},:class=>'btn')%>	
 	<%=link_to("EDIT",{:action=>'editRecipe',:id=>recipe.id},:class=>'btn')%>	

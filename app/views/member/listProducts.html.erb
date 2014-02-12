@@ -3,9 +3,6 @@
 <body>
 
   	 
- 
-		
-	
 <h3 align="center">Products  Categories  </h3>
 	<div><%= pluralize(@products.size, 'product') %> found</div> <br>
 <div class='row'>
@@ -18,10 +15,8 @@
 <%=link_to(product.title,{:controller=>'member',:action=>'listReviews', :product_id=>product.id},:class=>'btn') %>
  
 
- 
-
 <%end%></center>
- <h3><%=flash[:notice]%></h3> 
+ 
 </div>
  
 

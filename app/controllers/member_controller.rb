@@ -40,11 +40,11 @@ class MemberController < ApplicationController
        #Save the object
          if @recipe.save
        #If save succeeds redirect to list 
-       flash[:notice]= "Recipe --"+@recipe.title+"--created successfully"
+       flash[:success]= "Recipe --"+@recipe.title+"--created successfully"
          redirect_to(:action=>'listRecipes')
        #else redislay the form so user can fix the problem
          else
-           flash[:notice]= "Recipe  "+ @recipe.title+"  cannot be added. "
+           flash[:warning]= "Recipe  "+ @recipe.title+"  cannot be added. "
              render('newRecipes')
          end
      end
@@ -63,11 +63,11 @@ class MemberController < ApplicationController
            #Save the object
             if @recipe.save
                   #If update succeeds redirect to list 
-             flash[:notice]= "Recipe for --"+@recipe.title+"--updated successfully"
+             flash[:success]= "Recipe for --"+@recipe.title+"--updated successfully"
                 redirect_to(:action=>'listRecipes',:id=>@recipe.id)
            else
              #if save fails ,rediplay the form so user can fix problems
-             flash[:notice]= "Recipe for  "+ @recipe.title+" cannot be updated. "
+             flash[:warning]= "Recipe for  "+ @recipe.title+" cannot be updated. "
               @recipe_count=Recipe.count
                render('editRecipes')
            end
@@ -82,10 +82,10 @@ class MemberController < ApplicationController
         #Find the object using form parameters
         @recipe=Recipe.find(params[:id])
          if @recipe.destroy
-           flash[:notice]="Recipe for   "+@recipe.title+" deleted successfully"
+           flash[:success]="Recipe for   "+@recipe.title+" deleted successfully"
             redirect_to(:action =>'listRecipes')  
             else
-               flash[:notice]="Recipe for    "+@recipe.title+" cannot be deleted"   
+               flash[:warning]="Recipe for    "+@recipe.title+" cannot be deleted"   
          end
    end
 

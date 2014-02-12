@@ -3,9 +3,11 @@
 <body>
  	
  
- 
-<h3> Reviews for <%=@product.title%> </h3>
- 	<%=link_to("Add Reviews",{:action=>'newReview',:product_id=>@product.id},:class=>'btn')%>  
+<div class='row'>
+	<div class='span8 offset1'>
+<h3 class="page-header"> Reviews for <%=@product.title%> </h3>
+
+ 	<%=link_to("Add Reviews",{:action=>'new',:product_id=>@product.id},:class=>'btn')%>  
 	
  	<%=link_to("Cancel",{:controller=>'products',:action=>'index'},:class=>'btn')%> 
 
@@ -13,20 +15,17 @@
 	 
 	<%= will_paginate%>
 
-
 	<table class="table table-striped">
-
-
+	<th>	<%="TITLE"%>   </th>
+		<th>	<%="Posted By"%>   </th>
+	<th>	<%="Actions"%></th>
 	<% @reviews.each do |review|%>
- 
-
- 		<tr>       				 
+ <tr>       				 
         	<td>	<%=review.title	%></td> 
-		 
-		 	 
+        	<td>	<%=review.posted_by	%></td> 
+			 
 				<td>
-
-					 			<%=link_to("EDIT",{:action=>'editReview',:id=>review.id,:product_id=>@product.id},:class=>'btn')%>
+ <%=link_to("EDIT",{:action=>'editReview',:id=>review.id,:product_id=>@product.id},:class=>'btn')%>
 							  
 <%=link_to("DELETE",{:action=>'deleteReview',:id=>review.id,:product_id=>@product.id},:class=>'btn  btn-danger')%>	   </td>	
 			 	   
@@ -39,11 +38,7 @@
 	</table>
 	
 		<%= will_paginate%>
-
-	<h3><%=flash[:notice]%></h3> 
- 
-	  
-
 	
-</html>
+</div>
+</div>
  

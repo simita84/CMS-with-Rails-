@@ -10,8 +10,7 @@ class RecipesController < ApplicationController
    end
 
    def listRecipes
-     @recipes=Recipe.order("recipes.created_at ASC")
-    @recipes=Recipe.paginate(page: params[:page],per_page: 10)
+     @recipes=Recipe.order("recipes.created_at DESC").paginate(page: params[:page],per_page: 10)
      
    end
   
@@ -21,8 +20,8 @@ class RecipesController < ApplicationController
    end
    
      
-   def newRecipe
-     @recipe=Review.new
+   def new
+     @recipe=Recipe.new
    end
    
    def createRecipe
@@ -36,12 +35,12 @@ class RecipesController < ApplicationController
      #Save the object
        if @recipe.save
      #If save succeeds redirect to list 
-     flash[:notice]= "Recipe --"+@recipe.title+"--created successfully"
+     flash[:success]= "Recipe --"+@recipe.title+"--created successfully"
        redirect_to(:action=>'index')
      #else redislay the form so user can fix the problem
        else
-         flash[:notice]= "Recipe  "+ @recipe.title+"  cannot be added. "
-           render('newRecipe')
+         flash[:warning]= "Recipe  "+ @recipe.title+"  cannot be added. "
+           render('new')
        end
    end
    
@@ -60,10 +59,10 @@ class RecipesController < ApplicationController
        #Save the object
        if @recipe.save
          #If update succeeds redirect to list 
-         flash[:notice]= "Recipe --"+@recipe.title+"--updated successfully"
+         flash[:success]= "Recipe --"+@recipe.title+"--updated successfully"
          redirect_to(:action=>'index')
        else
-          flash[:notice]= "Recipe"+ @recipe.title+" cannot be updated. "
+          flash[:warning]= "Recipe"+ @recipe.title+" cannot be updated. "
          render('editRecipe')
        end
        end
@@ -76,10 +75,10 @@ class RecipesController < ApplicationController
             #Find the object using form parameters
             @recipe=Recipe.find(params[:id])
              if @recipe.destroy
-               flash[:notice]="Recipe   "+@recipe.title+" deleted successfully"
+               flash[:success]="Recipe   "+@recipe.title+" deleted successfully"
                 redirect_to(:action =>'index')  
                 else
-                   flash[:notice]="Recipe   "+@recipe.title+" cannot be deleted"   
+                   flash[:warning]="Recipe   "+@recipe.title+" cannot be deleted"   
              end
        end
 

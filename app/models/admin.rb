@@ -6,10 +6,30 @@ class Admin < ActiveRecord::Base
   attr_accessor :password
   attr_protected :hashed_password,:salt
   
-  
-  validates_presence_of :emailId,:message=>"EmailID  not entered"
-  validates_uniqueness_of :emailId,:message=>"EmailID already taken"
-  
+   #Admin Email ID validation
+  before_save {|admin| admin.emailId = admin.emailId.downcase}
+
+        #---------------Member SignUp Validation
+        EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+
+  validates :emailId, :presence => { :message => "missing" }, :length => { :maximum => 100 },
+                   :format => EMAIL_REGEX, :uniqueness => {:case_sensitive => false}
+
+
+validates :first_name, :presence => { :message => "missing" },
+          :length => { :maximum => 50 }
+            
+validates :last_name, :presence => { :message => "missing" }, :length => { :maximum => 50 }
+validates :username, :presence => { :message => "missing" }, :length => { :maximum => 50 }
+#validates :password, :presence =>true
+#=> { :message => "missing" }
+
+
+ 
+   
+
+
+
    # attr_accessible :title, :body
     before_save :create_hashed_password
     after_save :clear_password

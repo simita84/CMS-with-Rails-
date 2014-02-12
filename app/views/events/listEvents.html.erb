@@ -3,10 +3,15 @@
 
 <body>
  
- <h2>Event List</h2><br>
+ <h2>Event List</h2>
+ <br>
  
+<br> 
+<br>
 		<%= link_to("Back", {:controller => 'access', :action => 'menu'},:class=>'btn') %>
   <%= link_to("Add New Event",{ :action => "newEvents"},:class=>'btn') %>
+
+
 
 <br>
  
@@ -18,11 +23,11 @@
 		
 		<%= will_paginate%>
 		
-	  <table class="table">
+	  <table class="table  table-striped">
 	    <tr>
 	      <th>Event Name</th>
 	       
-	      <th>When </th>
+	      <th>When(Pacific Time) </th>
 	      <th>Duration</th>
 	 
 	      <th>Actions</th>
@@ -32,7 +37,7 @@
 	    
 	      <td><%=raw event.name %></td>
 	       
-	      <td><%= event.datetime.strftime('%e %b %Y %H:%m:%S%p') %></td>
+	      <td><%= event.datetime.strftime("%e %b %Y %I:%M %p")  %></td>
 	  
 	<td><%= event.duration %></td>
 	  	

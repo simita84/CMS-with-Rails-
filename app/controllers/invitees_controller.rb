@@ -29,16 +29,19 @@ def listInvitees
 
 
 
-    def newInvitee
-      @events = Event.all
+    def new
+      #@events = Event.all
+     @event=Event.find_by_id(@event.id)
       @invitee = Invitee.new(:event_id => @event.id)
 
     end
 
 
-    def createInvitee
+    def create
         # Instantiate a new object using form parameters
+
         @invitee = Invitee.new(params[:invitee])
+        @invitee.update_attributes(:event_id=>@event.id)
         # Save the object
         if @invitee.save
           # If save succeeds, redirect to the list action
@@ -49,16 +52,16 @@ def listInvitees
           #@event_count = Event.count + 1
           flash[:notice] = "Sorry, Event cannot  be created, Please check the fields and try again"
           @error_message = "It seems there was a validation error. Please try again."
-          render('newInvitee')
+          render('new')
         end
     end
     
     
-    def editInvitee
+    def edit
       #Find the object using form parameters
        @invitee=Invitee.find(params[:id])
     end
-     def updateInvitee
+     def update
         #Find the object using form parameters
         @invitee=Invitee.find(params[:id])
         #update with new values
@@ -70,16 +73,16 @@ def listInvitees
           redirect_to(:action=>'index', :event_id => @invitee.event_id)
         else
            flash[:notice]= "Invitee"+ @invitee.email+" cannot be updated. "
-          render('editInvitee')
+          render('edit')
         end
       end
     
         
-        def deleteInvitee
+        def delete
            #Find the object using form parameters
            @invitee=Invitee.find(params[:id])
            end
-         def destroyInvitee
+         def destroy
               #Find the object using form parameters
               @invitee=Invitee.find(params[:id])
                if @invitee.destroy

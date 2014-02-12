@@ -1,0 +1,47 @@
+
+<html>
+ <body>
+
+ <div class='row'>
+	<div class='span5 offset2'>
+<h2> Modify </h2>
+
+<%= render 'shared/invitee_error_messages_html.erb' %>
+
+ <%=form_for(:invitee,:url=>{:action=>'update',:id =>@invitee.id}) do |f| %>
+ 
+<table  class="table">
+	<tr>
+		<th>Name</th>
+			<td>
+		 	<%=f.text_field(:firstname)%></td>
+			</tr>
+	<tr>
+
+	  	<th>Email ID</th>
+			<td>
+		<%=f.text_field(:email)%></td>
+		</tr>
+			
+		<tr>
+		  	 <td>
+			<td>
+				 
+			 <%=f.submit "Modify",:class=>'btn' %>  
+ 		 
+		 <%=link_to("Cancel",{:controller=>'event',:action=>'index',:event_id =>@event.id},:class=>"btn")%>
+
+		</td>
+	 		</tr>
+	
+	
+	<%end%>
+		
+		</table>
+ 
+		
+</body>
+</html>
+	
+	
+	

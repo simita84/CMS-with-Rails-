@@ -9,6 +9,11 @@
       Thank you so much for registering to Momsntots. <br>
 		Your username is <%=@member.username%>  <br>
 	Please Sign In @ <a href="http://localhost:3000/public/login">ClubbyKids</a> with your credentials	 
+  Please activate your account by clicking below url. This is to confirm that your are the right user.
+      If you did not initiate this request, please ignore this email. 
+
+     <%= verifymember_url(:auth_token => @member.auth_token) %>
+
     </p>
   </body>
 </html>

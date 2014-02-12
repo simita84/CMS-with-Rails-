@@ -27,10 +27,10 @@
 			
 			<h3>	 <%=review.title	%></h3></td>   
 			<td> <p> <b>Posted by : </b>
-		 		<%=review.member_username%> 
+		 		<%=review.posted_by%> 
 				  On  
 			 
-				<%=review.created_at.strftime("%B %e %Y") %></p></td>     </tr>     				 
+				<%=review.created_at.strftime("%e %b %Y %I:%M %p") %></p></td>     </tr>     				 
            		 		 
 						<tr align ="left">
 				<td class="lead">	

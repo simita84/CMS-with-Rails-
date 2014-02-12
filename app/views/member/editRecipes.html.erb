@@ -1,6 +1,8 @@
 <html>
  <body>		
  
+ <%=render'shared/recipe_error_messages.html.erb' %>
+ 
  <%=form_for(:recipe,:url=>{:action=>'updateRecipes',:id =>@recipe.id},:html => { :multipart => true }) do |f| %>
  <h3>Edit Recipe</h3>
  	<table class="table">

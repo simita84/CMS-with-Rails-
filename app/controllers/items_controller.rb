@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
       @items=Item.order("items.created_at DESC").where(:id=>@item.id)
       end
 
-     def newItem
+     def new
 
        @item=Item.new
      end
@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
        #else redislay the form so user can fix the problem
          else
            flash[:warning]= "item"+ @item.name+" cannot be added. "
-             render('newItem')
+             render('new')
          end
      end
      def editItem

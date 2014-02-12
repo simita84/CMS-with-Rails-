@@ -28,3 +28,5 @@ into this small social community. Our community conducts year round activities t
  Contact.create(:name=>"Moms and Tots - Sylvan Park neighborhood",
  				:facebook=>"https://www.facebook.com/MomsAndTotsSylvanParkNeighborhood",
  				:emailid=>"momsntotsbayarea@gmail.com")
+
+ 

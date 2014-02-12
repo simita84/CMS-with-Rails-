@@ -8,17 +8,7 @@
  
 			<%=link_to("Create new Recipes",{:action=>'newRecipes'},:class=>'btn')%>  
 			
- <!--Search Functionality for Recipes-->
-
-	 <%=form_tag(:controller=>"members",:action=>'searchRecipes') do %>
-
-<div align="right">
-	<%= text_field_tag(:search, params[:search], :placeholder => "Search Recipes", :id => "searchTag") %> 
-    <%= submit_tag "Search", :name => nil,:class=>'btn' %> 
- 
-				 <% end %> 
-				<!--End of Search Functionality for Recipes--></div>
-
+  
 
 
 			<br>
@@ -35,7 +25,7 @@
 		
 		<p><b>Posted  by: </b>
 		 <%=recipe.posted_by%> 
-	 <b>On :</b> <%=recipe.created_at.strftime("%B %e %Y %I %p") %></p>
+	 <b>On :</b> <%=recipe.created_at.strftime("%e %b %Y %I:%M %p") %></p>
 	</th>       
 			 	</tr>     				 
 

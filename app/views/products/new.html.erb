@@ -1,0 +1,35 @@
+<html>
+ 
+
+<body>
+ 
+
+
+ <h3 class="page-header">Create a Product Category</h3>
+ 
+  <%= render 'shared/product_error_messages.html.erb' %> 
+	 
+<%=form_for(:product,:url=>{:action=>'createProduct'}) do |f| %>
+ 
+<table class="table">
+ 
+<tr>
+<th>Review Category</th>
+<td>
+		<%=f.text_field(:title)%></td>
+		</tr>
+		<tr>
+	 <td>
+ 	<%=submit_tag    "Create Category" ,:class=>"btn"%> </td>
+		<td>
+ 
+				<%=link_to("Cancel",{:action=>'index'},:class=>"btn") %></td>
+		
+		</tr>
+	<%end%>
+<tr> <%=flash[:notice]%> </tr>
+ </table>
+ 
+	</body>
+	</html>
+	 

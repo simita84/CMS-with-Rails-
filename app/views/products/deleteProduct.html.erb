@@ -2,13 +2,19 @@
  
 
 <body>
- 
+  <h3 class="page-header">Delete Product Category</h3>
 	
  <div class='row'>
 		<div class='span2'>
 			<img src='/assets/danger.jpeg'>
 			</div>
 	<div class='span5 offset1'>
+
+
+
+
+
+<div class="alert-error"> <%=flash[:warning]%> </div>
 
 
 <%=form_for(:product,:url=>{:action=>'destroyProduct',:id =>@product.id}) do |f| %>

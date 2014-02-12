@@ -1,23 +1,21 @@
 class HomesController < ApplicationController
   
   layout 'admin'
-    before_filter :confirm_logged_in,:except => [:login,:attempt_login]
+  before_filter :confirm_logged_in,:except => [:login,:attempt_login]
   
   def index
-        showHome
-      render('showHome')
-
+    showHome
+    render('showHome')
   end
 
   def showHome
-     @homes=Home.all
-   end
+    @homes=Home.all
+  end
 
    
   
- #Create new    admin users
-      def newHome
-
+ #Create new home page content.
+      def new
         @home=Home.new
       end
 

@@ -10,26 +10,29 @@
  
 <center>
 	<h2>Contact Us</h2> 
-<dl>
-	<dt>
-	 
-	  We Are known As: </dt>
-	<dd><%=contact.name%>     </dd>
- 
-	 	<dt> Email Us at</dt>	  
-    <dd><%= contact.emailid%>   </dd>
-    <dd><input type="text-area" name="message"/></dd>
-    <%=link_to("Send Email",{:controller=>"public",:action=>"sendemailToAdmin"},:class=>'btn')%>
- 
-	   	<dt>  Meet  Us at </dt>			 
-    <dd> <%= contact.facebook%>   </dd>
- 
+
+<table class="table table-striped">
+<tr><th>  <%=contact.name%>  </th></tr>
+<tr><th></th></tr>
+<tr><th><img src="/assets/email-logo.jpg" width="50" height="50">
+		<%= link_to(contact.emailid,:action=>"emailAdmin.html")%> </th></tr>
+<tr><th></th></tr>
+ <tr><th>
+ 	<a href="https://www.facebook.com/MomsAndTotsSylvanParkNeighborhood">
+ 		<img src="/assets/facebook.jpeg" width="50" height="50">
+ 	<%= contact.facebook%></a> </th></tr>
+ <tr><th></th></tr>
+	    
  	 	
 	<%end%>
-</dl></center>
+	</table>
+</center>
+
+</div>
+</div>
  </div>
-	 </div>
-	</div>
+
+	 
  
 </body>
 </html>

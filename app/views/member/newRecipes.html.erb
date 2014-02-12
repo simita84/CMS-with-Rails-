@@ -1,7 +1,10 @@
 <html>
 <body>
- 
- <h3>Create New Recipe</h3>
+ <%=render'shared/recipe_error_messages.html.erb' %>
+
+ <h3 class="page-header">Create New Recipe</h3>
+
+
 <%=form_for(:recipe,:url=>{:action=>'createRecipes'},:html => { :multipart => true }) do |f| %>
 <table class="table">
  	<tr>
@@ -35,11 +38,7 @@
  
  </table>
 
-
-<% @recipe.errors.full_messages.each do |msg| %>
-        <li>*<%= msg %></li>
-      <% end %>
-
+ 
  
 	</body>
 	</html>

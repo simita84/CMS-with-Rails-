@@ -1,6 +1,9 @@
 <html>
  <body>		
  
+ 
+<%= render 'shared/review_error_messages.html.erb' %>
+
  <%=form_for(:review,:url=>{:action=>'updateReviews',:id =>@review.id,:product_id=>@product.id}) do |f| %>
  	<table class="table">
 	 			<tr>
@@ -14,6 +17,10 @@
 					<td>
 						<%=f.text_area(:content,size: "60x12")%></td>
 					</tr>
+					 <tr>
+    				<th>Review picture</th>
+    				<td> <%=f.file_field(:reviewphoto)%></td>
+						</tr>	
 					<tr>
 							<th>Posted By</th>
 					 	<td>
@@ -25,7 +32,8 @@
 					<%=submit_tag "Edit Reviews",:class=>'btn'%> 	 
 				</td>
 	 	        <td>
-				 	<%=link_to("CANCEL",:action=>'listReviews',:product_id=>@product.id},:class=>"btn")%></div>
+	<%=link_to("CANCEL",{:action=>'listReviews',:product_id=>@product.id},:class=>"btn")%>
+
 						</td>
 	 				</tr>
 	 
@@ -33,10 +41,6 @@
 					
 					</table>
 					
-					<div class="alert">
-					<% @review.errors.full_messages.each do |msg| %>
-					        <li>*<%= msg %></li>
-					      <% end %>
-					</div>
+					 
  	</body>
 	</html>

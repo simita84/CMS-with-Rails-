@@ -29,12 +29,12 @@ class EventsController < ApplicationController
         # Save the object
         if @event.save
           # If save succeeds, redirect to the list action
-          flash[:notice] = "********* Event created ************"
+          flash[:success] = " Event  "+@event.name+"  created"
           redirect_to(:action => 'listEvents')
         else
           # If save fails, redisplay the form so user can fix problems
           #@event_count = Event.count + 1
-          flash[:notice] = "********* Event not created ************"
+          flash[:warning] = "Event cannot be created"
           #@error_message = "It seems there was a validation error. Please try again."
           render('newEvents')
         end
@@ -53,10 +53,11 @@ class EventsController < ApplicationController
         # Save the object
         if @event.update_attributes(params[:event])
           # If save succeeds, redirect to the list action
-          flash[:notice] = "********* Event saved ************"
+          flash[:success] = "********* Event updated ************"
          # redirect_to(:action => 'show', :id => @event.id )
          redirect_to(:action => 'listEvents')
         else
+           flash[:warning] = "********* Event not updated ************"
           # If save fails, redisplay the form so user can fix problems
           #@event_count = Event.count + 1
           render('editEvents')
@@ -71,9 +72,11 @@ class EventsController < ApplicationController
 
 
        def destroyEvents
-         Event.find(params[:id]).destroy
-         flash[:notice] = "********* Event destroyed ************"
+         @event=Event.find(params[:id])
+         if  @event.destroy
+         flash[:success] = "Event----"+@event.name+ "----deleted"
          redirect_to(:action => 'listEvents')
+       end
 
        end
 

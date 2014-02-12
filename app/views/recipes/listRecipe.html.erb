@@ -1,7 +1,8 @@
  <html>
  <body>
   
-	 
+	 <h3 class="page-header">Show Recipe</h3>
+
 	<table class="table">
 	 
  				<%@recipes.each do |recipe|%>
@@ -12,9 +13,13 @@
 				 		 <%= recipe.title%> 
 		 				</th>
 		
-						<td><p><b>Posted  by: </b>
-									<%=recipe.posted_by%></p></td>
-									<td>	<p><b>On :</b> <%=recipe.created_at.strftime("%B %e %Y") %></td>
+					</tr>
+					<tr>  
+						<td><b>Posted  by: </b>
+									<%=recipe.posted_by%> On :</b> 
+
+							<%=recipe.created_at.strftime('%e %b %Y %I:%M %p') %></td>
+ 
 	 				</tr> 
 						<tr>
 								<td>
@@ -23,16 +28,12 @@
 						</tr>       				      		  
  	 	<tr> 
 						<td>
-						<%=	recipe.content%>
+						<%=	simple_format(word_wrap(recipe.content))%>
 			 				
 			 			</td>
 		 			</tr>	
 
-
-
-
-		 			
-					 
+  
 				 
 						<%end%>
 			</table>

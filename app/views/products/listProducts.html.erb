@@ -1,30 +1,35 @@
   	
 
 <div class='row'>
-	<div class='span7 offset2'>
+	<div class='span8 offset2'>
  
-		<h2>Manage Products/Services</h2><br>
-			<%=link_to("Add Products/Services",{:action=>'newProduct'},:class=>'btn')%>  
-				<%=link_to("Back to Admin Menu",{:controller=>'access',:action=>'menu'},:class=>'btn')%> 	<br><br>
-	<%= will_paginate%>
-		
-		
-<table class="table-condensed">
+		<h2 class="page-header">Manage Products/Services</h2> 
 
  
-	<th>	<%="TITLE"%>  </th>   
-	<th></th>	 <th></th>
-	 	 
-			<th>		<%="Actions"%></th>
+	<br><br>
+<div><%=link_to("Add Products/Services",{:action=>'new'},:class=>'btn')%>  
+				<%=link_to("Back to Admin Menu",{:controller=>'access',:action=>'menu'},:class=>'btn')%> </div>
+					<br><br>
+
+
+			 
+	<%= will_paginate%>
+	 
+		
+<table class="table table-striped">
+
+ 
+	<th>	<%="TITLE"%>   </th>
+	<th>	<%="Actions"%></th>
 			 
  
 <tr>
 	<%@products.each do |product|%>
-  	<td><%= product.title%></td>
-		 <td> <%=link_to("VIEW",{ :controller=>'reviews', :action=>'index', :product_id=>product.id},:class=>'btn')%>  	</td>
- <td> <%=link_to("EDIT",{:action=>'editProduct',:id=>product.id},:class=>'btn')%>	  </td>
+  	<td><%=product.title%></td>
+		 <td> <%=link_to("VIEW",{ :controller=>'reviews', :action=>'index', :product_id=>product.id},:class=>'btn')%>   
+  <%=link_to("EDIT",{:action=>'editProduct',:id=>product.id},:class=>'btn')%>	  
 	 	
-		<td>	 <%=link_to("DELETE",{:action=>'deleteProduct',:id=>product.id},:class=>'btn  btn-danger')%>	</td>	  
+	  <%=link_to("DELETE",{:action=>'deleteProduct',:id=>product.id},:class=>'btn  btn-danger')%>	</td>	  
 			 	   
 		</tr>
 		
@@ -34,8 +39,6 @@
 	</table>
 	
 		<%= will_paginate%>
-		
-
- 
- 
+ </div>
+</div>
  

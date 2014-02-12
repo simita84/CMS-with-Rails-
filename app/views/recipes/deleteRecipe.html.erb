@@ -2,27 +2,24 @@
  
 
 <body>
-	
+	 <h3 class="page-header">Delete   Recipe</h3>
 	
  <table class="table">
 
 
 <%=form_for(:recipe,:url=>{:action=>'destroyRecipe',:id =>@recipe.id}) do |f| %>
  
- 
-	
-
- 
+  
  <h3>Are you sure you  want to delete recipe for "<%=@recipe.title%> "</h3></th>
  
  
 
 
-	<tr><td><div class="btn">
+	<tr><td>
 
-		<%=submit_tag("Confirm Delete")%></div>  </td>
+		<%=submit_tag "Confirm Delete" ,:class=>"btn"%> </td>
 	<td>
-	<div class="btn"><%=link_to("Cancel",:action=>'index')%></div></td>
+	<%=link_to("Cancel",{:action=>'index'},:class=>"btn")%></td>
 
  
 <%end%>

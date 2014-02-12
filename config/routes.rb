@@ -8,6 +8,10 @@ MomsAndTots::Application.routes.draw do
   match '/home',to: 'public#index'
   match '/contacts',to: 'contacts#index'
    match '/homes',to: 'homes#index'
+   match '/verifymember', to: 'public#verifymember'
+  # match '/events',to: 'events#index'
+ #match '/invitees',to: 'invitees#index'
+ #match '/editinvitee',to: 'invitees#editinvitee'
 
   resources :admins
 
@@ -15,6 +19,7 @@ MomsAndTots::Application.routes.draw do
  
   resources :products
   resources :password_resets
+  #resources :public
   
 root :to =>"public#index"
 

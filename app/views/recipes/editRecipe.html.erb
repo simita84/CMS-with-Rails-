@@ -3,8 +3,9 @@
  
 
 <body>
-	
-	
+ <h3 class="page-header">Modify Recipe</h3>
+
+	 <%= render 'shared/recipe_error_messages.html.erb' %>
  
 <%=form_for(:recipe,:url=>{:action=>'updateRecipe',:id =>@recipe.id}) do |f| %>
  
@@ -16,26 +17,27 @@
 <td>
 		<%=f.text_field(:title)%></td>
 		</tr>
-		<tr><td>
-			
-		</td> <%= f.file_field :recipephoto %>
-			</tr>
+		
 		<tr>
 		<th>Recipe Instructions</th>
 		<td > 
 				<%=f.text_area(:content,size: "60x12")%></td>
 				</tr>
+				<tr>
+					<th>Recipe Picture</th>
+					<td>
+			
+			<%= f.file_field :recipephoto %>		</td> 
+			</tr>
 					<tr>
 						<th>
 						Posted By</th>
 						<td><%=f.text_field(:posted_by,:disabled=>'true')%> </td>	 
 					 </tr>
 		 
-			<tr>
-			 <td>  <%=f.submit "Edit Recipe",class:'btn' %> 
-					</td> 
-	
-<td> <%=link_to("CANCEL",{:action=>'index'},:class=>'btn')%> </td>
+			<tr><td></td>
+			 <td>  <%=f.submit "Modify Recipe",class:'btn' %> 
+					  <%=link_to("CANCEL",{:action=>'index'},:class=>'btn')%> </td>
 	
 	 </tr>
 	 

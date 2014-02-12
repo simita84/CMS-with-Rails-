@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140130214709) do
+ActiveRecord::Schema.define(:version => 20140209093522) do
 
   create_table "admins", :force => true do |t|
     t.string   "first_name",      :limit => 50, :null => false
@@ -85,13 +85,13 @@ ActiveRecord::Schema.define(:version => 20140130214709) do
   end
 
   create_table "members", :force => true do |t|
-    t.string   "username",                 :limit => 50, :null => false
-    t.string   "first_name",               :limit => 50, :null => false
-    t.string   "last_name",                :limit => 50, :null => false
+    t.string   "username",                 :limit => 50,                    :null => false
+    t.string   "first_name",               :limit => 50,                    :null => false
+    t.string   "last_name",                :limit => 50,                    :null => false
     t.string   "hashed_password"
     t.string   "salt"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
     t.string   "memberphoto_file_name"
     t.string   "memberphoto_content_type"
     t.integer  "memberphoto_file_size"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20140130214709) do
     t.string   "auth_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.boolean  "verified_user",                          :default => false
   end
 
   add_index "members", ["username"], :name => "index_members_on_username"

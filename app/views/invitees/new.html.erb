@@ -7,7 +7,9 @@
 <div>
   <h2>Add Guest</h2>
 
-  <%= form_for(:invitee, :url => {:action => 'createInvitee', :event_id => @event.id}) do |f| %>
+<%= render 'shared/invitee_error_messages_html.erb' %>
+
+  <%= form_for(:invitee, :url => {:action => 'create', :event_id => @event.id}) do |f| %>
   
   <%= render(:partial => "form", :locals => {:f => f}) %>
    

@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
    @products=Product.order("products.created_at DESC").paginate(page:params[:page],per_page: 10) 
   end
   
-  def newProduct
+  def new
      
     @product=Product.new()
   end
@@ -24,12 +24,12 @@ class ProductsController < ApplicationController
     #Save the object
       if @product.save
     #If save succeeds redirect to list 
-    flash[:notice]= "Product --"+@product.title+"--added successfully"
+    flash[:success]= "Product --"+@product.title+"--added successfully"
       redirect_to(:action=>'index')
     #else redislay the form so user can fix the problem
       else
-        flash[:notice]= "Product"+ @product.title+" cannot be added. "
-          render('newProduct')
+        flash[:warning]= "Product"+ @product.title+" cannot be added. "
+          render('new')
       end
   end
   def editProduct
@@ -45,10 +45,10 @@ class ProductsController < ApplicationController
       #Save the object
       if @product.save
         #If update succeeds redirect to list 
-        flash[:notice]= "Product --"+@product.title+"--updated successfully"
+        flash[:success]= "Product --"+@product.title+"--updated successfully"
         redirect_to(:action=>'index')
       else
-         flash[:notice]= "Product"+ @product.title+" cannot be updated. "
+         flash[:warning]= "Product"+ @product.title+" cannot be updated. "
         render('editProduct')
       end
       end
@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
            #Find the object using form parameters
            @product=Product.find(params[:id])
             if @product.destroy
-             flash[:notice]="Product   "+@product.title+" deleted successfully"
+             flash[:success]="Product   "+@product.title+" deleted successfully"
                redirect_to(:action =>'index')  
                else
                   flash[:warning]="Product   "+@product.title+" cannot be deleted"   

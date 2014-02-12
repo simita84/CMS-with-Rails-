@@ -7,10 +7,8 @@ class Product < ActiveRecord::Base
   
     #belongs_to :admin
    
-   validates_presence_of :title,:message=>"The title cannot be blank"
-    
-  
-  validates_uniqueness_of :title,:message=>"Title already entered"
-  
-  
+    validates :title, :presence => { :message => "missing" },
+   				:uniqueness => {:case_sensitive => false}
+
+
 end

@@ -11,6 +11,12 @@
   <h2>Create Event</h2>
 
 <!--<%= "You are adding the category number : #{@event_count}"%>-->
+ 
+ 
+
+
+
+<%= render 'shared/event_error_messages_html.erb' %>
 
   <%= form_for(:event, :url => {:action => 'createEvents'}) do |f| %>
   
@@ -26,7 +32,11 @@
   </tr>
   <tr>
     <th>When</th>
-    <td><%= f.datetime_select(:datetime) %></td>
+    <td class="control-label">
+
+ <%=f.datetime_select :datetime ,:ampm=>true%>
+
+    </td>
   </tr>
   <tr>
     <th>Duration</th>

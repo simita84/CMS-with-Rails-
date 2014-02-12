@@ -2,8 +2,13 @@
  <body>		
  
  <%=form_for(:admin,:url=>{:action=>'updateAdmin',:id =>@admin.id}) do |f| %>
- 
+  
+
+ <%= render 'shared/admin_error_messages_html.erb' %>
+
+  
 <h3>Modify Admin Details </h3>
+
 	<table class="table">
 		 
 			<tr>
@@ -25,6 +30,7 @@
 
 						<td><%=f.text_field(:emailId)%></td>
 					</tr>
+					 
 						
 					<tr>
 				<td> 	

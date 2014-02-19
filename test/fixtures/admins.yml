@@ -1,17 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  first_name: MyString
-  last_name: MyString
-  username: MyString
-  emailId: MyString
-  hashed_password: MyString
-  salt: MyString
-
-two:
-  first_name: MyString
-  last_name: MyString
-  username: MyString
-  emailId: MyString
-  hashed_password: MyString
-  salt: MyString
+lafia:
+  first_name: lafia 
+  last_name: Seb
+  username: lafiaseb
+  emailId: lafiaseb@gmail.com
+  hashed_password: secret

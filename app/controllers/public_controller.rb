@@ -131,11 +131,11 @@ end
       flash[:success] = ' Please confirm your email address by clicking the link that we just send to you in  email'
      redirect_to(:controller=>"public",:action=>'index')
 
-       def verifymember
+  def verifymember
          @member = Member.find_by_auth_token!(params[:auth_token])
          @member.verified_user = true
          @member.save
-         redirect_to root_url, :notice => "Your account has been activated. 
+         redirect_to root_path, :notice => "Your account has been activated. 
          Please sign-in with your email_id."
        end
      

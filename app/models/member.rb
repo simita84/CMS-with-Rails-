@@ -11,7 +11,6 @@ class Member < ActiveRecord::Base
                                :content_type => %w(image/jpeg image/jpg image/png  image/gif)
 
 
-
    before_save :create_hashed_password
      after_save :clear_password
      attr_accessor :password

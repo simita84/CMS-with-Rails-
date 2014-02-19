@@ -1,3 +1,4 @@
+require "digest/sha1"
 class Admin < ActiveRecord::Base
   attr_accessible :emailId, :first_name, :hashed_password, :last_name, :salt, :username
 
@@ -16,19 +17,15 @@ class Admin < ActiveRecord::Base
                    :format => EMAIL_REGEX, :uniqueness => {:case_sensitive => false}
 
 
-validates :first_name, :presence => { :message => "missing" },
+
+ validates :first_name, :presence => { :message => "missing" },
           :length => { :maximum => 50 }
+ 
             
 validates :last_name, :presence => { :message => "missing" }, :length => { :maximum => 50 }
 validates :username, :presence => { :message => "missing" }, :length => { :maximum => 50 }
 #validates :password, :presence =>true
 #=> { :message => "missing" }
-
-
- 
-   
-
-
 
    # attr_accessible :title, :body
     before_save :create_hashed_password

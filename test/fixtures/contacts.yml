@@ -1,11 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  emailid: MyString
-  facebook: MyString
-
-two:
-  name: MyString
-  emailid: MyString
-  facebook: MyString
+moms:
+  name: Moms&Tots
+  emailid: momsntotsbayarea@gmail.com	
+  facebook: https://www.facebook.com/MomsAndTotsSylvanParkNeighborhood

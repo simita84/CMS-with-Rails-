@@ -25,7 +25,7 @@ class EventsController < ApplicationController
   def createEvents
     # Instantiate a new object using form parameters
         @event = Event.new(params[:event])
-         @event.update_attributes(:admin_username=>session[:username])
+        # @event.update_attributes(:admin_username=>session[:username])
         # Save the object
         if @event.save
           # If save succeeds, redirect to the list action

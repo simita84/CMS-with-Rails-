@@ -1,6 +1,8 @@
+
+
 class AdminsController < ApplicationController
   layout 'admin'
-  
+   before_filter :confirm_logged_in,:except => [:login,:attempt_login]
       def index
         listAdmins
         render('listAdmins')
@@ -12,28 +14,6 @@ class AdminsController < ApplicationController
        @admins=Admin.order("admins.created_at DESC").paginate(:page => params[:page],:per_page =>10)
       end
 
-       #Create new    admin users
-      def newAdmin
-
-        @admin=Admin.new
-      end
-
-      def createAdmin
-        @admin=Admin.new(params[:admin]) 
-        
-        #Save the object
-          if @admin.save
-        #If save succeeds redirect to list 
-        flash[:notice]= "Admin --"+@admin.username+"--created successfully"
-          redirect_to(:action=>'index')
-        #else redislay the form so user can fix the problem
-          else
-            flash[:notice]= "Admin "+ @admin.username+" cannot be added. "
-              render('newAdmin')
-          end
-      end
-      
-      
       
       def editAdmin
          #Find the object using form parameters
@@ -56,23 +36,7 @@ class AdminsController < ApplicationController
            end
            end
 
-           def deleteAdmin
-             #Find the object using form parameters
-             @admin=Admin.find(params[:id])
-             end
-           def destroyAdmin
-                #Find the object using form parameters
-                @admin=Admin.find(params[:id])
-                 if @admin.destroy
-                   flash[:notice]="Admin   "+@admin.first_name+" deleted successfully"
-                    redirect_to(:action =>'index')  
-                    else
-                       flash[:notice]="Admin   "+@admin.first_name+" cannot be deleted"   
-                 end
-           end
-
-
-       
+            
 
   
   

@@ -46,13 +46,7 @@ group :development, :test do
    gem 'railroady'
 end
 
-
-group :development do
-  gem "rails-erd"
-end
-
  
-
 
 group :test do
   gem 'capybara', '1.1.2'
@@ -63,6 +57,16 @@ group :test do
   # gem 'rb-fsevent', '0.9.1', :require => false
   # gem 'growl', '1.0.3'
 end
+
+
+
+group :development do
+  gem "rails-erd"
+end
+
+ 
+
+ 
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -18,10 +18,15 @@ class RecipesControllerTest < ActionController::TestCase
 
   test "should create recipe" do
     assert_difference('Recipe.count') do
-      post :create, recipe: { content: @recipe.content, member_username: @recipe.member_username, title: @recipe.title }
+      post :create, recipe: { content:"Test Recipe" ,
+                               posted_by: "simi@gmail.com"  , 
+                               title: "First Test Recipe" }
     end
 
     assert_redirected_to recipe_path(assigns(:recipe))
+     assert_equal 'Recipe    created successfully', flash[:notice]
+     assert_template :index
+   assert_template layout: "layouts/admin"
   end
 
   test "should show recipe" do

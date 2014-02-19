@@ -9,6 +9,21 @@ MomsAndTots::Application.routes.draw do
   match '/contacts',to: 'contacts#index'
    match '/homes',to: 'homes#index'
    match '/verifymember', to: 'public#verifymember'
+
+     match '/manageadmin',to: 'admins#index'
+     match '/member/home',to: 'member#index'
+
+    match   '/member/events',to: 'member#listEvents'
+
+match   '/member/reviews/',to: 'member#listProducts'
+match   '/member/recipes/',to: 'member#listRecipes'
+match   '/member/items/',to: 'member#listItems'
+match   '/member/manageprofile/',to: 'member#showAccountInfo'
+
+ match   '/member/contacts/',to: 'member#listContactInfo'
+
+ 
+    
   # match '/events',to: 'events#index'
  #match '/invitees',to: 'invitees#index'
  #match '/editinvitee',to: 'invitees#editinvitee'

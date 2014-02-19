@@ -1,12 +1,12 @@
 require 'spec_helper'
-describe "PublicPages" do
-   
-   subject { page }
-   
-  describe "Home page" do   
-    before {visit home_path} 
-    it { should have_selector('h2', text: 'About Us') }  
-        
-  end
+describe "Public Page" do
+  describe "Home Page" do
+
+  	it "should have selector ==> h2" do
+
+  		visit '/home'
+  		page.should have_selector('h2')
+  	end
+   end
 
 end

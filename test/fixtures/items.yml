@@ -1,11 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  content: MyText
-  member_username: MyString
+  name: toy
+  content:  usedToys
+  posted_by: member@gmail.com
 
-two:
-  name: MyString
-  content: MyText
-  member_username: MyString
+ 

@@ -28,7 +28,8 @@ end
 
 
 gem "will_paginate", "~> 3.0.4"
-gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+#gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem "paperclip", "~> 4.1"
 
 gem 'jquery-rails'
 

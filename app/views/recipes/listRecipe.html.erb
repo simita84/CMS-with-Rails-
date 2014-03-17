@@ -28,7 +28,7 @@
 						</tr>       				      		  
  	 	<tr> 
 						<td>
-						<%=	simple_format(word_wrap(recipe.content))%>
+						<%= simple_format(h(recipe.content))%>
 			 				
 			 			</td>
 		 			</tr>	

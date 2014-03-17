@@ -27,6 +27,8 @@ class Member < ActiveRecord::Base
                    :format => EMAIL_REGEX, :uniqueness => {:case_sensitive => false}
      validates :password, :presence => true, :confirmation => true, :length => { :minimum => 6 } ,:on => :create  
     
+
+
     #generate a random token for password reset functionality
     def send_password_reset
       generate_token(:password_reset_token)

@@ -169,6 +169,8 @@
   
     <li><a href="./Contact.html">Contact</a>
   
+    <li><a href="./ContactAdmin.html">ContactAdmin</a>
+  
     <li><a href="./ContactsController.html">ContactsController</a>
   
     <li><a href="./ContactsHelper.html">ContactsHelper</a>
@@ -289,7 +291,7 @@
             <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 101</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">createItems</span>
         <span class="ruby-ivar">@item</span>=<span class="ruby-constant">Item</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:item</span>]) 
-        <span class="ruby-ivar">@item</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-value">:member_username=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">session</span>[<span class="ruby-value">:username</span>])
+        <span class="ruby-ivar">@item</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-value">:posted_by=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">session</span>[<span class="ruby-value">:username</span>])
     <span class="ruby-comment">#Save the object</span>
         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@item</span>.<span class="ruby-identifier">save</span>
     <span class="ruby-comment">#If save succeeds redirect to list </span>
@@ -330,15 +332,15 @@
             <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">createRecipes</span>
   <span class="ruby-ivar">@recipe</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:recipe</span>]) 
-   <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-value">:member_username=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">session</span>[<span class="ruby-value">:username</span>])
+   <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-value">:posted_by=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">session</span>[<span class="ruby-value">:username</span>])
   <span class="ruby-comment">#Save the object</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">save</span>
   <span class="ruby-comment">#If save succeeds redirect to list </span>
-  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Recipe --&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;--created successfully&quot;</span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>]= <span class="ruby-string">&quot;Recipe --&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;--created successfully&quot;</span>
     <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;listRecipes&#39;</span>)
   <span class="ruby-comment">#else redislay the form so user can fix the problem</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Recipe  &quot;</span><span class="ruby-operator">+</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;  cannot be added. &quot;</span>
+      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:warning</span>]= <span class="ruby-string">&quot;Recipe  &quot;</span><span class="ruby-operator">+</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;  cannot be added. &quot;</span>
         <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;newRecipes&#39;</span>)
     <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -373,7 +375,7 @@
   <span class="ruby-comment">#Instantiate a new object using for parameters</span>
          <span class="ruby-ivar">@product</span>=<span class="ruby-constant">Product</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:product_id</span>])
          <span class="ruby-ivar">@review</span>=<span class="ruby-constant">Review</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:review</span>])
-         <span class="ruby-ivar">@review</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-value">:member_username=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">session</span>[<span class="ruby-value">:username</span>],<span class="ruby-value">:product_id=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@product</span>.<span class="ruby-identifier">id</span>)
+         <span class="ruby-ivar">@review</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-value">:posted_by=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">session</span>[<span class="ruby-value">:username</span>],<span class="ruby-value">:product_id=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@product</span>.<span class="ruby-identifier">id</span>)
 <span class="ruby-comment">#Save the object</span>
        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@review</span>.<span class="ruby-identifier">save</span>    
  <span class="ruby-comment">#If save succeeds redirect to list </span>
@@ -547,10 +549,10 @@
      <span class="ruby-comment">#Find the object using form parameters</span>
      <span class="ruby-ivar">@recipe</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
       <span class="ruby-keyword">if</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">destroy</span>
-        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]=<span class="ruby-string">&quot;Recipe for   &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; deleted successfully&quot;</span>
+        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>]=<span class="ruby-string">&quot;Recipe for   &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; deleted successfully&quot;</span>
          <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;listRecipes&#39;</span>)  
          <span class="ruby-keyword">else</span>
-            <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]=<span class="ruby-string">&quot;Recipe for    &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be deleted&quot;</span>   
+            <span class="ruby-identifier">flash</span>[<span class="ruby-value">:warning</span>]=<span class="ruby-string">&quot;Recipe for    &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be deleted&quot;</span>   
       <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- destroyRecipes-source -->
@@ -862,8 +864,8 @@
                       <span class="ruby-keyword">end</span>
                    <span class="ruby-keyword">end</span>
       <span class="ruby-comment">#----------------Pagination---------------</span>
-  <span class="ruby-ivar">@upcoming_events</span>= <span class="ruby-ivar">@upcoming_events_arr</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],<span class="ruby-value">:per_page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>)
-  <span class="ruby-ivar">@past_events</span>=<span class="ruby-ivar">@past_events_arr</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>], <span class="ruby-value">:per_page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>)
+  <span class="ruby-ivar">@upcoming_events</span> = <span class="ruby-ivar">@upcoming_events_arr</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],<span class="ruby-value">:per_page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>)
+  <span class="ruby-ivar">@past_events</span> = <span class="ruby-ivar">@past_events_arr</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>], <span class="ruby-value">:per_page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>)
    
  <span class="ruby-keyword">end</span></pre>
           </div><!-- listEvents-source -->
@@ -1307,11 +1309,11 @@
         <span class="ruby-comment">#Save the object</span>
          <span class="ruby-keyword">if</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">save</span>
                <span class="ruby-comment">#If update succeeds redirect to list </span>
-          <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Recipe for --&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;--updated successfully&quot;</span>
+          <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>]= <span class="ruby-string">&quot;Recipe for --&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;--updated successfully&quot;</span>
              <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;listRecipes&#39;</span>,<span class="ruby-value">:id=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">id</span>)
         <span class="ruby-keyword">else</span>
           <span class="ruby-comment">#if save fails ,rediplay the form so user can fix problems</span>
-          <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Recipe for  &quot;</span><span class="ruby-operator">+</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be updated. &quot;</span>
+          <span class="ruby-identifier">flash</span>[<span class="ruby-value">:warning</span>]= <span class="ruby-string">&quot;Recipe for  &quot;</span><span class="ruby-operator">+</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be updated. &quot;</span>
            <span class="ruby-ivar">@recipe_count</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">count</span>
             <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;editRecipes&#39;</span>)
         <span class="ruby-keyword">end</span>

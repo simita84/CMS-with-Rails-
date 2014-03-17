@@ -15,25 +15,25 @@ end
 
      end
 
-     def newMember
-       @member=Member.new
-     end
+     #def newMember
+     #  @member=Member.new
+    # end
 
 
-     def createMember
-       @member=Member.new(params[:member]) 
+    # def createMember
+       #@member=Member.new(params[:member]) 
 
        #Save the object
-         if @member.save
+        # if @member.save
        #If save succeeds redirect to list 
-       flash[:notice]= "Member --"+@member.username+"--created successfully"
-         redirect_to(:action=>'index')
-       #else redislay the form so user can fix the problem
-         else
-           flash[:notice]= "Member "+ @member.username+" cannot be added. "
-             render('newMember')
-         end
-     end
+       #flash[:notice]= "Member --"+@member.username+"--created successfully"
+       #  redirect_to(:action=>'index')
+      # #else redislay the form so user can fix the problem
+      #   else
+       #    flash[:notice]= "Member "+ @member.username+" cannot be added. "
+       #      render('newMember')
+       #  end
+    # end
      
       def editMember
           #Find the object using form parameters

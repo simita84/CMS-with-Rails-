@@ -46,6 +46,9 @@ group :development, :test do
    gem 'railroady'
 end
 
+
+
+gem 'html_routes', '~> 1.0', group: :development
  
 
 group :test do

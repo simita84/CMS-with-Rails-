@@ -125,6 +125,8 @@
   
     <li><a href="./Contact.html">Contact</a>
   
+    <li><a href="./ContactAdmin.html">ContactAdmin</a>
+  
     <li><a href="./ContactsController.html">ContactsController</a>
   
     <li><a href="./ContactsHelper.html">ContactsHelper</a>
@@ -246,16 +248,16 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">createEvents</span>
   <span class="ruby-comment"># Instantiate a new object using form parameters</span>
       <span class="ruby-ivar">@event</span> = <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:event</span>])
-       <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-value">:admin_username=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">session</span>[<span class="ruby-value">:username</span>])
+      <span class="ruby-comment"># @event.update_attributes(:admin_username=&gt;session[:username])</span>
       <span class="ruby-comment"># Save the object</span>
       <span class="ruby-keyword">if</span> <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">save</span>
         <span class="ruby-comment"># If save succeeds, redirect to the list action</span>
-        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&quot;********* Event created ************&quot;</span>
+        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot; Event  &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@event</span>.<span class="ruby-identifier">name</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;  created&quot;</span>
         <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;listEvents&#39;</span>)
       <span class="ruby-keyword">else</span>
         <span class="ruby-comment"># If save fails, redisplay the form so user can fix problems</span>
         <span class="ruby-comment">#@event_count = Event.count + 1</span>
-        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&quot;********* Event not created ************&quot;</span>
+        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:warning</span>] = <span class="ruby-string">&quot;Event cannot be created&quot;</span>
         <span class="ruby-comment">#@error_message = &quot;It seems there was a validation error. Please try again.&quot;</span>
         <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;newEvents&#39;</span>)
       <span class="ruby-keyword">end</span>
@@ -286,7 +288,7 @@
 
           
           <div class="method-source-code" id="deleteEvents-source">
-            <pre><span class="ruby-comment"># File app/controllers/events_controller.rb, line 68</span>
+            <pre><span class="ruby-comment"># File app/controllers/events_controller.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">deleteEvents</span>
    <span class="ruby-ivar">@event</span> = <span class="ruby-constant">Event</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
  <span class="ruby-keyword">end</span></pre>
@@ -316,11 +318,13 @@
 
           
           <div class="method-source-code" id="destroyEvents-source">
-            <pre><span class="ruby-comment"># File app/controllers/events_controller.rb, line 73</span>
+            <pre><span class="ruby-comment"># File app/controllers/events_controller.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroyEvents</span>
-  <span class="ruby-constant">Event</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
-  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&quot;********* Event destroyed ************&quot;</span>
+  <span class="ruby-ivar">@event</span>=<span class="ruby-constant">Event</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-keyword">if</span>  <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">destroy</span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot;Event----&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@event</span>.<span class="ruby-identifier">name</span><span class="ruby-operator">+</span> <span class="ruby-string">&quot;----deleted&quot;</span>
   <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;listEvents&#39;</span>)
+<span class="ruby-keyword">end</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- destroyEvents-source -->
@@ -509,10 +513,11 @@
     <span class="ruby-comment"># Save the object</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:event</span>])
       <span class="ruby-comment"># If save succeeds, redirect to the list action</span>
-      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&quot;********* Event saved ************&quot;</span>
+      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot;********* Event updated ************&quot;</span>
      <span class="ruby-comment"># redirect_to(:action =&gt; &#39;show&#39;, :id =&gt; @event.id )</span>
      <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;listEvents&#39;</span>)
     <span class="ruby-keyword">else</span>
+       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:warning</span>] = <span class="ruby-string">&quot;********* Event not updated ************&quot;</span>
       <span class="ruby-comment"># If save fails, redisplay the form so user can fix problems</span>
       <span class="ruby-comment">#@event_count = Event.count + 1</span>
       <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;editEvents&#39;</span>)

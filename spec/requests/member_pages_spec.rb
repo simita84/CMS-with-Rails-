@@ -1,30 +1,6 @@
 require 'spec_helper'
 
 describe "Member Page" do
- # describe "Home Page" do
-
-  #	it "should have selector ==> h2" do
-
-  #		visit '/home'
-  #		page.should have_selector('h2')
- # 	end
-  # end
-
-
-# Test for password reset for non-exiting user.
-  #describe "Password reset page" do
-   # it "emails user when requesting password reset" do
-    #user = "blah"
-    #  visit '/public/login'
-    #  click_link "password"
-    #  fill_in "Username", :with => "rajmj83@gmail.com"
-    #  click_button "Reset Password"
-    #  current_path.should eq(root_path)
-      #page.should have_content("Sorry our records indicate that you are not registered yet. Please signup")
-    #last_email.to.should include(user.email)
-    #end  
-  #end
-
 
 
   # Test for member Sign-up

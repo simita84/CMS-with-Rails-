@@ -72,15 +72,17 @@
     
     <li><a href="#method-i-create">#create</a>
     
-    <li><a href="#method-i-deleteInvitee">#deleteInvitee</a>
+    <li><a href="#method-i-delete">#delete</a>
     
-    <li><a href="#method-i-destroyInvitee">#destroyInvitee</a>
+    <li><a href="#method-i-destroy">#destroy</a>
     
-    <li><a href="#method-i-editInvitee">#editInvitee</a>
+    <li><a href="#method-i-edit">#edit</a>
     
     <li><a href="#method-i-eventinfo">#eventinfo</a>
     
     <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-listInvitees">#listInvitees</a>
     
     <li><a href="#method-i-memberResponseHandler">#memberResponseHandler</a>
     
@@ -88,7 +90,7 @@
     
     <li><a href="#method-i-sendEventInvite">#sendEventInvite</a>
     
-    <li><a href="#method-i-updateInvitee">#updateInvitee</a>
+    <li><a href="#method-i-update">#update</a>
     
   </ul>
 </nav>
@@ -126,6 +128,8 @@
     <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
   
     <li><a href="./Contact.html">Contact</a>
+  
+    <li><a href="./ContactAdmin.html">ContactAdmin</a>
   
     <li><a href="./ContactsController.html">ContactsController</a>
   
@@ -244,10 +248,12 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 33</span>
+            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
     <span class="ruby-comment"># Instantiate a new object using form parameters</span>
+
     <span class="ruby-ivar">@invitee</span> = <span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:invitee</span>])
+    <span class="ruby-ivar">@invitee</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-value">:event_id=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@event</span>.<span class="ruby-identifier">id</span>)
     <span class="ruby-comment"># Save the object</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@invitee</span>.<span class="ruby-identifier">save</span>
       <span class="ruby-comment"># If save succeeds, redirect to the list action</span>
@@ -271,10 +277,10 @@
       </div><!-- create-method -->
 
     
-      <div id="method-i-deleteInvitee" class="method-detail ">
+      <div id="method-i-delete" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">deleteInvitee</span><span
+          <span class="method-name">delete</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -286,26 +292,26 @@
           
 
           
-          <div class="method-source-code" id="deleteInvitee-source">
-            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 72</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">deleteInvitee</span>
+          <div class="method-source-code" id="delete-source">
+            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete</span>
    <span class="ruby-comment">#Find the object using form parameters</span>
    <span class="ruby-ivar">@invitee</span>=<span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
    <span class="ruby-keyword">end</span></pre>
-          </div><!-- deleteInvitee-source -->
+          </div><!-- delete-source -->
           
         </div>
 
         
 
         
-      </div><!-- deleteInvitee-method -->
+      </div><!-- delete-method -->
 
     
-      <div id="method-i-destroyInvitee" class="method-detail ">
+      <div id="method-i-destroy" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">destroyInvitee</span><span
+          <span class="method-name">destroy</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -317,9 +323,9 @@
           
 
           
-          <div class="method-source-code" id="destroyInvitee-source">
-            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 76</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroyInvitee</span>
+          <div class="method-source-code" id="destroy-source">
+            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
      <span class="ruby-comment">#Find the object using form parameters</span>
      <span class="ruby-ivar">@invitee</span>=<span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
       <span class="ruby-keyword">if</span> <span class="ruby-ivar">@invitee</span>.<span class="ruby-identifier">destroy</span>
@@ -329,20 +335,20 @@
             <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]=<span class="ruby-string">&quot;Invitee   &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@invitee</span>.<span class="ruby-identifier">email</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be deleted&quot;</span>   
       <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- destroyInvitee-source -->
+          </div><!-- destroy-source -->
           
         </div>
 
         
 
         
-      </div><!-- destroyInvitee-method -->
+      </div><!-- destroy-method -->
 
     
-      <div id="method-i-editInvitee" class="method-detail ">
+      <div id="method-i-edit" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">editInvitee</span><span
+          <span class="method-name">edit</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -354,20 +360,20 @@
           
 
           
-          <div class="method-source-code" id="editInvitee-source">
-            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 51</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">editInvitee</span>
+          <div class="method-source-code" id="edit-source">
+            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
   <span class="ruby-comment">#Find the object using form parameters</span>
    <span class="ruby-ivar">@invitee</span>=<span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- editInvitee-source -->
+          </div><!-- edit-source -->
           
         </div>
 
         
 
         
-      </div><!-- editInvitee-method -->
+      </div><!-- edit-method -->
 
     
       <div id="method-i-eventinfo" class="method-detail ">
@@ -386,7 +392,7 @@
 
           
           <div class="method-source-code" id="eventinfo-source">
-            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 16</span>
+            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eventinfo</span>
 <span class="ruby-comment"># @invitees = Invitee.where(:event_id =&gt; @event.id)</span>
  <span class="ruby-ivar">@invitedinvitees</span> = <span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:event_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:invited</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
@@ -421,11 +427,10 @@
           
           <div class="method-source-code" id="index-source">
             <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 8</span>
-   <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
-      
-<span class="ruby-ivar">@invitees</span> = <span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:event_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:invited</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-value">:params</span>[<span class="ruby-value">:page</span>],<span class="ruby-identifier">per_page</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span>) 
-<span class="ruby-ivar">@invitedinvitees</span> = <span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:event_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:invited</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-value">:params</span>[<span class="ruby-value">:page</span>],<span class="ruby-identifier">per_page</span><span class="ruby-operator">:</span> <span class="ruby-value">5</span>) 
-   <span class="ruby-keyword">end</span></pre>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+    <span class="ruby-identifier">listInvitees</span>
+<span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;listInvitees&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
           </div><!-- index-source -->
           
         </div>
@@ -434,6 +439,38 @@
 
         
       </div><!-- index-method -->
+
+    
+      <div id="method-i-listInvitees" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">listInvitees</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="listInvitees-source">
+            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">listInvitees</span>
+
+ <span class="ruby-ivar">@invitees</span> = <span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:event_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:invited</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-value">:params</span>[<span class="ruby-value">:page</span>],<span class="ruby-identifier">per_page</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span>) 
+ <span class="ruby-ivar">@invitedinvitees</span> = <span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:event_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:invited</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-value">:params</span>[<span class="ruby-value">:page</span>],<span class="ruby-identifier">per_page</span><span class="ruby-operator">:</span> <span class="ruby-value">5</span>) 
+    <span class="ruby-keyword">end</span></pre>
+          </div><!-- listInvitees-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- listInvitees-method -->
 
     
       <div id="method-i-memberResponseHandler" class="method-detail ">
@@ -452,7 +489,7 @@
 
           
           <div class="method-source-code" id="memberResponseHandler-source">
-            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 104</span>
+            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 113</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">memberResponseHandler</span>
   <span class="ruby-ivar">@invitee</span> = <span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-ivar">@invitee</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:invitee</span>])
@@ -487,9 +524,10 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 26</span>
+            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@events</span> = <span class="ruby-constant">Event</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-comment">#@events = Event.all</span>
+ <span class="ruby-ivar">@event</span>=<span class="ruby-constant">Event</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-ivar">@event</span>.<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@invitee</span> = <span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:event_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">id</span>)
 
 <span class="ruby-keyword">end</span></pre>
@@ -519,7 +557,7 @@
 
           
           <div class="method-source-code" id="sendEventInvite-source">
-            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 88</span>
+            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sendEventInvite</span>
   <span class="ruby-ivar">@invitees</span> = <span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:event_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:invited</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
   <span class="ruby-comment">## message = &quot;Email sent!&quot;</span>
@@ -544,10 +582,10 @@
       </div><!-- sendEventInvite-method -->
 
     
-      <div id="method-i-updateInvitee" class="method-detail ">
+      <div id="method-i-update" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">updateInvitee</span><span
+          <span class="method-name">update</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -559,9 +597,9 @@
           
 
           
-          <div class="method-source-code" id="updateInvitee-source">
-            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 55</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">updateInvitee</span>
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File app/controllers/invitees_controller.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
    <span class="ruby-comment">#Find the object using form parameters</span>
    <span class="ruby-ivar">@invitee</span>=<span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
    <span class="ruby-comment">#update with new values</span>
@@ -573,17 +611,17 @@
      <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>, <span class="ruby-value">:event_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@invitee</span>.<span class="ruby-identifier">event_id</span>)
    <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Invitee&quot;</span><span class="ruby-operator">+</span> <span class="ruby-ivar">@invitee</span>.<span class="ruby-identifier">email</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be updated. &quot;</span>
-     <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;new&#39;</span>)
+     <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;edit&#39;</span>)
    <span class="ruby-keyword">end</span>
  <span class="ruby-keyword">end</span></pre>
-          </div><!-- updateInvitee-source -->
+          </div><!-- update-source -->
           
         </div>
 
         
 
         
-      </div><!-- updateInvitee-method -->
+      </div><!-- update-method -->
 
     
     </section><!-- public-instance-method-details -->

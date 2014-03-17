@@ -5,13 +5,16 @@ MomsAndTots::Application.routes.draw do
 
   match '/eventdetails',to: 'member#eventDetails'
   match '/admin',to: 'access#login'
+
+      match '/admin/listAdmins',to: 'admin#listAdmins'
+
+
   match '/home',to: 'public#index'
   match '/contacts',to: 'contacts#index'
    match '/homes',to: 'homes#index'
    match '/verifymember', to: 'public#verifymember'
-
-     match '/manageadmin',to: 'admins#index'
-     match '/member/home',to: 'member#index'
+    match '/manageadmin',to: 'admins#index'
+  match '/member/home',to: 'member#index'
 
     match   '/member/events',to: 'member#listEvents'
 

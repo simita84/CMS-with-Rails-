@@ -3,7 +3,7 @@ class MemberController < ApplicationController
       before_filter :find_event
       before_filter :find_product
       before_filter :confirm_member_logged_in
-      
+     layout 'member' 
       
       
     def index

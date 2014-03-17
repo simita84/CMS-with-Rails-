@@ -124,6 +124,7 @@ end
     @member = Member.find_by_id(params[:id])
   end  
 
+#Member SignUp
   def createMember
     @member = Member.new(params[:member])
     if @member.save
@@ -173,19 +174,7 @@ end
  #-------------Member Sign Up / registration from Public Page-----------
 
  
-  
-  #--------Contact Admin-------------
-
- 
-
-def sendemailToAdmin
-
-  
-
-end
-
-
-  
+   
   
    private 
 

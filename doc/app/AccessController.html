@@ -121,6 +121,8 @@
   
     <li><a href="./Contact.html">Contact</a>
   
+    <li><a href="./ContactAdmin.html">ContactAdmin</a>
+  
     <li><a href="./ContactsController.html">ContactsController</a>
   
     <li><a href="./ContactsHelper.html">ContactsHelper</a>
@@ -282,7 +284,7 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/access_controller.rb, line 57</span>
+            <pre><span class="ruby-comment"># File app/controllers/access_controller.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-comment">#Instantiate a new object using for parameters</span>
     <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:product</span>])
@@ -353,7 +355,7 @@
 
           
           <div class="method-source-code" id="listMembers-source">
-            <pre><span class="ruby-comment"># File app/controllers/access_controller.rb, line 45</span>
+            <pre><span class="ruby-comment"># File app/controllers/access_controller.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">listMembers</span>
 
  <span class="ruby-ivar">@members</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;members.created_at ASC&quot;</span>)
@@ -450,7 +452,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/access_controller.rb, line 52</span>
+            <pre><span class="ruby-comment"># File app/controllers/access_controller.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
 
   <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">new</span>()

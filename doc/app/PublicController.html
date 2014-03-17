@@ -88,7 +88,7 @@
     
     <li><a href="#method-i-login">#login</a>
     
-    <li><a href="#method-i-newMember">#newMember</a>
+    <li><a href="#method-i-new">#new</a>
     
     <li><a href="#method-i-searchItems">#searchItems</a>
     
@@ -96,11 +96,11 @@
     
     <li><a href="#method-i-searchReviews">#searchReviews</a>
     
-    <li><a href="#method-i-sendemailToAdmin">#sendemailToAdmin</a>
-    
     <li><a href="#method-i-sendemailToMember">#sendemailToMember</a>
     
     <li><a href="#method-i-showMember">#showMember</a>
+    
+    <li><a href="#method-i-verifymember">#verifymember</a>
     
   </ul>
 </nav>
@@ -138,6 +138,8 @@
     <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
   
     <li><a href="./Contact.html">Contact</a>
+  
+    <li><a href="./ContactAdmin.html">ContactAdmin</a>
   
     <li><a href="./ContactsController.html">ContactsController</a>
   
@@ -256,10 +258,10 @@
 
           
           <div class="method-source-code" id="attempt_login-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 13</span>
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">attempt_login</span>
    <span class="ruby-identifier">member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">authorize</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:username</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:password</span>])
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">member</span> 
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">member</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">member</span>.<span class="ruby-identifier">verified_user</span>
         <span class="ruby-comment">#storing session info</span>
           <span class="ruby-identifier">session</span>[<span class="ruby-value">:member_id</span>]=<span class="ruby-identifier">member</span>.<span class="ruby-identifier">id</span>
           <span class="ruby-identifier">session</span>[<span class="ruby-value">:username</span>]=<span class="ruby-identifier">member</span>.<span class="ruby-identifier">username</span>
@@ -277,7 +279,7 @@
          <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:controller=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;member&quot;</span>,<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)
 
       <span class="ruby-keyword">else</span>
-        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:alert</span>]=<span class="ruby-string">&quot;Invaid Username and password combination,Please try again&quot;</span>
+        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:alert</span>]=<span class="ruby-string">&quot;Invaid Username and password combination,Please try again. Or you have not activated your account yet.&quot;</span>
           <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:controller=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;public&#39;</span>,<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;login&#39;</span>)
       <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -302,18 +304,26 @@
 
         <div class="method-description">
           
-          
+          <p><a href="Member.html">Member</a> SignUp</p>
           
 
           
           <div class="method-source-code" id="createMember-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 120</span>
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 128</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">createMember</span>
   <span class="ruby-ivar">@member</span> = <span class="ruby-constant">Member</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:member</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">save</span>
     <span class="ruby-identifier">sendemailToMember</span>
     <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&#39; Please confirm your email address by clicking the link that we just send to you in  email&#39;</span>
    <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:controller=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;public&quot;</span>,<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)
+
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">verifymember</span>
+       <span class="ruby-ivar">@member</span> = <span class="ruby-constant">Member</span>.<span class="ruby-identifier">find_by_auth_token!</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:auth_token</span>])
+       <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">verified_user</span> = <span class="ruby-keyword">true</span>
+       <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">save</span>
+       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_path</span>, <span class="ruby-value">:notice</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Your account has been activated. 
+       Please sign-in with your email_id.&quot;</span>
+     <span class="ruby-keyword">end</span>
    
    
    
@@ -328,7 +338,7 @@
   
 <span class="ruby-comment"># Signup.registration_email(@member).deliver</span>
  <span class="ruby-keyword">else</span>
-   <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;newMember&#39;</span>)
+   <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;new&#39;</span>)
   <span class="ruby-keyword">end</span>
 
  <span class="ruby-comment"># Emailer.registration_email(@member).deliver</span>
@@ -389,7 +399,7 @@
 
           
           <div class="method-source-code" id="listContacts-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 106</span>
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 113</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">listContacts</span>
    <span class="ruby-ivar">@contacts</span>=<span class="ruby-constant">Contact</span>.<span class="ruby-identifier">all</span>
 <span class="ruby-keyword">end</span></pre>
@@ -419,7 +429,7 @@
 
           
           <div class="method-source-code" id="listItems-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 99</span>
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">listItems</span>
    
     <span class="ruby-ivar">@items</span> = <span class="ruby-constant">Item</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;items.created_at DESC&quot;</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],<span class="ruby-value">:per_page</span> =<span class="ruby-operator">&gt;</span><span class="ruby-value">5</span>)
@@ -452,7 +462,7 @@
 
           
           <div class="method-source-code" id="listProducts-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 38</span>
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">listProducts</span>
    <span class="ruby-ivar">@products</span>=<span class="ruby-constant">Product</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;products.created_at DESC&quot;</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],<span class="ruby-value">:per_page</span> =<span class="ruby-operator">&gt;</span><span class="ruby-value">50</span>)
     <span class="ruby-ivar">@reviews</span> = <span class="ruby-constant">Review</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;reviews.created_at DESC&quot;</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],<span class="ruby-value">:per_page</span> =<span class="ruby-operator">&gt;</span><span class="ruby-value">5</span>)
@@ -484,7 +494,7 @@
 
           
           <div class="method-source-code" id="listRecipes-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 51</span>
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 58</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">listRecipes</span>
   <span class="ruby-comment"># @recipes=Recipe.order(&quot;recipes.created_at DESC&quot;).page(params[:recipe])</span>
     <span class="ruby-comment"># @recipes=Recipe.order(&quot;recipes.created_at DESC&quot;)</span>
@@ -519,7 +529,7 @@
 
           
           <div class="method-source-code" id="listReviews-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 44</span>
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 51</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">listReviews</span>
      <span class="ruby-ivar">@products</span>=<span class="ruby-constant">Product</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;products.created_at DESC&quot;</span>)
      <span class="ruby-ivar">@reviews</span> = <span class="ruby-constant">Review</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;reviews.created_at DESC&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:product_id=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@product</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],<span class="ruby-value">:per_page</span> =<span class="ruby-operator">&gt;</span><span class="ruby-value">2</span>) 
@@ -552,7 +562,7 @@
 
           
           <div class="method-source-code" id="login-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 9</span>
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">login</span>
    <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;login&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -566,10 +576,10 @@
       </div><!-- login-method -->
 
     
-      <div id="method-i-newMember" class="method-detail ">
+      <div id="method-i-new" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">newMember</span><span
+          <span class="method-name">new</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -581,20 +591,20 @@
           
 
           
-          <div class="method-source-code" id="newMember-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 110</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">newMember</span>
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
    <span class="ruby-ivar">@member</span> = <span class="ruby-constant">Member</span>.<span class="ruby-identifier">new</span>
    
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- newMember-source -->
+          </div><!-- new-source -->
           
         </div>
 
         
 
         
-      </div><!-- newMember-method -->
+      </div><!-- new-method -->
 
     
       <div id="method-i-searchItems" class="method-detail ">
@@ -613,7 +623,7 @@
 
           
           <div class="method-source-code" id="searchItems-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 87</span>
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 94</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">searchItems</span>
   
   <span class="ruby-keyword">if</span> (<span class="ruby-operator">!</span><span class="ruby-identifier">params</span>[<span class="ruby-value">:search</span>].<span class="ruby-identifier">blank?</span>)
@@ -651,7 +661,7 @@
 
           
           <div class="method-source-code" id="searchRecipes-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 61</span>
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">searchRecipes</span>
   
   <span class="ruby-keyword">if</span> (<span class="ruby-operator">!</span><span class="ruby-identifier">params</span>[<span class="ruby-value">:search</span>].<span class="ruby-identifier">blank?</span>)
@@ -689,7 +699,7 @@
 
           
           <div class="method-source-code" id="searchReviews-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 74</span>
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">searchReviews</span>
   
   <span class="ruby-keyword">if</span> (<span class="ruby-operator">!</span><span class="ruby-identifier">params</span>[<span class="ruby-value">:search</span>].<span class="ruby-identifier">blank?</span>)
@@ -711,36 +721,6 @@
       </div><!-- searchReviews-method -->
 
     
-      <div id="method-i-sendemailToAdmin" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">sendemailToAdmin</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="sendemailToAdmin-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 157</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">sendemailToAdmin</span>
-  
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- sendemailToAdmin-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- sendemailToAdmin-method -->
-
-    
       <div id="method-i-sendemailToMember" class="method-detail ">
         
         <div class="method-heading">
@@ -757,7 +737,7 @@
 
           
           <div class="method-source-code" id="sendemailToMember-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 147</span>
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 163</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sendemailToMember</span>
 
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@member</span>
@@ -790,7 +770,7 @@
 
           
           <div class="method-source-code" id="showMember-source">
-            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 115</span>
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 122</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">showMember</span>
  <span class="ruby-comment"># raise params.inspect</span>
   <span class="ruby-ivar">@member</span> = <span class="ruby-constant">Member</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -803,6 +783,40 @@
 
         
       </div><!-- showMember-method -->
+
+    
+      <div id="method-i-verifymember" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verifymember</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="verifymember-source">
+            <pre><span class="ruby-comment"># File app/controllers/public_controller.rb, line 135</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">verifymember</span>
+       <span class="ruby-ivar">@member</span> = <span class="ruby-constant">Member</span>.<span class="ruby-identifier">find_by_auth_token!</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:auth_token</span>])
+       <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">verified_user</span> = <span class="ruby-keyword">true</span>
+       <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">save</span>
+       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_path</span>, <span class="ruby-value">:notice</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Your account has been activated. 
+       Please sign-in with your email_id.&quot;</span>
+     <span class="ruby-keyword">end</span></pre>
+          </div><!-- verifymember-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- verifymember-method -->
 
     
     </section><!-- public-instance-method-details -->

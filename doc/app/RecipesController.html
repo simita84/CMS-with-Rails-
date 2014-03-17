@@ -70,19 +70,23 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-create">#create</a>
+    <li><a href="#method-i-createRecipe">#createRecipe</a>
     
-    <li><a href="#method-i-destroy">#destroy</a>
+    <li><a href="#method-i-deleteRecipe">#deleteRecipe</a>
     
-    <li><a href="#method-i-edit">#edit</a>
+    <li><a href="#method-i-destroyRecipe">#destroyRecipe</a>
+    
+    <li><a href="#method-i-editRecipe">#editRecipe</a>
     
     <li><a href="#method-i-index">#index</a>
     
+    <li><a href="#method-i-listRecipe">#listRecipe</a>
+    
+    <li><a href="#method-i-listRecipes">#listRecipes</a>
+    
     <li><a href="#method-i-new">#new</a>
     
-    <li><a href="#method-i-show">#show</a>
-    
-    <li><a href="#method-i-update">#update</a>
+    <li><a href="#method-i-updateRecipe">#updateRecipe</a>
     
   </ul>
 </nav>
@@ -120,6 +124,8 @@
     <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
   
     <li><a href="./Contact.html">Contact</a>
+  
+    <li><a href="./ContactAdmin.html">ContactAdmin</a>
   
     <li><a href="./ContactsController.html">ContactsController</a>
   
@@ -222,10 +228,10 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-create" class="method-detail ">
+      <div id="method-i-createRecipe" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">create</span><span
+          <span class="method-name">createRecipe</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -233,39 +239,45 @@
 
         <div class="method-description">
           
-          <p>POST /recipes POST /recipes.json</p>
+          
           
 
           
-          <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 44</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
-  <span class="ruby-ivar">@recipe</span> = <span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:recipe</span>])
-
-  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">save</span>
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@recipe</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Recipe was successfully created.&#39;</span> }
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@recipe</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:created</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@recipe</span> }
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;new&quot;</span> }
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span> }
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- create-source -->
+          <div class="method-source-code" id="createRecipe-source">
+            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 27</span>
+ <span class="ruby-keyword">def</span> <span class="ruby-identifier">createRecipe</span>
+   <span class="ruby-ivar">@recipe</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:recipe</span>]) 
+    
+  <span class="ruby-comment">#Find admin using the admin session name</span>
+<span class="ruby-identifier">admin</span>=<span class="ruby-constant">Admin</span>.<span class="ruby-identifier">find_by_username</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:username</span>])
+       <span class="ruby-comment">#updating with admin email id</span>
+<span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-value">:posted_by=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">admin</span>.<span class="ruby-identifier">emailId</span>)
+ 
+   <span class="ruby-comment">#Save the object</span>
+     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">save</span>
+   <span class="ruby-comment">#If save succeeds redirect to list </span>
+   <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>]= <span class="ruby-string">&quot;Recipe --&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;--created successfully&quot;</span>
+     <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)
+   <span class="ruby-comment">#else redislay the form so user can fix the problem</span>
+     <span class="ruby-keyword">else</span>
+       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:warning</span>]= <span class="ruby-string">&quot;Recipe  &quot;</span><span class="ruby-operator">+</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;  cannot be added. &quot;</span>
+         <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;new&#39;</span>)
+     <span class="ruby-keyword">end</span>
+ <span class="ruby-keyword">end</span></pre>
+          </div><!-- createRecipe-source -->
           
         </div>
 
         
 
         
-      </div><!-- create-method -->
+      </div><!-- createRecipe-method -->
 
     
-      <div id="method-i-destroy" class="method-detail ">
+      <div id="method-i-deleteRecipe" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">destroy</span><span
+          <span class="method-name">deleteRecipe</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -273,35 +285,30 @@
 
         <div class="method-description">
           
-          <p>DELETE /recipes/1 DELETE /recipes/1.json</p>
+          
           
 
           
-          <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 76</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
-  <span class="ruby-ivar">@recipe</span> = <span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-  <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">destroy</span>
-
-  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">recipes_url</span> }
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- destroy-source -->
+          <div class="method-source-code" id="deleteRecipe-source">
+            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">deleteRecipe</span>
+       <span class="ruby-comment">#Find the object using form parameters</span>
+       <span class="ruby-ivar">@recipe</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+       <span class="ruby-keyword">end</span></pre>
+          </div><!-- deleteRecipe-source -->
           
         </div>
 
         
 
         
-      </div><!-- destroy-method -->
+      </div><!-- deleteRecipe-method -->
 
     
-      <div id="method-i-edit" class="method-detail ">
+      <div id="method-i-destroyRecipe" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">edit</span><span
+          <span class="method-name">destroyRecipe</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -309,23 +316,62 @@
 
         <div class="method-description">
           
-          <p>GET /recipes/1/edit</p>
+          
           
 
           
-          <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 38</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
-  <span class="ruby-ivar">@recipe</span> = <span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+          <div class="method-source-code" id="destroyRecipe-source">
+            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroyRecipe</span>
+     <span class="ruby-comment">#Find the object using form parameters</span>
+     <span class="ruby-ivar">@recipe</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">destroy</span>
+        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>]=<span class="ruby-string">&quot;Recipe   &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; deleted successfully&quot;</span>
+         <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)  
+         <span class="ruby-keyword">else</span>
+            <span class="ruby-identifier">flash</span>[<span class="ruby-value">:warning</span>]=<span class="ruby-string">&quot;Recipe   &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be deleted&quot;</span>   
+      <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- edit-source -->
+          </div><!-- destroyRecipe-source -->
           
         </div>
 
         
 
         
-      </div><!-- edit-method -->
+      </div><!-- destroyRecipe-method -->
+
+    
+      <div id="method-i-editRecipe" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">editRecipe</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="editRecipe-source">
+            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">editRecipe</span>
+  
+  <span class="ruby-ivar">@recipe</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- editRecipe-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- editRecipe-method -->
 
     
       <div id="method-i-index" class="method-detail ">
@@ -344,14 +390,10 @@
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 6</span>
+            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
-  <span class="ruby-ivar">@recipes</span> = <span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">all</span>
-
-  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># index.html.erb</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@recipes</span> }
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">listRecipes</span>
+  <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;listRecipes&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- index-source -->
           
@@ -361,6 +403,68 @@
 
         
       </div><!-- index-method -->
+
+    
+      <div id="method-i-listRecipe" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">listRecipe</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="listRecipe-source">
+            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">listRecipe</span>
+   <span class="ruby-ivar">@recipes</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;recipes.created_at DESC&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:id=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">id</span>)       
+  
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- listRecipe-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- listRecipe-method -->
+
+    
+      <div id="method-i-listRecipes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">listRecipes</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="listRecipes-source">
+            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">listRecipes</span>
+  <span class="ruby-ivar">@recipes</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;recipes.created_at DESC&quot;</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],<span class="ruby-identifier">per_page</span><span class="ruby-operator">:</span> <span class="ruby-value">10</span>)
+  
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- listRecipes-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- listRecipes-method -->
 
     
       <div id="method-i-new" class="method-detail ">
@@ -374,19 +478,14 @@
 
         <div class="method-description">
           
-          <p>GET /recipes/new GET /recipes/new.json</p>
+          
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 28</span>
+            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@recipe</span> = <span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">new</span>
-
-  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># new.html.erb</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@recipe</span> }
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@recipe</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -398,10 +497,10 @@
       </div><!-- new-method -->
 
     
-      <div id="method-i-show" class="method-detail ">
+      <div id="method-i-updateRecipe" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">show</span><span
+          <span class="method-name">updateRecipe</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -409,68 +508,35 @@
 
         <div class="method-description">
           
-          <p>GET /recipes/1 GET /recipes/1.json</p>
+          
           
 
           
-          <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
-  <span class="ruby-ivar">@recipe</span> = <span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-
-  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># show.html.erb</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@recipe</span> }
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- show-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- show-method -->
-
-    
-      <div id="method-i-update" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">update</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>PUT /recipes/1 PUT /recipes/1.json</p>
-          
-
-          
-          <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 60</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
-  <span class="ruby-ivar">@recipe</span> = <span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-
-  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:recipe</span>])
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@recipe</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Recipe was successfully updated.&#39;</span> }
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;edit&quot;</span> }
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span> }
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- update-source -->
+          <div class="method-source-code" id="updateRecipe-source">
+            <pre><span class="ruby-comment"># File app/controllers/recipes_controller.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">updateRecipe</span>
+     <span class="ruby-comment">#Find the object using form parameters</span>
+     <span class="ruby-ivar">@recipe</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+     <span class="ruby-comment">#update with new values</span>
+     <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:recipe</span>])
+     <span class="ruby-comment">#Save the object</span>
+     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">save</span>
+       <span class="ruby-comment">#If update succeeds redirect to list </span>
+       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>]= <span class="ruby-string">&quot;Recipe --&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;--updated successfully&quot;</span>
+       <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)
+     <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:warning</span>]= <span class="ruby-string">&quot;Recipe&quot;</span><span class="ruby-operator">+</span> <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be updated. &quot;</span>
+       <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;editRecipe&#39;</span>)
+     <span class="ruby-keyword">end</span>
+     <span class="ruby-keyword">end</span></pre>
+          </div><!-- updateRecipe-source -->
           
         </div>
 
         
 
         
-      </div><!-- update-method -->
+      </div><!-- updateRecipe-method -->
 
     
     </section><!-- public-instance-method-details -->

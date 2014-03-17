@@ -121,6 +121,8 @@
   
     <li><a href="./Contact.html">Contact</a>
   
+    <li><a href="./ContactAdmin.html">ContactAdmin</a>
+  
     <li><a href="./ContactsController.html">ContactsController</a>
   
     <li><a href="./ContactsHelper.html">ContactsHelper</a>
@@ -271,7 +273,7 @@
 
           
           <div class="method-source-code" id="authorize-source">
-            <pre><span class="ruby-comment"># File app/models/member.rb, line 41</span>
+            <pre><span class="ruby-comment"># File app/models/member.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">authorize</span>(<span class="ruby-identifier">username</span>=<span class="ruby-string">&quot;&quot;</span>,<span class="ruby-identifier">password</span>=<span class="ruby-string">&quot;&quot;</span>)
   <span class="ruby-identifier">member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">find_by_username</span>(<span class="ruby-identifier">username</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">member</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">member</span>.<span class="ruby-identifier">password_match?</span>(<span class="ruby-identifier">password</span>)
@@ -307,7 +309,7 @@
 
           
           <div class="method-source-code" id="hash_with_salt-source">
-            <pre><span class="ruby-comment"># File app/models/member.rb, line 64</span>
+            <pre><span class="ruby-comment"># File app/models/member.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">hash_with_salt</span>(<span class="ruby-identifier">password</span>=<span class="ruby-string">&quot;&quot;</span>,<span class="ruby-identifier">salt</span>=<span class="ruby-string">&quot;&quot;</span>)
   <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-node">&quot;Put #{salt} on the #{password}&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -337,7 +339,7 @@
 
           
           <div class="method-source-code" id="make_salt-source">
-            <pre><span class="ruby-comment"># File app/models/member.rb, line 60</span>
+            <pre><span class="ruby-comment"># File app/models/member.rb, line 65</span>
   <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">make_salt</span>(<span class="ruby-identifier">username</span>=<span class="ruby-string">&quot;&quot;</span>)
     <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-node">&quot;Use #{username} with #{Time.now} to make salt&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -373,7 +375,7 @@
 
           
           <div class="method-source-code" id="generate_token-source">
-            <pre><span class="ruby-comment"># File app/models/member.rb, line 34</span>
+            <pre><span class="ruby-comment"># File app/models/member.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generate_token</span>(<span class="ruby-identifier">column</span>)
    <span class="ruby-keyword">begin</span>
    <span class="ruby-keyword">self</span>[<span class="ruby-identifier">column</span>] = <span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">urlsafe_base64</span>
@@ -405,7 +407,7 @@
 
           
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File app/models/member.rb, line 69</span>
+            <pre><span class="ruby-comment"># File app/models/member.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">name</span>
   <span class="ruby-node">&quot;#{first_name}  #{last_name}&quot;</span>
 
@@ -436,7 +438,7 @@
 
           
           <div class="method-source-code" id="password_match-3F-source">
-            <pre><span class="ruby-comment"># File app/models/member.rb, line 54</span>
+            <pre><span class="ruby-comment"># File app/models/member.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">password_match?</span>(<span class="ruby-identifier">password</span>=<span class="ruby-string">&quot;&quot;</span>)
   <span class="ruby-identifier">hashed_password</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Member</span>.<span class="ruby-identifier">hash_with_salt</span>(<span class="ruby-identifier">password</span>,<span class="ruby-identifier">salt</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -466,7 +468,7 @@
 
           
           <div class="method-source-code" id="send_password_reset-source">
-            <pre><span class="ruby-comment"># File app/models/member.rb, line 26</span>
+            <pre><span class="ruby-comment"># File app/models/member.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">send_password_reset</span>
   <span class="ruby-identifier">generate_token</span>(<span class="ruby-value">:password_reset_token</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">password_reset_sent_at</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">zone</span>.<span class="ruby-identifier">now</span>

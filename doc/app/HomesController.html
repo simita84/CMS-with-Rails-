@@ -70,13 +70,21 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-edit">#edit</a>
+    <li><a href="#method-i-createHome">#createHome</a>
+    
+    <li><a href="#method-i-deleteHome">#deleteHome</a>
+    
+    <li><a href="#method-i-destroyHome">#destroyHome</a>
+    
+    <li><a href="#method-i-editHome">#editHome</a>
     
     <li><a href="#method-i-index">#index</a>
     
-    <li><a href="#method-i-show">#show</a>
+    <li><a href="#method-i-new">#new</a>
     
-    <li><a href="#method-i-update">#update</a>
+    <li><a href="#method-i-showHome">#showHome</a>
+    
+    <li><a href="#method-i-updateHome">#updateHome</a>
     
   </ul>
 </nav>
@@ -114,6 +122,8 @@
     <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
   
     <li><a href="./Contact.html">Contact</a>
+  
+    <li><a href="./ContactAdmin.html">ContactAdmin</a>
   
     <li><a href="./ContactsController.html">ContactsController</a>
   
@@ -216,10 +226,10 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-edit" class="method-detail ">
+      <div id="method-i-createHome" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">edit</span><span
+          <span class="method-name">createHome</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -227,23 +237,133 @@
 
         <div class="method-description">
           
-          <p>GET /homes/1/edit</p>
+          
           
 
           
-          <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/homes_controller.rb, line 28</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
-  <span class="ruby-ivar">@home</span> = <span class="ruby-constant">Home</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+          <div class="method-source-code" id="createHome-source">
+            <pre><span class="ruby-comment"># File app/controllers/homes_controller.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">createHome</span>
+  <span class="ruby-ivar">@home</span>=<span class="ruby-constant">Home</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:home</span>]) 
+  
+  <span class="ruby-comment">#Save the object</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@home</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-comment">#If save succeeds redirect to list </span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Home --created successfully&quot;</span>
+    <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)
+  <span class="ruby-comment">#else redislay the form so user can fix the problem</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Home cannot be added. &quot;</span>
+        <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;editHome&#39;</span>)
+    <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- edit-source -->
+          </div><!-- createHome-source -->
           
         </div>
 
         
 
         
-      </div><!-- edit-method -->
+      </div><!-- createHome-method -->
+
+    
+      <div id="method-i-deleteHome" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">deleteHome</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="deleteHome-source">
+            <pre><span class="ruby-comment"># File app/controllers/homes_controller.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">deleteHome</span>
+          <span class="ruby-comment">#Find the object using form parameters</span>
+          <span class="ruby-ivar">@home</span>=<span class="ruby-constant">Home</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+          <span class="ruby-keyword">end</span></pre>
+          </div><!-- deleteHome-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- deleteHome-method -->
+
+    
+      <div id="method-i-destroyHome" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">destroyHome</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="destroyHome-source">
+            <pre><span class="ruby-comment"># File app/controllers/homes_controller.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroyHome</span>
+     <span class="ruby-comment">#Find the object using form parameters</span>
+     <span class="ruby-ivar">@home</span>=<span class="ruby-constant">Home</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@home</span>.<span class="ruby-identifier">destroy</span>
+        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]=<span class="ruby-string">&quot;Home deleted successfully&quot;</span>
+         <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)  
+         <span class="ruby-keyword">else</span>
+            <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]=<span class="ruby-string">&quot;Home cannot be deleted&quot;</span>   
+      <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- destroyHome-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- destroyHome-method -->
+
+    
+      <div id="method-i-editHome" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">editHome</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="editHome-source">
+            <pre><span class="ruby-comment"># File app/controllers/homes_controller.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">editHome</span>
+   <span class="ruby-comment">#Find the object using form parameters</span>
+   <span class="ruby-ivar">@home</span>=<span class="ruby-constant">Home</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+   <span class="ruby-keyword">end</span></pre>
+          </div><!-- editHome-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- editHome-method -->
 
     
       <div id="method-i-index" class="method-detail ">
@@ -264,12 +384,8 @@
           <div class="method-source-code" id="index-source">
             <pre><span class="ruby-comment"># File app/controllers/homes_controller.rb, line 6</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
-  <span class="ruby-ivar">@homes</span> = <span class="ruby-constant">Home</span>.<span class="ruby-identifier">all</span>
-
-  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># index.html.erb</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@homes</span> }
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">showHome</span>
+  <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;showHome&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- index-source -->
           
@@ -281,10 +397,10 @@
       </div><!-- index-method -->
 
     
-      <div id="method-i-show" class="method-detail ">
+      <div id="method-i-new" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">show</span><span
+          <span class="method-name">new</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -292,34 +408,29 @@
 
         <div class="method-description">
           
-          <p>GET /homes/1 GET /homes/1.json</p>
+          <p>Create new home page content.</p>
           
 
           
-          <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/homes_controller.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
-  <span class="ruby-ivar">@home</span> = <span class="ruby-constant">Home</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-
-  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># show.html.erb</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@home</span> }
-  <span class="ruby-keyword">end</span>
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File app/controllers/homes_controller.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@home</span>=<span class="ruby-constant">Home</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- show-source -->
+          </div><!-- new-source -->
           
         </div>
 
         
 
         
-      </div><!-- show-method -->
+      </div><!-- new-method -->
 
     
-      <div id="method-i-update" class="method-detail ">
+      <div id="method-i-showHome" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">update</span><span
+          <span class="method-name">showHome</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -327,33 +438,65 @@
 
         <div class="method-description">
           
-          <p>PUT /homes/1 PUT /homes/1.json</p>
+          
           
 
           
-          <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/homes_controller.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
-  <span class="ruby-ivar">@home</span> = <span class="ruby-constant">Home</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-
-  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@home</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:home</span>])
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@home</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Home was successfully updated.&#39;</span> }
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;edit&quot;</span> }
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@home</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span> }
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
+          <div class="method-source-code" id="showHome-source">
+            <pre><span class="ruby-comment"># File app/controllers/homes_controller.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">showHome</span>
+  <span class="ruby-ivar">@homes</span>=<span class="ruby-constant">Home</span>.<span class="ruby-identifier">all</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- update-source -->
+          </div><!-- showHome-source -->
           
         </div>
 
         
 
         
-      </div><!-- update-method -->
+      </div><!-- showHome-method -->
+
+    
+      <div id="method-i-updateHome" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updateHome</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="updateHome-source">
+            <pre><span class="ruby-comment"># File app/controllers/homes_controller.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">updateHome</span>
+     <span class="ruby-comment">#Find the object using form parameters</span>
+     <span class="ruby-ivar">@home</span>=<span class="ruby-constant">Home</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+     <span class="ruby-comment">#update with new values</span>
+     <span class="ruby-ivar">@home</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:home</span>])
+     <span class="ruby-comment">#Save the object</span>
+     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@home</span>.<span class="ruby-identifier">save</span>
+       <span class="ruby-comment">#If update succeeds redirect to list </span>
+       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Home --&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@home</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;--updated successfully&quot;</span>
+       <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)
+     <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Home&quot;</span><span class="ruby-operator">+</span> <span class="ruby-ivar">@home</span>.<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be updated. &quot;</span>
+       <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;editHome&#39;</span>)
+     <span class="ruby-keyword">end</span>
+     <span class="ruby-keyword">end</span></pre>
+          </div><!-- updateHome-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- updateHome-method -->
 
     
     </section><!-- public-instance-method-details -->

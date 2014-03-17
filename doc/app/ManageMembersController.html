@@ -78,6 +78,8 @@
     
     <li><a href="#method-i-editMember">#editMember</a>
     
+    <li><a href="#method-i-index">#index</a>
+    
     <li><a href="#method-i-listMembers">#listMembers</a>
     
     <li><a href="#method-i-newMember">#newMember</a>
@@ -120,6 +122,8 @@
     <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
   
     <li><a href="./Contact.html">Contact</a>
+  
+    <li><a href="./ContactAdmin.html">ContactAdmin</a>
   
     <li><a href="./ContactsController.html">ContactsController</a>
   
@@ -238,7 +242,7 @@
 
           
           <div class="method-source-code" id="createMember-source">
-            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 17</span>
+            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">createMember</span>
   <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:member</span>]) 
 
@@ -246,7 +250,7 @@
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">save</span>
   <span class="ruby-comment">#If save succeeds redirect to list </span>
   <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Member --&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@member</span>.<span class="ruby-identifier">username</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;--created successfully&quot;</span>
-    <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;listMembers&#39;</span>)
+    <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)
   <span class="ruby-comment">#else redislay the form so user can fix the problem</span>
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Member &quot;</span><span class="ruby-operator">+</span> <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">username</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be added. &quot;</span>
@@ -279,7 +283,7 @@
 
           
           <div class="method-source-code" id="deleteMember-source">
-            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 55</span>
+            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">deleteMember</span>
   <span class="ruby-comment">#Find the object using form parameters</span>
   <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -310,13 +314,13 @@
 
           
           <div class="method-source-code" id="destroyMember-source">
-            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 59</span>
+            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroyMember</span>
      <span class="ruby-comment">#Find the object using form parameters</span>
      <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
       <span class="ruby-keyword">if</span> <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">destroy</span>
         <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]=<span class="ruby-string">&quot;Member   &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@member</span>.<span class="ruby-identifier">first_name</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; deleted successfully&quot;</span>
-         <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;list&#39;</span>)  
+         <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)  
          <span class="ruby-keyword">else</span>
             <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]=<span class="ruby-string">&quot;Member   &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@member</span>.<span class="ruby-identifier">first_name</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be deleted&quot;</span>   
       <span class="ruby-keyword">end</span>
@@ -347,7 +351,7 @@
 
           
           <div class="method-source-code" id="editMember-source">
-            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 32</span>
+            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">editMember</span>
     <span class="ruby-comment">#Find the object using form parameters</span>
     <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -360,6 +364,37 @@
 
         
       </div><!-- editMember-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-identifier">listMembers</span>
+  <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;listMembers&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
 
     
       <div id="method-i-listMembers" class="method-detail ">
@@ -378,7 +413,7 @@
 
           
           <div class="method-source-code" id="listMembers-source">
-            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 7</span>
+            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">listMembers</span>
   <span class="ruby-ivar">@members</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;members.created_at DESC&quot;</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],<span class="ruby-value">:per_page</span> =<span class="ruby-operator">&gt;</span><span class="ruby-value">3</span>)
 
@@ -409,7 +444,7 @@
 
           
           <div class="method-source-code" id="newMember-source">
-            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 12</span>
+            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">newMember</span>
   <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
@@ -439,7 +474,7 @@
 
           
           <div class="method-source-code" id="updateMember-source">
-            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 37</span>
+            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">updateMember</span>
      <span class="ruby-comment">#Find the object using form parameters</span>
      <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -449,7 +484,7 @@
      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">save</span>
        <span class="ruby-comment">#If update succeeds redirect to list </span>
        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Member details for --&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@member</span>.<span class="ruby-identifier">last_name</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;--updated successfully&quot;</span>
-       <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;listMembers&#39;</span>)
+       <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)
      <span class="ruby-keyword">else</span>
         <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Member details for&quot;</span><span class="ruby-operator">+</span> <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">last_name</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be updated. &quot;</span>
        <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;newMember&#39;</span>)

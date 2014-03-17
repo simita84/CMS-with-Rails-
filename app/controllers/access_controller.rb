@@ -41,36 +41,5 @@ class AccessController < ApplicationController
  
   #-----------------------End of Admin Login-----------------------
   
-   
-#-----------------------Managing Members from Admin console-----------------------
-
-   #List all the member users
-   def listMembers
-
-    @members=Member.order("members.created_at ASC")
       
-   end
-
-    #Create new    admin users
-   def new
-
-     @member=Member.new()
-   end
-
-   def create
-     #Instantiate a new object using for parameters
-       @member=Member.new(params[:product])
-     #Save the object
-       if @member.save
-     #If save succeeds redirect to list 
-     flash.now[:success]= "Member --"+@member.username+"--created successfully"
-       redirect_to(:action=>'list')
-     #else redislay the form so user can fix the problem
-       else
-         flash[:notice]= "Member"+ @member.username+" cannot be added. "
-           render('new')
-       end
-   end
-#-----------------------End of Managing Members from Admin console-----------------------  
-  
 end

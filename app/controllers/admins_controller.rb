@@ -11,7 +11,7 @@ class AdminsController < ApplicationController
        #List all the admin users
       def listAdmins
 
-       @admins=Admin.order("admins.created_at DESC").paginate(:page => params[:page],:per_page =>10)
+       @admins=Admin.order("admins.created_at DESC")
       end
 
       

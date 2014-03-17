@@ -2,9 +2,7 @@ require "digest/sha1"
 class Admin < ActiveRecord::Base
   attr_accessible :emailId, :first_name, :hashed_password, :last_name, :salt, :username
 
-   
-  
-  attr_accessor :password
+   attr_accessor :password
   attr_protected :hashed_password,:salt
   
    #Admin Email ID validation

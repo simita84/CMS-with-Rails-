@@ -2,6 +2,7 @@ require 'test_helper'
 
 class MemberTest < ActiveSupport::TestCase
 
+ 
              #------------tests for  Member Model Validation ----------#
 
 #Creating Member with valid attributes

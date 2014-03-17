@@ -1,3 +1,4 @@
+
 require 'test_helper'
 
 class AdminTest < ActiveSupport::TestCase
@@ -16,18 +17,7 @@ class AdminTest < ActiveSupport::TestCase
 	                     refute @admin.valid?
 
  end
- #Checking Admin updation with Valid cerednetials
-test "test_updateAdmin_with_Valid_Credentials" do
 
-    @admin = Admin.find(464178056)
- 	@admin.update_attributes(:username=>"SimiRaj",:first_name=>"Simi",:last_name=>"Raj" ,
- 								:password=>"secret")
-                                     
-	
-	                   assert @admin.valid?
-
- end
- 
 
 
 end

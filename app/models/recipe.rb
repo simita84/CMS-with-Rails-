@@ -2,9 +2,9 @@
 class Recipe < ActiveRecord::Base
    
    attr_accessible :recipephoto,:title, :content,:posted_by
-   #has_attached_file :recipephoto, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+   has_attached_file :recipephoto, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
-   has_attached_file :recipephoto                                                            ,
+   #has_attached_file :recipephoto                                                            ,
                       :storage        => :s3                                                ,
                       :s3_credentials => {:bucket            => ENV['clubbykids'           ],
                                           :access_key_id     => ENV['AKIAIQTSJOAYFPMC7TKA'    ],

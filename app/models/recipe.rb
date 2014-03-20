@@ -1,4 +1,4 @@
-require 'aws/s3'
+#require 'aws/s3'
 class Recipe < ActiveRecord::Base
    
    attr_accessible :recipephoto,:title, :content,:posted_by

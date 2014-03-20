@@ -17,13 +17,13 @@
 		<td><%=f.text_area(:content,size: "60x12")%></td>
     </tr>
     <tr>
-    	<th>Review picture</th>
+    	<th>Upload Picture</th>
     	<td> <%=f.file_field(:reviewphoto)%></td>
 	</tr>	
-		<th>Author</th>
+		<th>Posted By</th>
 		<td><%= session[:username]%></td>
     </tr>
-	<tr>
+	<tr><td></td>
 		<td>
  	    <%=submit_tag "Create Review",:class=>'btn'%> 
 		<%=link_to("Cancel",{:action=>'listReviews',:product_id=>@product.id},:class=>'btn')%>

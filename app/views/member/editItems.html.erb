@@ -1,34 +1,34 @@
-<html>
- <body>		
  
  <%=form_for(:item,:url=>{:action=>'updateItems',:id =>@item.id}) do |f| %>
+ 
+ <h3>Modify Item</h3>
+ 
  	<table class="table">
 		 
 			<tr>
-				<th> Title</th>
-				<td>
-					<%=f.text_field(:name)%></td>
-				</tr>
-				<tr><td>
-
-				</td> <%=f.file_field(:itemphoto) %>
-					</tr>
-				<tr>
-					<th>Description</th>
-					<td>
- 
-							<%=f.text_area(:content,size: "60x12")%></td> 
-					</tr>
-					<tr>
-					 	<th>Author:			</th>
+				<th>Item Title</th>
+				<td><%=f.text_field(:name)%></td>
+			</tr>
+				
+			<tr>
+				<th>Description</th>
+				<td><%=f.text_area(:content,size: "60x12")%></td> 
+			</tr>
+			<tr>
+				<th>Posted By</th>
 				<td><%=f.text_field(:posted_by,:disabled=>'true')%> </td>	</tr>
 			<tr>
-				
-				<td> </td>	<td>	 <%=f.submit "Modify",class:'btn' %> 
- 
-		 	<%=link_to("Cancel",{:action=>'listItems'},:class=>'btn')%> </td>
-	 </tr>
+				<th>Change Picture</th>
+				<td><%=f.file_field(:itemphoto) %></td> 
+			</tr>
+			<tr>
+				<td> </td>	
+				<td>	
+				 <%=f.submit "Modify",class:'btn' %> 
+				 <%=link_to("Cancel",{:action=>'listItems'},:class=>'btn')%> 
+				</td>
+	 		</tr>
  
 					<%end%>
- 	</body>
-	</html>
+ 	 
+	</table>

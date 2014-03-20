@@ -4,7 +4,8 @@
  <%=render'shared/recipe_error_messages.html.erb' %>
  
  <%=form_for(:recipe,:url=>{:action=>'updateRecipes',:id =>@recipe.id},:html => { :multipart => true }) do |f| %>
- <h3>Edit Recipe</h3>
+ <h3>Modify Recipe</h3>
+ <br>
  	<table class="table">
 		 
 			<tr>
@@ -22,15 +23,13 @@
 				</td>	
 			</tr>
 				<tr>
-					<th>Edit Recipe Picture</th>
+					<th>Change Picture</th>
 					<td><%= f.file_field :recipephoto %></td>
 					</tr>
-			<tr>
+			<tr><td></td>
 				<td> 	
-					<%=submit_tag "Edit Recipe" ,:class=>'btn'%> 
-
-				</td> 
-	<td>	
+					<%=submit_tag "MODIFY" ,:class=>'btn'%> 
+				
 		<%=link_to("CANCEL",{:action=>'listRecipes'},:class=>'btn')%>
 	</td></tr>
  					

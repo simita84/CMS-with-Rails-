@@ -1,4 +1,4 @@
-<table summary="Subject form fields">
+<table class="table">
         
   <tr>
     <th>Event Name</th>
@@ -17,6 +17,10 @@
     <td><%= f.text_field(:duration) %></td>
   </tr>
   <tr>
+    <tr>
+    <th>Duration</th>
+    <td><%= f.text_area(:description) %></td>
+  </tr>
     <th>Event Picture</th>
     <td><%= f.file_field :eventphoto %></td>
   </tr>

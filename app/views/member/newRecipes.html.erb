@@ -16,22 +16,21 @@
 		<%=f.text_area :content,size: "60x12" %></td>
 			</tr>
 			<tr>
-				<th>Author</th>
+				<th>Posted By</th>
 				<td>
 				<%= session[:username] %></td>
 				</tr>
 				
 				<tr>
-					<th>Upload Recipe Picture</th>
+					<th>Upload Picture</th>
 					<td>
 					<%= f.file_field :recipephoto %></td>
 					</tr>
  		 <tr>
- 		 	<td>
-			<%=submit_tag "Create Recipe",:class=>'btn'%> 
-			</td> 
-		<td>
-			<%=link_to "Cancel",{:action=>'listRecipes'},:class=>'btn' %></td>
+ 		 	<td></td><td>
+			<%=submit_tag "CREATE",:class=>'btn'%> 
+			 
+			<%=link_to "CANCEL",{:action=>'listRecipes'},:class=>'btn' %></td>
 		
 		</tr>
 	<%end%>

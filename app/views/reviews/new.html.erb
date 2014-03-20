@@ -19,18 +19,20 @@
 		<td><%=f.text_area(:content,size: "40x12")%></td>
     </tr>	
  <tr>
- 	<th>Add Picture</th>
+ 	<th>Upload Picture</th>
 	<td>
 	 <%= f.file_field(:reviewphoto) %><td></tr>
 	 <tr>
- 	<th>Posted_By</th>
+ 	<th>Posted By</th>
 	<td>
 	 <%= session[:username]%><td></tr>
      
-	    <tr><td>
-		<%=f.submit "Create",class:'btn' %> </td>
-		<td>
-
+	    <tr>
+	    	<td>
+	    	</td>
+	    	<td>
+				<%=f.submit "Create",class:'btn' %> 
+			
 		<%=link_to("Cancel",{:action=>'index',:product_id=>@product.id},:class=>'btn')%>
  </td></tr>
  

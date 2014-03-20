@@ -2,29 +2,34 @@
 <body>
  
 		<%=form_for(:item,:url=>{:action=>'createItems'}) do |f| %>
+		<h3>Post New Item</h3>
 <table class="table">
  	<tr>
 		<th>Item Title</th>
 		<td><%=f.text_field(:name)%></td> </tr>
-		<tr><td>
-			
-		</td> <%=f.file_field(:itemphoto) %>
-			</tr>
+		
 		<tr>
 			<th>Instructions</th>
 			<td>
 		<%=f.text_area :content,size: "60x12" %></td>
 			</tr>
 			<tr>
-				<th>Listed By</th>
+				<th>Posted By</th>
 				<td>
 				<%= session[:username] %></td>
 				</tr>
- 		 <tr><td>
-	<div class="btn">
-			<%=submit_tag("Create item")%> 
-			</div></td> 
-		<td><div class="btn"><%=link_to("Cancel",:action=>'listItems') %></div></td>
+				
+				<tr><th>Upload Picture</th>
+					<td>
+			
+		 <%=f.file_field(:itemphoto) %></td>
+			</tr>
+ 		 <tr>
+ 		 	<td></td><td>
+ 
+			<%=submit_tag "POST" ,:class=>'btn'%> 
+			 
+			<%=link_to("CANCEL",{:action=>'listItems'},:class=>'btn') %></td>
 		
 		</tr>
 	<%end%>

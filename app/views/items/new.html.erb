@@ -25,7 +25,7 @@
 </tr>
 <tr>
 
-	<th>Item Picture</th>
+	<th>Upload Picture</th>
 <td>
 
  <%=f.file_field(:itemphoto) %></td>
@@ -39,7 +39,7 @@
 		 <tr>
 		 	<td></td>
 	 		<td >
-				<%=submit_tag "Create item",:class=>"btn"%>  
+				<%=submit_tag "CREATE",:class=>"btn"%>  
 				<%=link_to("CANCEL",{:action=>'index',:id=>@item.id},:class=>"btn")%></td></tr>
 	
 	 <%end%>

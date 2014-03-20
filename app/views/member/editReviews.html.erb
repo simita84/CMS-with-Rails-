@@ -5,6 +5,9 @@
 <%= render 'shared/review_error_messages.html.erb' %>
 
  <%=form_for(:review,:url=>{:action=>'updateReviews',:id =>@review.id,:product_id=>@product.id}) do |f| %>
+ 	
+<h3>Modify Review</h3>
+<br>
  	<table class="table">
 	 			<tr>
 					<th>Reviews Title</th>
@@ -18,7 +21,7 @@
 						<%=f.text_area(:content,size: "60x12")%></td>
 					</tr>
 					 <tr>
-    				<th>Review picture</th>
+    				<th>Change Picture</th>
     				<td> <%=f.file_field(:reviewphoto)%></td>
 						</tr>	
 					<tr>
@@ -27,11 +30,10 @@
 							<%=@review.posted_by%>
 							 </td>
 		 			</tr>
-			<tr>
+			<tr><td></td>
 				<td> 	
-					<%=submit_tag "Edit Reviews",:class=>'btn'%> 	 
-				</td>
-	 	        <td>
+					<%=submit_tag "MODIFY",:class=>'btn'%> 	 
+				 
 	<%=link_to("CANCEL",{:action=>'listReviews',:product_id=>@product.id},:class=>"btn")%>
 
 						</td>

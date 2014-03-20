@@ -1,7 +1,7 @@
-<html>
- <body>		
+ 	
  
  <%=form_for(:member,:url=>{:action=>'updateMember',:id =>@member.id},:html => {:multipart => true }) do |f| %>
+ 	<h3>Modify Profile</h3>
  	<table class="table">
 		 
 			<tr>
@@ -19,21 +19,17 @@
 				<td><%=f.text_field(:last_name)%> </td>	
 				</tr>
 				<tr>
-						<th> Choose a Picture </th>
+						<th> Change Picture </th>
 					<td>
-					
 				 <%= f.file_field (:memberphoto) %></td>
 					</tr>
 				
-			<tr><td> 		 
-				
-				<%=f.submit "Modify Profile",class:'btn' %> 
-	 
-	</td> <td>	
-		<div class="btn">	<%=link_to("CANCEL",:action=>'showAccountInfo')%></div></td>
-	 </tr>
+			<tr>
+				<td></td>
+				<td> <%=f.submit "Modify Profile",class:'btn' %> 
+	 				<%=link_to("CANCEL",{:action=>'showAccountInfo'},:class=>'btn')%></td>
+	 		</tr>
  
-					<%end%>
+		 <%end%>
 					</table>
- 	</body>
-	</html>
+  

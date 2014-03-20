@@ -15,7 +15,7 @@
 		<%=f.text_area :content,size: "60x12" %></td>
 			</tr>
 				
-				<tr><td>Recipe picture</td>
+				<tr><th>Upload picture</th>
 					<td>
 
 		 <%=f.file_field(:recipephoto) %></td></tr>
@@ -29,8 +29,8 @@
 <td>
 
  
-			<%=submit_tag "Create Recipe" ,:class=>"btn"%> 
-			  <%=link_to("Cancel",{:action=>'index'},:class=>'btn') %></td>
+			<%=submit_tag "CREATE " ,:class=>"btn"%> 
+			  <%=link_to("CANCEL",{:action=>'index'},:class=>'btn') %></td>
 		
 		</tr>
 	<%end%>

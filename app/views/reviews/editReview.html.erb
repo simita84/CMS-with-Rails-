@@ -29,9 +29,12 @@
 			Posted By</th>
 			<td><%=f.text_field(:posted_by,:disabled=>'true')%> </td>	 
 		 </tr>
-		<tr><td>	<%=f.file_field(:reviewphoto) %></td></tr>
-			<tr>
-			 <td></td><td>	<%=f.submit "Modify",class:'btn' %>  
+		<tr>
+			<th>Change Picture</th>
+			<td><%=f.file_field(:reviewphoto) %></td>
+		</tr>
+		 <tr><td></td>
+			 <td>	<%=f.submit "MODIFY",:class=>'btn'%>  
  
 	 	<%=link_to("CANCEL",{:action=>'index',:product_id=>@product.id},:class=>'btn')%></td>
 	 </tr>

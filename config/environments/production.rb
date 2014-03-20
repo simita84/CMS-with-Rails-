@@ -82,16 +82,16 @@ MomsAndTots::Application.configure do
   config.action_mailer.perform_deliveries = true
 
 # config/environments/production.rb
-config.paperclip_defaults = {
-  :storage => :s3,
-  :s3_credentials => {
-    :bucket => ENV['clubbykids'],
-    :access_key_id => ENV['AKIAIQTSJOAYFPMC7TKA'],
-    :secret_access_key => ENV['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']
+#config.paperclip_defaults = {
+ # :storage => :s3,
+  #:s3_credentials => {
+  #  :bucket => ENV['clubbykids'],
+   # :access_key_id => ENV['AKIAIQTSJOAYFPMC7TKA'],
+   # :secret_access_key => ENV['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']
     #AWSAccessKeyId=AKIAIQTSJOAYFPMC7TKA
     #AWSSecretKey=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
-  }
-}
+  #}
+#}
 
 
   

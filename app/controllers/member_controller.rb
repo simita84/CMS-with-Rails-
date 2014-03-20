@@ -11,10 +11,37 @@ class MemberController < ApplicationController
        render("index")
     end
 
+  #-------------------UPDATE MEMBER profile---------------------------------
     def showAccountInfo
       @member_user=Member.find_by_username(session[:username])
       # @member_user=Member.where(:username=>session[:username])
     end
+
+
+     def editMember
+         #Find the object using form parameters
+         @member=Member.find(params[:id])
+
+     end
+
+     def updateMember
+          #Find the object using form parameters
+          @member=Member.find(params[:id])
+           #update with new values
+           @member.update_attributes(params[:member])
+          #Save the object
+           if @member.save
+                 #If update succeeds redirect to list 
+            flash[:notice]= "Details for Member for --"+@member.name+"--updated successfully"
+               redirect_to(:action=>'showAccountInfo',:id=>@member.id)
+          else
+            #if save fails ,rediplay the form so user can fix problems
+            flash[:notice]= "Details for Member for --"+@member.name+" cannot be updated. "
+
+              render('editMember')
+          end
+  end
+  #-------------------------
 
     def listContactInfo
       @contacts=Contact.all
@@ -269,34 +296,7 @@ class MemberController < ApplicationController
     end
 
 
-  #-------------------UPDATE MEMBERS---------------------------------
-
-
-
-     def editMember
-         #Find the object using form parameters
-         @member=Member.find(params[:id])
-
-     end
-
-     def updateMember
-          #Find the object using form parameters
-          @member=Member.find(params[:id])
-           #update with new values
-           @member.update_attributes(params[:member])
-          #Save the object
-           if @member.save
-                 #If update succeeds redirect to list 
-            flash[:notice]= "Details for Member for --"+@member.name+"--updated successfully"
-               redirect_to(:action=>'showAccountInfo',:id=>@member.id)
-          else
-            #if save fails ,rediplay the form so user can fix problems
-            flash[:notice]= "Details for Member for --"+@member.name+" cannot be updated. "
-
-              render('editMember')
-          end
-  end
-  #-------------------------
+  
 
 
     def logout

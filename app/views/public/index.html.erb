@@ -28,8 +28,8 @@
 	<p> <center>
 	 <%=link_to("Sign In",{:action=>'login'},:class=>'btn btn-primary btn-large')%>
 	<%=link_to("Sign Up",{:action=>'new'},:class=>'btn btn-primary btn-large')%>
-		
-		
+   
+ 
 		
 		</center></p>
  
@@ -90,7 +90,10 @@
 
 </table>
 
+ <%= render_shareable  :facebook=> {:send=> 'true', :url=> 'https://www.facebook.com/MomsAndTotsSylvanParkNeighborhood'} %>
+
 </div>
+
 </div>
  
  

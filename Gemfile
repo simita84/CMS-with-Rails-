@@ -13,7 +13,7 @@ gem 'bootstrap-sass', '2.0.0'
 
 gem 'mysql2'
 
-
+gem 'shareable'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -29,7 +29,8 @@ end
 
 gem "will_paginate", "~> 3.0.4"
 #gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
-gem "paperclip", "~> 4.1"
+gem 'paperclip'
+gem 'aws-sdk'
 
 gem 'jquery-rails'
 

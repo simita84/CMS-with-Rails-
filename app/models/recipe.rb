@@ -15,8 +15,7 @@ class Recipe < ActiveRecord::Base
 
 
 
-   validates_attachment_content_type :recipephoto, 
-                              :content_type => %w(image/jpeg image/jpg image/png image/gif)
+   #validates_attachment_content_type :recipephoto,  :content_type => %w(image/jpeg image/jpg image/png image/gif)
   
  
     

@@ -70,8 +70,6 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-createMember">#createMember</a>
-    
     <li><a href="#method-i-deleteMember">#deleteMember</a>
     
     <li><a href="#method-i-destroyMember">#destroyMember</a>
@@ -81,8 +79,6 @@
     <li><a href="#method-i-index">#index</a>
     
     <li><a href="#method-i-listMembers">#listMembers</a>
-    
-    <li><a href="#method-i-newMember">#newMember</a>
     
     <li><a href="#method-i-updateMember">#updateMember</a>
     
@@ -226,47 +222,6 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-createMember" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">createMember</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="createMember-source">
-            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 23</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">createMember</span>
-  <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:member</span>]) 
-
-  <span class="ruby-comment">#Save the object</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">save</span>
-  <span class="ruby-comment">#If save succeeds redirect to list </span>
-  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Member --&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@member</span>.<span class="ruby-identifier">username</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;--created successfully&quot;</span>
-    <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)
-  <span class="ruby-comment">#else redislay the form so user can fix the problem</span>
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Member &quot;</span><span class="ruby-operator">+</span> <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">username</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be added. &quot;</span>
-        <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;newMember&#39;</span>)
-    <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- createMember-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- createMember-method -->
-
-    
       <div id="method-i-deleteMember" class="method-detail ">
         
         <div class="method-heading">
@@ -346,7 +301,21 @@
 
         <div class="method-description">
           
-          
+          <p>Save the object</p>
+
+<pre>if @member.save</pre>
+
+<p>If save succeeds redirect to list  <a href="http://:notice">flash</a>= “<a
+href="Member.html">Member</a> –”+@member.username+“–created successfully”</p>
+
+<pre class="ruby"> <span class="ruby-identifier">redirect_to</span>(:<span class="ruby-identifier">action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)
+<span class="ruby-comment">#else redislay the form so user can fix the problem</span>
+  <span class="ruby-keyword">else</span>
+   <span class="ruby-identifier">flash</span>[:<span class="ruby-identifier">notice</span>]= <span class="ruby-string">&quot;Member &quot;</span><span class="ruby-operator">+</span> <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">username</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be added. &quot;</span>
+     <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;newMember&#39;</span>)
+ <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
           
 
           
@@ -426,36 +395,6 @@
 
         
       </div><!-- listMembers-method -->
-
-    
-      <div id="method-i-newMember" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">newMember</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="newMember-source">
-            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 18</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">newMember</span>
-  <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">new</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- newMember-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- newMember-method -->
 
     
       <div id="method-i-updateMember" class="method-detail ">

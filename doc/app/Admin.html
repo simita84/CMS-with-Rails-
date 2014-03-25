@@ -267,7 +267,7 @@
 
           
           <div class="method-source-code" id="authorize-source">
-            <pre><span class="ruby-comment"># File app/models/admin.rb, line 40</span>
+            <pre><span class="ruby-comment"># File app/models/admin.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">authorize</span>(<span class="ruby-identifier">username</span>=<span class="ruby-string">&quot;&quot;</span>,<span class="ruby-identifier">password</span>=<span class="ruby-string">&quot;&quot;</span>)
   <span class="ruby-identifier">user</span>=<span class="ruby-constant">Admin</span>.<span class="ruby-identifier">find_by_username</span>(<span class="ruby-identifier">username</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">password_match?</span>(<span class="ruby-identifier">password</span>)
@@ -303,7 +303,7 @@
 
           
           <div class="method-source-code" id="hash_with_salt-source">
-            <pre><span class="ruby-comment"># File app/models/admin.rb, line 63</span>
+            <pre><span class="ruby-comment"># File app/models/admin.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">hash_with_salt</span>(<span class="ruby-identifier">password</span>=<span class="ruby-string">&quot;&quot;</span>,<span class="ruby-identifier">salt</span>=<span class="ruby-string">&quot;&quot;</span>)
   <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-node">&quot;Put #{salt} on the #{password}&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -333,7 +333,7 @@
 
           
           <div class="method-source-code" id="make_salt-source">
-            <pre><span class="ruby-comment"># File app/models/admin.rb, line 59</span>
+            <pre><span class="ruby-comment"># File app/models/admin.rb, line 57</span>
   <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">make_salt</span>(<span class="ruby-identifier">username</span>=<span class="ruby-string">&quot;&quot;</span>)
     <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-node">&quot;Use #{username} with #{Time.now} to make salt&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -369,7 +369,7 @@
 
           
           <div class="method-source-code" id="password_match-3F-source">
-            <pre><span class="ruby-comment"># File app/models/admin.rb, line 53</span>
+            <pre><span class="ruby-comment"># File app/models/admin.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">password_match?</span>(<span class="ruby-identifier">password</span>=<span class="ruby-string">&quot;&quot;</span>)
   <span class="ruby-identifier">hashed_password</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Admin</span>.<span class="ruby-identifier">hash_with_salt</span>(<span class="ruby-identifier">password</span>,<span class="ruby-identifier">salt</span>)
 <span class="ruby-keyword">end</span></pre>

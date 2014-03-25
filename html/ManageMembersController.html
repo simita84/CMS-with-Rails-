@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class ManageMembersController - App Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/manage_members_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-deleteMember">#deleteMember</a>
+    
+    <li><a href="#method-i-destroyMember">#destroyMember</a>
+    
+    <li><a href="#method-i-editMember">#editMember</a>
+    
+    <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-listMembers">#listMembers</a>
+    
+    <li><a href="#method-i-updateMember">#updateMember</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./MomsAndTots.html">MomsAndTots</a>
+  
+    <li><a href="./MomsAndTots/Application.html">MomsAndTots::Application</a>
+  
+    <li><a href="./AccessController.html">AccessController</a>
+  
+    <li><a href="./AccessHelper.html">AccessHelper</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./AdminsController.html">AdminsController</a>
+  
+    <li><a href="./AdminsHelper.html">AdminsHelper</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Contact.html">Contact</a>
+  
+    <li><a href="./ContactAdmin.html">ContactAdmin</a>
+  
+    <li><a href="./ContactsController.html">ContactsController</a>
+  
+    <li><a href="./ContactsHelper.html">ContactsHelper</a>
+  
+    <li><a href="./Event.html">Event</a>
+  
+    <li><a href="./Eventinviter.html">Eventinviter</a>
+  
+    <li><a href="./EventsController.html">EventsController</a>
+  
+    <li><a href="./EventsHelper.html">EventsHelper</a>
+  
+    <li><a href="./Home.html">Home</a>
+  
+    <li><a href="./HomesController.html">HomesController</a>
+  
+    <li><a href="./HomesHelper.html">HomesHelper</a>
+  
+    <li><a href="./Invitee.html">Invitee</a>
+  
+    <li><a href="./InviteesController.html">InviteesController</a>
+  
+    <li><a href="./InviteesHelper.html">InviteesHelper</a>
+  
+    <li><a href="./Item.html">Item</a>
+  
+    <li><a href="./ItemsController.html">ItemsController</a>
+  
+    <li><a href="./ItemsHelper.html">ItemsHelper</a>
+  
+    <li><a href="./ManageMembersController.html">ManageMembersController</a>
+  
+    <li><a href="./ManageMembersHelper.html">ManageMembersHelper</a>
+  
+    <li><a href="./Member.html">Member</a>
+  
+    <li><a href="./MemberController.html">MemberController</a>
+  
+    <li><a href="./MemberHelper.html">MemberHelper</a>
+  
+    <li><a href="./MemberMailer.html">MemberMailer</a>
+  
+    <li><a href="./PasswordResetsController.html">PasswordResetsController</a>
+  
+    <li><a href="./PasswordResetsHelper.html">PasswordResetsHelper</a>
+  
+    <li><a href="./Product.html">Product</a>
+  
+    <li><a href="./ProductsController.html">ProductsController</a>
+  
+    <li><a href="./ProductsHelper.html">ProductsHelper</a>
+  
+    <li><a href="./PublicController.html">PublicController</a>
+  
+    <li><a href="./PublicHelper.html">PublicHelper</a>
+  
+    <li><a href="./Recipe.html">Recipe</a>
+  
+    <li><a href="./RecipesController.html">RecipesController</a>
+  
+    <li><a href="./RecipesHelper.html">RecipesHelper</a>
+  
+    <li><a href="./Review.html">Review</a>
+  
+    <li><a href="./ReviewsController.html">ReviewsController</a>
+  
+    <li><a href="./ReviewsHelper.html">ReviewsHelper</a>
+  
+    <li><a href="./Signup.html">Signup</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class ManageMembersController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-deleteMember" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">deleteMember</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="deleteMember-source">
+            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">deleteMember</span>
+  <span class="ruby-comment">#Find the object using form parameters</span>
+  <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-keyword">end</span></pre>
+          </div><!-- deleteMember-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- deleteMember-method -->
+
+    
+      <div id="method-i-destroyMember" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">destroyMember</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="destroyMember-source">
+            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroyMember</span>
+     <span class="ruby-comment">#Find the object using form parameters</span>
+     <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">destroy</span>
+        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]=<span class="ruby-string">&quot;Member   &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@member</span>.<span class="ruby-identifier">first_name</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; deleted successfully&quot;</span>
+         <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)  
+         <span class="ruby-keyword">else</span>
+            <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]=<span class="ruby-string">&quot;Member   &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@member</span>.<span class="ruby-identifier">first_name</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be deleted&quot;</span>   
+      <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- destroyMember-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- destroyMember-method -->
+
+    
+      <div id="method-i-editMember" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">editMember</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Save the object</p>
+
+<pre>if @member.save</pre>
+
+<p>If save succeeds redirect to list  <a href="http://:notice">flash</a>= “<a
+href="Member.html">Member</a> –”+@member.username+“–created successfully”</p>
+
+<pre class="ruby"> <span class="ruby-identifier">redirect_to</span>(:<span class="ruby-identifier">action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)
+<span class="ruby-comment">#else redislay the form so user can fix the problem</span>
+  <span class="ruby-keyword">else</span>
+   <span class="ruby-identifier">flash</span>[:<span class="ruby-identifier">notice</span>]= <span class="ruby-string">&quot;Member &quot;</span><span class="ruby-operator">+</span> <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">username</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be added. &quot;</span>
+     <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;newMember&#39;</span>)
+ <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+          
+
+          
+          <div class="method-source-code" id="editMember-source">
+            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">editMember</span>
+    <span class="ruby-comment">#Find the object using form parameters</span>
+    <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+    <span class="ruby-keyword">end</span></pre>
+          </div><!-- editMember-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- editMember-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-identifier">listMembers</span>
+  <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;listMembers&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+      <div id="method-i-listMembers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">listMembers</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="listMembers-source">
+            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">listMembers</span>
+  <span class="ruby-ivar">@members</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;members.created_at DESC&quot;</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],<span class="ruby-value">:per_page</span> =<span class="ruby-operator">&gt;</span><span class="ruby-value">3</span>)
+
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- listMembers-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- listMembers-method -->
+
+    
+      <div id="method-i-updateMember" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updateMember</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="updateMember-source">
+            <pre><span class="ruby-comment"># File app/controllers/manage_members_controller.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">updateMember</span>
+     <span class="ruby-comment">#Find the object using form parameters</span>
+     <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+     <span class="ruby-comment">#update with new values</span>
+     <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:member</span>])
+     <span class="ruby-comment">#Save the object</span>
+     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">save</span>
+       <span class="ruby-comment">#If update succeeds redirect to list </span>
+       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Member details for --&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@member</span>.<span class="ruby-identifier">last_name</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;--updated successfully&quot;</span>
+       <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;index&#39;</span>)
+     <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-string">&quot;Member details for&quot;</span><span class="ruby-operator">+</span> <span class="ruby-ivar">@member</span>.<span class="ruby-identifier">last_name</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; cannot be updated. &quot;</span>
+       <span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;newMember&#39;</span>)
+     <span class="ruby-keyword">end</span>
+     <span class="ruby-keyword">end</span></pre>
+          </div><!-- updateMember-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- updateMember-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

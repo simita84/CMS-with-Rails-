@@ -299,7 +299,7 @@
             <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">listAdmins</span>
 
- <span class="ruby-ivar">@admins</span>=<span class="ruby-constant">Admin</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;admins.created_at DESC&quot;</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],<span class="ruby-value">:per_page</span> =<span class="ruby-operator">&gt;</span><span class="ruby-value">10</span>)
+ <span class="ruby-ivar">@admins</span>=<span class="ruby-constant">Admin</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;admins.created_at DESC&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- listAdmins-source -->
           

@@ -288,7 +288,7 @@
 
           
           <div class="method-source-code" id="createItems-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 101</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 128</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">createItems</span>
         <span class="ruby-ivar">@item</span>=<span class="ruby-constant">Item</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:item</span>]) 
         <span class="ruby-ivar">@item</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-value">:posted_by=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">session</span>[<span class="ruby-value">:username</span>])
@@ -329,7 +329,7 @@
 
           
           <div class="method-source-code" id="createRecipes-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 37</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">createRecipes</span>
   <span class="ruby-ivar">@recipe</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:recipe</span>]) 
    <span class="ruby-ivar">@recipe</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-value">:posted_by=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">session</span>[<span class="ruby-value">:username</span>])
@@ -370,7 +370,7 @@
 
           
           <div class="method-source-code" id="createReviews-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 169</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 196</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">createReviews</span>
   <span class="ruby-comment">#Instantiate a new object using for parameters</span>
          <span class="ruby-ivar">@product</span>=<span class="ruby-constant">Product</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:product_id</span>])
@@ -414,7 +414,7 @@
 
           
           <div class="method-source-code" id="deleteItems-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 141</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 168</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">deleteItems</span>
   <span class="ruby-comment">#Find the object using form parameters</span>
   <span class="ruby-ivar">@item</span>=<span class="ruby-constant">Item</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -445,7 +445,7 @@
 
           
           <div class="method-source-code" id="deleteRecipes-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 77</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 104</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">deleteRecipes</span>
   <span class="ruby-comment">#Find the object using form parameters</span>
   <span class="ruby-ivar">@recipe</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -476,7 +476,7 @@
 
           
           <div class="method-source-code" id="deleteReviews-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 212</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 239</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">deleteReviews</span>
  <span class="ruby-comment">#Find the object using form parameters</span>
  <span class="ruby-ivar">@review</span>=<span class="ruby-constant">Review</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -507,7 +507,7 @@
 
           
           <div class="method-source-code" id="destroyItems-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 145</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 172</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroyItems</span>
      <span class="ruby-comment">#Find the object using form parameters</span>
      <span class="ruby-ivar">@item</span>=<span class="ruby-constant">Item</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -544,7 +544,7 @@
 
           
           <div class="method-source-code" id="destroyRecipes-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 81</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 108</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroyRecipes</span>
      <span class="ruby-comment">#Find the object using form parameters</span>
      <span class="ruby-ivar">@recipe</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -581,7 +581,7 @@
 
           
           <div class="method-source-code" id="destroyReviews-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 216</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 243</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroyReviews</span>
      <span class="ruby-comment">#Find the object using form parameters</span>
      <span class="ruby-ivar">@review</span>=<span class="ruby-constant">Review</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -618,7 +618,7 @@
 
           
           <div class="method-source-code" id="editItems-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 116</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 143</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">editItems</span>
        <span class="ruby-comment">#Find the object using form parameters</span>
        <span class="ruby-ivar">@item</span>=<span class="ruby-constant">Item</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -650,7 +650,7 @@
 
           
           <div class="method-source-code" id="editMember-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 276</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">editMember</span>
     <span class="ruby-comment">#Find the object using form parameters</span>
     <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -682,7 +682,7 @@
 
           
           <div class="method-source-code" id="editRecipes-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 52</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 79</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">editRecipes</span>
     <span class="ruby-comment">#Find the object using form parameters</span>
     <span class="ruby-ivar">@recipe</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -714,7 +714,7 @@
 
           
           <div class="method-source-code" id="editReviews-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 187</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 214</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">editReviews</span>
    <span class="ruby-comment">#Find the object using form parameters</span>
    <span class="ruby-ivar">@review</span>=<span class="ruby-constant">Review</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -747,7 +747,7 @@
 
           
           <div class="method-source-code" id="eventDetails-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 255</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 282</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eventDetails</span>
     <span class="ruby-ivar">@invitedinvitees</span> = <span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:event_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@event</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:invited</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
    <span class="ruby-comment"># @events= Event.where(:id=&gt;@event.id)</span>
@@ -811,7 +811,7 @@
 
           
           <div class="method-source-code" id="listContactInfo-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 19</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">listContactInfo</span>
   <span class="ruby-ivar">@contacts</span>=<span class="ruby-constant">Contact</span>.<span class="ruby-identifier">all</span>
  <span class="ruby-keyword">end</span></pre>
@@ -841,7 +841,7 @@
 
           
           <div class="method-source-code" id="listEvents-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 227</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 254</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">listEvents</span>
   <span class="ruby-ivar">@upcoming_events_arr</span> = []
    <span class="ruby-ivar">@past_events_arr</span> = []
@@ -894,7 +894,7 @@
 
           
           <div class="method-source-code" id="listItems-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 94</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 121</span>
  <span class="ruby-keyword">def</span> <span class="ruby-identifier">listItems</span>
               <span class="ruby-ivar">@items</span>=<span class="ruby-constant">Item</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;items.created_at DESC&quot;</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],<span class="ruby-identifier">per_page</span><span class="ruby-operator">:</span> <span class="ruby-value">5</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -924,7 +924,7 @@
 
           
           <div class="method-source-code" id="listProducts-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 156</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 183</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">listProducts</span>
    <span class="ruby-ivar">@products</span>=<span class="ruby-constant">Product</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;products.id DESC&quot;</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],<span class="ruby-identifier">per_page</span><span class="ruby-operator">:</span> <span class="ruby-value">50</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -954,7 +954,7 @@
 
           
           <div class="method-source-code" id="listRecipes-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 24</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">listRecipes</span>
   <span class="ruby-ivar">@recipes</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;recipes.created_at DESC&quot;</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],<span class="ruby-identifier">per_page</span><span class="ruby-operator">:</span> <span class="ruby-value">2</span>)
     <span class="ruby-comment">#@recipes=Recipe.order(&quot;recipes.created_at ASC&quot;)</span>
@@ -987,7 +987,7 @@
 
           
           <div class="method-source-code" id="listReviews-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 159</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 186</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">listReviews</span>
    <span class="ruby-ivar">@products</span>=<span class="ruby-constant">Product</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;products.created_at DESC&quot;</span>)
    <span class="ruby-ivar">@reviews</span> = <span class="ruby-constant">Review</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;reviews.created_at DESC&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:product_id=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@product</span>.<span class="ruby-identifier">id</span>)
@@ -1053,7 +1053,7 @@
 
           
           <div class="method-source-code" id="memberresponsehandler-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 262</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 289</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">memberresponsehandler</span>
     <span class="ruby-ivar">@invitee</span> = <span class="ruby-constant">Invitee</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
     <span class="ruby-ivar">@invitee</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:invitee</span>])
@@ -1088,7 +1088,7 @@
 
           
           <div class="method-source-code" id="newItems-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 97</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 124</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">newItems</span>
              <span class="ruby-ivar">@item</span>=<span class="ruby-constant">Item</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1118,7 +1118,7 @@
 
           
           <div class="method-source-code" id="newRecipes-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 32</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">newRecipes</span>
 
      <span class="ruby-ivar">@recipe</span>=<span class="ruby-constant">Review</span>.<span class="ruby-identifier">new</span>
@@ -1149,7 +1149,7 @@
 
           
           <div class="method-source-code" id="newReviews-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 164</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 191</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">newReviews</span>
      <span class="ruby-ivar">@review</span>=<span class="ruby-constant">Review</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:product_id=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@product</span>.<span class="ruby-identifier">id</span>)
    <span class="ruby-comment">#@review_count=@product.reviews.count + 1</span>
@@ -1181,7 +1181,7 @@
 
           
           <div class="method-source-code" id="showAccountInfo-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 14</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">showAccountInfo</span>
   <span class="ruby-ivar">@member_user</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">find_by_username</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:username</span>])
   <span class="ruby-comment"># @member_user=Member.where(:username=&gt;session[:username])</span>
@@ -1212,7 +1212,7 @@
 
           
           <div class="method-source-code" id="updateItems-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 122</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 149</span>
    <span class="ruby-keyword">def</span> <span class="ruby-identifier">updateItems</span>
         <span class="ruby-comment">#Find the object using form parameters</span>
         <span class="ruby-ivar">@item</span>=<span class="ruby-constant">Item</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -1256,7 +1256,7 @@
 
           
           <div class="method-source-code" id="updateMember-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 282</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 27</span>
    <span class="ruby-keyword">def</span> <span class="ruby-identifier">updateMember</span>
         <span class="ruby-comment">#Find the object using form parameters</span>
         <span class="ruby-ivar">@member</span>=<span class="ruby-constant">Member</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -1300,7 +1300,7 @@
 
           
           <div class="method-source-code" id="updateRecipes-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 58</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 85</span>
    <span class="ruby-keyword">def</span> <span class="ruby-identifier">updateRecipes</span>
         <span class="ruby-comment">#Find the object using form parameters</span>
         <span class="ruby-ivar">@recipe</span>=<span class="ruby-constant">Recipe</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
@@ -1344,7 +1344,7 @@
 
           
           <div class="method-source-code" id="updateReviews-source">
-            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 194</span>
+            <pre><span class="ruby-comment"># File app/controllers/member_controller.rb, line 221</span>
    <span class="ruby-keyword">def</span> <span class="ruby-identifier">updateReviews</span>
         <span class="ruby-comment">#Find the object using form parameters</span>
         <span class="ruby-ivar">@review</span>=<span class="ruby-constant">Review</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])

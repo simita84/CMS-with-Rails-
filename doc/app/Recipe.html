@@ -192,6 +192,8 @@
 
   <div id="description" class="description">
     
+<p>require &#39;aws/s3&#39;</p>
+
   </div><!-- description -->
 
   
@@ -228,7 +230,7 @@
 
           
           <div class="method-source-code" id="search-source">
-            <pre><span class="ruby-comment"># File app/models/recipe.rb, line 20</span>
+            <pre><span class="ruby-comment"># File app/models/recipe.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">search</span>(<span class="ruby-identifier">search</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">search</span>
     <span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&#39;title LIKE ?&#39;</span>, <span class="ruby-node">&quot;%#{search}%&quot;</span>])

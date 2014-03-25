@@ -2,11 +2,11 @@
 class Recipe < ActiveRecord::Base
    
    attr_accessible :recipephoto,:title, :content,:posted_by
-   has_attached_file :recipephoto, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-                                    :url =>'/assets/recipes/:id/:style/:basename.:extension',
-                                    :path =>':rails_root/public/assets/recipes/:id/:style/:basename.:extension'
+   has_attached_file :recipephoto, :styles => { :medium => "300x300>", :thumb => "100x100>" },
+                                    :url =>"/assets/recipes/:id/:style/:basename.:extension",
+                                    :path =>":rails_root/public/assets/recipes/:id/:style/:basename.:extension"
 
-  validates_attachment_size :photo, :less_than =>5.megabytes
+  #validates_attachment_size :photo, :less_than =>5.megabytes
 
    #has_attached_file :recipephoto                                                            ,
     #                  :storage        => :s3                                                ,
@@ -19,7 +19,7 @@ class Recipe < ActiveRecord::Base
 
 
 
-   #validates_attachment_content_type :recipephoto,  :content_type => %w(image/jpeg image/jpg image/png image/gif)
+   validates_attachment_content_type :recipephoto,  :content_type => %w(image/jpeg image/jpg image/png image/gif)
   
  
     

@@ -3,7 +3,11 @@ source 'https://rubygems.org'
 
 gem "therubyracer"
 gem "less-rails"
-gem "twitter-bootstrap-rails"
+#gem "twitter-bootstrap-rails"
+
+#Using the latest build for twitter
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
 gem 'rails', '3.2.11'
 gem 'sass-rails', '~> 3.2.3'
 gem 'bootstrap-sass', '2.0.0'
@@ -28,8 +32,8 @@ end
 
 
 gem "will_paginate", "~> 3.0.4"
-#gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
-gem 'paperclip'
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+#gem 'paperclip'
 #gem 'aws-sdk'
 
 gem 'jquery-rails'

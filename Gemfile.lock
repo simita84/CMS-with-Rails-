@@ -8,16 +8,6 @@ GIT
       rails (>= 3.1)
       railties (>= 3.1)
 
-GIT
-  remote: git://github.com/thoughtbot/paperclip.git
-  revision: 113198f979bc793882506114fcc3dc9f6c4e4575
-  specs:
-    paperclip (4.1.1)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
-      mime-types
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -148,6 +138,11 @@ GEM
     mysql2 (0.3.14)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    paperclip (4.1.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pg (0.12.2)
     polyglot (0.3.3)
     pry (0.9.12.4)
@@ -261,7 +256,7 @@ DEPENDENCIES
   jquery-rails
   less-rails
   mysql2
-  paperclip!
+  paperclip
   pg (= 0.12.2)
   railroady
   rails (= 3.2.11)

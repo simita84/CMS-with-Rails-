@@ -32,8 +32,8 @@ end
 
 
 gem "will_paginate", "~> 3.0.4"
-gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
-#gem 'paperclip'
+#gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'paperclip'
 #gem 'aws-sdk'
 
 gem 'jquery-rails'

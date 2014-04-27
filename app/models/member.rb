@@ -37,7 +37,7 @@ class Member < ActiveRecord::Base
       MemberMailer.password_reset(self).deliver
     end  
 
-    #generate a random tokem for remember me function.
+    #generate a random tokem for password  reset function.
     def generate_token(column)
        begin
        self[column] = SecureRandom.urlsafe_base64

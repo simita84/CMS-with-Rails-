@@ -1,35 +1,23 @@
-#require 'aws/s3'
+require 'aws/s3'
 class Recipe < ActiveRecord::Base
    
    attr_accessible :recipephoto,:title, :content,:posted_by
+
+  if Rails.env.production?
+    has_attached_file :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  else
    has_attached_file :recipephoto, 
       :styles => { :medium => "300x300>", :thumb => "100x100>" },
       :url =>"/assets/recipes/:id/:style/:basename.:extension",
       :path =>":rails_root/public/assets/recipes/:id/:style/:basename.:extension"
-
-  #validates_attachment_size :photo, :less_than =>5.megabytes
-
-   #has_attached_file :recipephoto                                                            ,
-    #                  :storage        => :s3                                                ,
-    #                  :s3_credentials => {:bucket            => ENV['clubbykids'           ],
-    #                                      :access_key_id     => ENV['AKIAIQTSJOAYFPMC7TKA'    ],
-    #                                      :secret_access_key => ENV['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']},
-    #                  :s3_protocol    => "https"                                             ,
-    #                  :s3_host_name   => "s3-eu-west-1.amazonaws.com" 
+  end
 
 
-
-
-   validates_attachment_content_type :recipephoto,  :content_type => %w(image/jpeg image/jpg image/png image/gif)
-  
- 
-    
-    
-      validates :title,:presence => { :message => "missing" }
-      
-     validates  :content,:presence => { :message => "missing" }
-       
-     validates :posted_by, :presence => { :message => "missing" }
+# Model Validations
+  validates_attachment_content_type :recipephoto,  :content_type => %w(image/jpeg image/jpg image/png image/gif)
+  validates :title,:presence => { :message => "missing" }
+  validates  :content,:presence => { :message => "missing" }     
+  validates :posted_by, :presence => { :message => "missing" }
     
     
  

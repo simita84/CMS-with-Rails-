@@ -40,6 +40,7 @@ gem 'jquery-rails'
 
 group :production do
   gem 'pg', '0.12.2'
+  gem 'newrelic_rpm'
 end
  
 group :development, :test do

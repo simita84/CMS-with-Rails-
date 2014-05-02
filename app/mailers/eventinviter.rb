@@ -10,7 +10,7 @@ class Eventinviter < ActionMailer::Base
        if Rails.env.development?
         @url = "http://localhost:3000/eventdetails?event_id=#{@event.id}"
        else
-        @url = "http://murmuring-garden-1315.herokuapp.com/eventdetails?event_id=#{@event.id}"
+        @url = "https://murmuring-garden-1315.herokuapp.com/eventdetails?event_id=#{@event.id}"
        end 
 
 

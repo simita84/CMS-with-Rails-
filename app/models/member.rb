@@ -5,8 +5,19 @@ class Member < ActiveRecord::Base
   attr_accessible :memberphoto,:username, :first_name,:last_name,:password,:password_confirmation
    
    #Paperclip
-   has_attached_file :memberphoto, :styles =>
-                                   { :medium => "300x300>", :thumb =>"50x50>" }
+    
+if Rails.env.production?
+  has_attached_file :memberphoto, :styles => { :medium => "500x500>", :thumb => "70x70>" }
+  else
+   has_attached_file :memberphoto, 
+      :styles => { :medium => "300x300>", :thumb => "100x100>" },
+      :url =>"/assets/members/:id/:style/:basename.:extension",
+      :path =>":rails_root/public/assets/members/:id/:style/:basename.:extension"
+  end
+
+ 
+
+
    validates_attachment_content_type :memberphoto, 
                                :content_type => %w(image/jpeg image/jpg image/png  image/gif)
 

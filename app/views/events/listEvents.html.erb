@@ -45,7 +45,7 @@
              <%= link_to("Guests List",  {:controller => 'invitees',:action => 'index', :event_id => event.id },:class=>"btn") %>
 	 		<%= link_to("Show",{:action => 'showEvents', :id => event.id},:class=>"btn") %>
 	        <%= link_to("Edit", {:action => 'editEvents', :id => event.id},:class=>"btn") %>
-	        <%= link_to("Delete",{:action => 'deleteEvents', :id => event.id},:class=>"btn") %>
+	        <%= link_to("Delete",{:action => 'deleteEvents', :id => event.id},:class=>"btn btn-danger") %>
 
 	      </td>
 	    </tr>

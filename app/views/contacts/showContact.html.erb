@@ -36,8 +36,9 @@
 	     <td>
 	     	
 	     	<%= link_to("Edit", {:action => 'editContact', :id => contact.id},:class=>"btn") %>
-	        <%= link_to("Delete",{:action => 'deleteContact', :id => contact.id},:class=>"btn") %>
+	        
 	        <%= link_to("Cancel", {:controller => 'access', :action => 'menu'},:class=>'btn') %>
+	<%= link_to("Delete",{:action => 'deleteContact', :id => contact.id},:class=>"btn btn-danger") %>
 		</td>
  
 	      </tr>

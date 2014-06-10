@@ -1,25 +1,44 @@
 <html>
-
 <body>
-  	  
- 
+ <h3 align="center">Contact Us</h3>
+	<%if @contacts == []%>
+	<table class="table">
+		<tr>
+			<th>We are</th>
+			<td>Moms and Tots - Sylvan Park neighborhood</td>
+		</tr>
+		<tr>
+			<th>EMail Us @</th>
+			<td>momsntotsbayarea@gmail.com</td>
+		</tr>
+		<tr>
+			<th>Find Us On </th>
+			<td>
+				<a href="https://www.facebook.com/MomsAndTotsSylvanParkNeighborhood">
+					MomsAndTotsSylvanParkNeighborhood</a>
+			</td>
+		</tr>
+
+	</table>
+	<%else%>
 		<% @contacts.each do |contact|%>
 	<table class="table">
-		
+			<tr>
+				<th>We are</th>
+					<td><%=contact.name%></td>
+			</tr>
 		<tr>
-		<th>We are</th>
-		<td><%=contact.name%></td>
+			<th>EMail Us @</th>
+			<td><%=contact.emailid%></td>
 		</tr>
 		<tr>
-		<th>EMail Us @</th>
-		<td><%=contact.emailid%></td>
+			<th>Find Us On </th>
+			<td><a href=""><%=contact.facebook%></a></td>
 		</tr>
-		<tr>
-		<th>Find Us On </th>
-		<td><a href=""><%=contact.facebook%></a></td>
-		</tr>
-	
 		</table>
+		<%end%><!--end of @contacts-->
 		
-		<%end%>
+	<%end%><!--End of if-->
+	
+	</body>
 	 

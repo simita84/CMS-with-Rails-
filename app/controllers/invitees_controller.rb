@@ -50,7 +50,7 @@ def listInvitees
         else
           # If save fails, redisplay the form so user can fix problems
           #@event_count = Event.count + 1
-          flash[:notice] = "Sorry, Event cannot  be created, Please check the fields and try again"
+          flash[:notice] = "Sorry, Invitee cannot  be added, Please check the fields and try again"
           @error_message = "It seems there was a validation error. Please try again."
           render('new')
         end

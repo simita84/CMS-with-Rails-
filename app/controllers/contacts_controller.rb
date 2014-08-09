@@ -72,6 +72,6 @@ class ContactsController < ApplicationController
                        flash[:warning]="Contact cannot be deleted"   
                  end
            end
-  
+
   
 end

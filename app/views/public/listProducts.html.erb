@@ -1,86 +1,83 @@
-<html>
  
-
-<body>
 		 
-	<div class="container">
-	 <div class="row">
- <div class='span3'>
-	
-	
-	<!--Search Functionality for Reviews-->
+<div class="row"> 
+		<div class="span2"> 
+		<aside class="asideStyle"> 
 
-	 <%=form_tag(:controller=>"public",:action=>'searchReviews') do %>
+			<%if !@products.empty?%>
+			 <nav >
+			<ul class="nav nav-pills nav-stacked">
+				<li class="nav-header">
+					<h4> Review Categories</h4>
+				</li>
+				<li class="divider"></li>				    
+				 <%@products.each do |product|%> 
+					<li>
+						<%=link_to(product.title,{:controller=>'public',:action=>'listReviews',:product_id=>product.id}) %> 
+					 </li> 	
+			 		<%end%>
+			 		</ul>
+					 </nav>
+			<%end%>
+			 	     	 
+			</aside>
 
-
-	<%= text_field_tag(:search, params[:search], :placeholder => "Search Reviews", :id => "searchTag") %>  	  
-	<%= submit_tag "Search", :name => nil,:class=>'btn' %> 
-
- <% end %> 
-				<!--End of Search Functionality for Reviews-->
-	
-	
-	
-				<div class="leaderboard">
-				 <br>
-							    
-					<h4>Review<br> Categories</h4>
-		 	 	
-				
-						<%@products.each do |product|%> 
- 	  
-	<ul class='nav'><li> 
-<%=link_to(product.title,{:controller=>'public',:action=>'listReviews',:product_id=>product.id}) %>   </li></ui> 
-	  
- 
- 	<%end%>
- 	<%= will_paginate @products %>
-</div>	 
- </div>	 
- <div class='span8'>
-	<h2>  Latest Reviews</h2><br>
-	<%= will_paginate @reviews %>
-	<% @reviews.each do |review|%>
-	<table class='table'>
-		<tr>	
-
-			<td>
- 
-				<h3 class='text-error'>	
-					 <%=review.title	%></h3> 
-					 <b>Posted by : </b>
-					<%=review.posted_by%> 
-	  				On  
- 
-					<%=review.created_at.strftime("%e %b %Y %I:%M %p") %></td>     </tr>     				 
-						
-						<% if(review.reviewphoto) %> 		 		
-					<tr>
-							<td>
-							<%= image_tag (review.reviewphoto.url(:medium)) %>
-						
-							</td>
-					</tr>
-						<%end%>
-					<tr>
-						<td >	
-							<p><%= simple_format(review.content,:line_width=>300)%></p></td> </tr> 	 
-	
-		<tr> </tr>	  
-		
- 
-			<%end%>	
-
-		</table>
-
-		<%= will_paginate @reviews %>
-	
 	</div>
+
+	<div class="span8 offset1"> 
+		
+	 <article class="articleStyle"> 
+		
+		<div class="page-header"> 
+		 	<h2>  Latest Reviews</h2> 
+
+		 </div>
+ 
+		
+		 	 
+			 <%= will_paginate @reviews %>
+			 
+					<% @reviews.each do |review|%>
+
+					<div class="section-head">
+						<h3> <%=review.title	%></h3> 
+					</div>
+
+					<div class="row">
+						<div class="span6">
+							<figure>
+									<% if(review.reviewphoto) %> 		 		
+									 	 
+									 		<%= image_tag (review.reviewphoto.url(:medium)) %>
+								 
+									<%end%>
+							</figure>
+						</div>
+					</div>
+					 <section> 
+					<div class="row"> 
+						<div  class="span8" > 
+								<p> 
+									<%= simple_format(review.content,:line_width=>200)%>
+						 		 </p>  
+						</div>
+					</div>
+	 	
+			<footer id="article-meta">
+				 <h5>Posted by: 
+				 <%=review.posted_by%> On  <%=review.created_at.strftime("%e %b %Y %I:%M %p") %> </h5>		
+			</footer>
+	 
+
+				</section>
+	 <%end%>	
+				<div>
+		 			<h5><%= will_paginate @reviews %></h5>
+			</div>
+	</article>
+
+	</div>
+</div>		
 	
 	 
-	</div>
-		</div><!--row>-->
-  </body>
-	
-</html>
- 
+  

@@ -1,105 +1,67 @@
-<html>
-
-<body>
  	 
-		
+<div class="row"> 
+		<div class="span2"> 
+			<aside class="asideStyle"> 
+				 <nav>
+					<ul class="nav nav-pills nav-stacked">
+						<li class="nav-header">
+							<h4> All Recipes</h4> 
+						</li>
 
-<div class="row">
-
-		<div class="span3">
-			
- 
- 			<!--Search Functionality for Recipes-->
-
-			 <%=form_tag(:controller=>"public",:action=>'searchRecipes') do %>
-
-
-			<%= text_field_tag(:search, params[:search], :placeholder => "Search Recipes", :id => "searchTag") %> 
-
-
-									  <%= submit_tag "Search", :name => nil,:class=>'btn' %> 
-
-
- 
-						 <% end %> 
-						<!--End of Search Functionality for Recipes-->
-
-			
-				<div class="leaderboard">
-	 			
-			<img src='/assets/cooking.png'>
-			
-		
-			<h4> All Recipes</h4> 
- 	
-			<table class='table-hover'>
-		  
- 					<%@allrecipes.each do |recipe|%>
-         	<tr>	 		 
- 		<td> <%=simple_format(word_wrap(recipe.title))%> </td></tr>
+	 					<%@allrecipes.each do |recipe|%>
+        		 
+   							<li> 
+   								<%=link_to recipe.title,""%> 
+   							</li>
 			 
-					<%end%>	</table>  
+						<%end%>	
+		 	
+				</nav>
+			</aside> 
 	 	 </div>
-	
-	
-	</div>
-		 
-		<div class="span8">
-	 
-	<table class="table"> 
-		<tr>	
-			<td>
-		<h2>Latest Recipes</h2></td>
-	
  
-		<%= will_paginate @recipes %>
-		
- 				<%@recipes.each do |recipe|%>
-          		 		 
- 				<tr>	
-					<td>
-						<h3 class="text-error"><%=recipe.title%></h3>
-							 <b>By </b> <%=recipe.posted_by%> 
-					 				<b>On </b> 
-					 				<%=recipe.created_at.strftime("%e %b %Y %I:%M %p") %></td>
+		 
+	 <div class="span8 offset1">
+	 	<article class="articleStyle">
+	 		<div class="page-header">
+	 			<h2>Latest Recipes</h2>
+	 		</div>
+	 		
+	 		<section>
+	 			<%= will_paginate @recipes %>
+	 					<%@recipes.each do |recipe|%>
+	 					<head>	
+	 						<h3> <%=recipe.title%></h3> 	
+	 					 </head>
 
-								</tr>
-						<tr>
-							<td>
-								<%= image_tag recipe.recipephoto.url(:medium) %>
-							</td>
-						</tr>
-					
-	 	 
-							<tr> 
-		<td> <%=simple_format(word_wrap(recipe.content,:line_width=>400))%> </td></tr>
-		
-	 	
- 		<%end%>
-		</table>
+	 		<div class="row"> 
+	 			<div class="span6"> 
+		 			<figure>
+		 				<div class="thumbnail">
+		 				<%= image_tag recipe.recipephoto.url(:medium) %>
+		 				</div>
+		 			</figure>
+	 			</div>
+	 		</div>
+	 		<div class="row"> 
+	 			<div class="span8"> 
+		 			<p>
+		 				 <%=simple_format(word_wrap(recipe.content,:line_width=>300))%>
+		 			</p>
+	 			</div>
+	 		</div>
+
+	 		</section>
+	 		<footer class="meta-article">
+	 			<h5> Posted By<%=recipe.posted_by%> On  
+					  <%=recipe.created_at.strftime("%e %b %Y %I:%M %p") %> </h5>
+	 			
+	 		</footer>
+	 	</article>
+
+	 	<%end%>
+	  
  				<%= will_paginate @recipes %>
   			 
- 
-	
  </div>
 </div>
-
-
-</div>
-</div></div>
-</div>
-	
-	
-	
-	
-</div>	<!--<div class="row">-->
-	
-	
-	</body>
-	  
-
-	
-</html>
- 
-
- 

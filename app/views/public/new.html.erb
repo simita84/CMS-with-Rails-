@@ -1,43 +1,47 @@
- <div class="container">	
+ 
 
-<h2> Join Clubby Kids</h2>
-  <div class='row'>
+<div class='row'>
 
-	<div class='span4 offset1'>
+	
+	<div class='span3 offset1'>
+
+		<h2> Join Clubby Kids</h2>
 		<img src="/assets/mommyme.jpg">
 	</div>
+ 
 	
-	<div class='span6'>
- 		   <%= render 'shared/member_error_messages_html.erb' %>
-			<h2 class="signUp">Sign up</h2>
+	 <div class='span6 offset1'>
+
+ 		
+			<h3>Sign up</h3>
+ 
+ 		<div class="error-messages">
+ 	   <%= render 'shared/member_error_messages_html.erb' %>
+ 	   </div>
+		<div class="from-inline">
+			<%= form_for(@member,:url=>{:controller=>'public',:action =>'createMember'},
+							:html => { :multipart => true }) do |f| %>
+			   
+			   <%= f.label :first_name %>
+			   <%= f.text_field :first_name %>
+
+			   <%= f.label :last_name %>
+			   <%= f.text_field :last_name %>
+
+			   <%= f.label :Username %>
+			   <%= f.text_field :username, :placeholder => "Eg:someone@xxx.com"%>  
+
+			   <%= f.label :password %>
+			   <%= f.password_field :password ,:placeholder =>"password"%><br>
+				 
+			   <%= f.submit "Create my account", class: "btn btn-primary" %>
+			 <% end %>
+ 		</div>
+
+ </div>
+ </div>
  
 
-<%= form_for(@member,:url=>{:controller=>'public',:action =>'createMember'},
-				:html => { :multipart => true }) do |f| %>
-   
-   <%= f.label :first_name %>
-   <%= f.text_field :first_name %>
 
-   <%= f.label :last_name %>
-   <%= f.text_field :last_name %>
-
-   <%= f.label :Username %>
-   <%= f.text_field :username, :placeholder => "Eg:someone@xxx.com"%>  
-
-   <%= f.label :password %>
-   <%= f.password_field :password ,:placeholder =>"password"%><br>
-	 
-   <%= f.submit "Create my account", class: "btn btn-primary" %>
- <% end %>
-
-
- 
-
-</div><!--span-->
-</div><!--row-->
-
-
-</div><!--container-->
-	
-	
+  
  

@@ -1,113 +1,198 @@
-<!DOCTYPE html>
- 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Clubbykids</title>
- 
-</head>
-<body>
- 
- 
-<div class="center hero unit">
-<div class='container'>
-<div class='row'>	 
-	
- <div class='span5 '>
 
-		<%@homes.each do |home|%>
- 			
-		
-			
-			<center  id="home">
-				<img src='/assets/home.gif'>
-				<h2> <%=home.title%></h2>
-		</center>
- 	 
-  <p class='lead'><center><%=simple_format(home.content)%></center> </p>
-	<p> <center>
-	 <%=link_to("Sign In",{:action=>'login'},:class=>'btn btn-primary btn-large')%>
-	<%=link_to("Sign Up",{:action=>'new'},:class=>'btn btn-primary btn-large')%>
-   
- 
-		
-		</center></p>
- 
-<%end%>
- </div>
-  
-		<br>	<br>	<br>
-	<div class='span5 offset1'>
 
-  
+
+
  
-	 <center><h3 class="headEventHighlights">Event highlights</h3></center>
-	
-	<br>
-	<table>
-		<tr>	<td>
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
+ 	<article> 
+ 		<div class='row'>	 
+ 			 <div class='span11'>
+ 				 
+
+			 			<%@homes.each do |home|%>
+			 				
+						<center>
+					 
+								<img src='/assets/home.gif'>
+							 
+							<div class="page-header">
+								<h2> <%=home.title%></h2>
+							 </div>
+						
+<div class="row">
+<div class="span12">
+<div id="myCarousel" class="carousel slide">
   <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
   </ol>
-
-  <!-- Wrapper for slides -->
+  <!-- Carousel items -->
   <div class="carousel-inner">
-		
-    <div class="item active">
-
-       <center>   <img class='carimage' src="/assets/slide3.JPG" class="img-rounded"  ></center>
-     </div>
-	<div class="item">
-   <center>   <img src="/assets/slide4.JPG" class='carimage' >   </center>
-       
-    </div>
-	<div class="item">
-       <center>  <img src="/assets/slide5.JPG" class='carimage'  ></center>
-       
-    </div>
-	 
-	
  
+      <div class="active item">
+    	 
+    	 <div class="row">
+				<div class="span4 offset2"> 
+					<img class='carimage' src="/assets/slide3.JPG" class="img-rounded"  >
+				</div>	
+				<div class="span3"> 
+					<div class="carouselFont">
+					<h4>Quis Nostrum</h4>
+					 <p>
+						 Non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Duis aute irure dolor in reprehenderit in voluptate velit. Nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam</p>
+					</div>
+				</div>
+		</div>
 	 
-  
+    </div>
+   
+    <div class="item">
+    	 
+    	 <div class="row">
+				<div class="span4 offset2"> 
+					<img class='carimage' src="/assets/slide5.JPG" class="img-rounded"  >
+				</div>	
+				<div class="span3"> 
+
+					<h4>Quis Nostrum</h4>
+					 <p> 
+						 Non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Duis aute irure dolor in reprehenderit in voluptate velit. Nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam</p>
+				</div>
+		</div>
+	 
+    </div>
+
+
+    <div class="item">
+    	 
+    	 <div class="row">
+				<div class="span4 offset2"> 
+					<img class='carimage' src="/assets/slide4.JPG" class="img-rounded"  >
+				</div>	
+				<div class="span3"> 
+
+					<h4>Quis Nostrum</h4>
+					 <p> 
+						 Non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Duis aute irure dolor in reprehenderit in voluptate velit. Nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam</p>
+				</div>
+		</div>
+	 
+    </div>
+
+
+
+
   </div>
-
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-
-</td> </tr>
-
-
-</table>
-
- <%= render_shareable  :facebook=> {:send=> 'true', :url=> 'https://www.facebook.com/MomsAndTotsSylvanParkNeighborhood'} %>
-
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+</div>
 </div>
 
-</div>
+
  
+
+
+							<div class="span12">
+
+					 		  
+					  				 <div class="page-header">
+					  				 	<h1>About Us</h1>
+					  					
+					  				</div>
+					  				<p><%=simple_format(home.content)%></p>		
+					  	  
+							<p> 
+								<center> 
+							 	<%=link_to("Sign In",{:action=>'login'},:class=>'btn btn-primary btn-large')%>
+								<%=link_to("Sign Up",{:action=>'new'},:class=>'btn btn-primary btn-large')%> 
+								</center>
+							</p>
+		 
+					<%end%>
+				</div>
+					
+
+		  
+			
+ 
+
+</div>
+
+</center>
+
+
+</article>
+
+<br><br>
+
+<center><h3> Whats Trending?</h3></center>
+ 
+ <div class="row">
+
+ 	<div class="span12">
+	 		<div class="span3 well ">
+	 			<h4>Latest Kids Events</h4>
+	 			<center>
+	 				<img src='/assets/home.gif'>
+	 			</center>
+	 			<p> <% @events.each do |event| %>
+	 				<ul class="nav nav-list">
+	 					<li>
+	 						<%= link_to event.name,"" %> 
+	 					</li>
+	 				</ul>
+    				<%end%>
+    				 
+	 			</p>
+	 		</div>
+	 		<div class="span3 well">
+	 		
+	 			<h4>Newest Kids Recipes</h4>
+	 			<center>
+	 				<img src='/assets/home.gif'>
+	 			</center>
+	 			<p> <% @recipes.each do |recipe| %>
+	 				<ul class="nav nav-list">
+	 					<li>
+	 						<%= link_to recipe.title,"" %> 
+	 					</li>
+	 				</ul>
+    				<%end%>
+    				 
+	 			</p>
+	 		</div>
+	 		<div class="span3 well">
+	 			<h4>Kids Items on sale</h4>
+	 			<center>
+	 				<img src='/assets/home.gif'>
+	 			</center>
+	 			<p> <% @items.each do |item| %>
+	 				<ul class="nav nav-list">
+	 					<li>
+	 						<%= link_to item.name,"" %> 
+	 					</li>
+	 				</ul>
+    				<%end%>
+    				 
+	 			</p>
+	 		</div>
+
+	 	</div>
+
+	<%= render_shareable  :facebook=> {:send=> 'true', :url=> 'https://www.facebook.com/MomsAndTotsSylvanParkNeighborhood'} %> 
+	 	 
+	 	</div>
+
  
  
 	<script type='text/javascript'>
 	    $(document).ready(function() {
 	         $('.carousel').carousel({
-	             interval: 3500
+	             interval: 3000
 	         })
 	    });    
 	</script>
 
-
-	 
-
-</body>
-</html>
+ 

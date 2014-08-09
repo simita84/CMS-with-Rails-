@@ -4,6 +4,11 @@
     before_filter :find_product
   def index
      @homes=Home.all
+     @events=Event.order("events.created_at DESC").paginate(page: params[:page],per_page: 5)
+     @recipes=Recipe.order("recipes.created_at DESC").paginate(page: params[:page],per_page: 5)
+     @items=Item.order("items.created_at DESC").paginate(page: params[:page],per_page: 5)
+
+
   end
 
 
@@ -44,7 +49,7 @@
 
   def listProducts
      @products=Product.order("products.created_at DESC").paginate(:page => params[:page],:per_page =>50)
-      @reviews = Review.order("reviews.created_at DESC").paginate(:page => params[:page],:per_page =>5)
+      @reviews = Review.order("reviews.created_at DESC").paginate(:page => params[:page],:per_page =>1)
        
   end
 
@@ -60,7 +65,7 @@ end
       # @recipes=Recipe.order("recipes.created_at DESC")
        # @users = User.search(query).page(params[:user_page])
 
-       @recipes = Recipe.order("recipes.created_at DESC").paginate(:page => params[:page],:per_page =>5)
+       @recipes = Recipe.order("recipes.created_at DESC").paginate(:page => params[:page],:per_page =>1)
           @allrecipes=Recipe.order("recipes.created_at DESC")
   end
   
@@ -105,7 +110,7 @@ end
    
   def listItems
      
-      @items = Item.order("items.created_at DESC").paginate(:page => params[:page],:per_page =>5)
+      @items = Item.order("items.created_at DESC").paginate(:page => params[:page],:per_page =>1)
       @allItems=Item.order("items.created_at DESC")
     
   end
@@ -167,8 +172,28 @@ end
     end  
   end
 
-  
-  
+   
+#for handling Contact Us form/
+      def newMessage
+          @message = Message.new
+      end
+
+        
+      def createMessage
+        @message = Message.new(params[:message])
+
+        if @message.valid?
+          # TODO send message here
+
+          ContactMailer.email_admin(@message).deliver
+
+          flash[:notice] = "Message sent! Thank you for contacting us."
+          redirect_to root_url
+        else
+          render :action => 'new'
+        end
+      end 
+
 
 
  #-------------Member Sign Up / registration from Public Page-----------
@@ -184,6 +209,10 @@ end
    end
    end
    
+
+
+
+
   
   
 end

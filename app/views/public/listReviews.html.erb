@@ -1,84 +1,71 @@
-<html>
-
-<body>
  
- 
-<div class="container">
 	
 	<div class="row">
-		<div class="span3">
-<div class="leaderboard">
-	
-					 <ul class='nav'>
-						<li>	<h4>Review Categories </h4></li>
-					
+		<div class="span2">
+
+			<aside class="asideStyle">  
+				<nav>
+					<ul class="nav nav-pills nav-stacked">  
+						<li class="nav-header">	
+							<h4>Review Categories </h4>
+						</li>
 						<%@products.each do |product|%> 	 
- 						 <li>
-						<%=link_to(product.title,:controller=>'public',:action=>'listReviews', 	:product_id=>product.id) %>  	 </li>
+ 						 	<li><%=link_to(product.title,:controller=>'public',:action=>'listReviews', 	:product_id=>product.id) %>  	 </li>
 						<%end%>
-						</ul>
-				 </div>	<!--leaderboard-->
- 					</div><!--span3-->
- 
+					 <ul>
+ 				</nav>
+ 			</aside>
+ 		 </div>
 	 
 		
  
-<div class="span8">
-	 
-			<h2> <%=@product.title%> 's  Reviews</h2>
-	 	 
-			<br>
-	
-			<%= will_paginate @reviews %>
-			<table class="table" >
+	<div class="span9">
+	 	<article class="articleStyle"> 
+	 		<div class="page-header">
+	 			<h2> <%=@product.title%> 's  Reviews</h2>
+
+	 		</div>
+		<%= will_paginate @reviews %>
+	 	
+			
+			 
  <%if @reviews == []%>
-	<tr><td> <p class='lead'>	 <%="Not Reviewed yet"%></p></td></tr>
+  <p>
+  	<%="Not Reviewed yet"%>
+  </p>
 		 <%else%>
 				<% @reviews.each do |review|%>
-				<tr align ="left">	
-	
-					<td >
-  
-			
-			<h4 class="text-error">	 <%=review.title	%></h4> 
-	  <p> <b>Posted by : </b>
-		 		<%=review.posted_by%> 
-				  On  
-			 
-				<%=review.created_at.strftime("%e %b %Y %I:%M %p") %></p></td>     </tr>     				 
-           		 		 
-					<tr>
-							<td>
-							<%= image_tag(review.reviewphoto.url(:medium)) %>
-							</td>
-					</tr>
-						<tr align ="left">
-				<td class="lead">	
-				<p><%= word_wrap(review.content,:line_width=>500)%></p></td> </tr> 	 
-				
-					<tr> </tr>	  
-				
-					<tr> 
-					
-						</tr>
 
-						
-			 
- 	<%end%>	
- 
-					</table>
-					<%end%>
+				<h3> <%=review.title	%> </h3>
+				 
+			 <div class="row">
+			 	<div class="span4">
+			 		<%= image_tag(review.reviewphoto.url(:medium)) %> 		
+			 	</div>
+			 	<div class="span8">
+			 		<p><%= word_wrap(review.content,:line_width=>500)%></p> 
+			 	</div>
+			 </div>
+
+
+			  <footer>
+				   <h3>
+					  <p> Posted by : <%=review.posted_by%> On  
+					 	<%=review.created_at.strftime("%e %b %Y %I:%M %p") %>
+				      </p> 
+				 </h3>
+			  </footer>
+	   		 
+	 		 
+ 	<%end%>	 	 
+ <%end%>
 	
 					<%= will_paginate @reviews %>
-		 			<h3><%=flash[:notice]%></h3>
+		 			 
 		 
  </div>
+  </div>
+ </article>
 
-</div><!--row-->
-
-</div><!--container-->
  
-</body>
-	
-</html>
  

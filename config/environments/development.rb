@@ -41,7 +41,7 @@ MomsAndTots::Application.configure do
         :address              => "smtp.gmail.com",
         :port                 => 587,
         :user_name            => 'momsntotsbayarea@gmail.com',
-        :password             => 'momsntots2013',
+        :password             => 'simiraj2010',
         :authentication       => :login,
         :enable_starttls_auto => true
       }

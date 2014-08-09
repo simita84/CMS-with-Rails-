@@ -4,7 +4,10 @@
 body {
 padding-top:60px;
 background-color:#b0c4de;
- background-image: url("/assets/kids.jpeg") ;
+ 
+background: #e1d8b9 url(../assets/wallpaper.jpg) no-repeat;
+text-align:center;
+
 
 } 
 
@@ -16,10 +19,42 @@ background-color:#b0c4de;
     background-color: #ffffff;
 }
 
+ 
 
+.asideStyle{
 
+	margin-left:30px;
+	margin-top:30px;
+	width:180px;
+	height:800px;
+	padding:10px;
+}
 
+li.nav-header h4 ,
+.page-header h2 ,
+ .section-head h3
+{
+	color:red;
+}
 
+ 
+
+.carouselFont{
+ font-size: 1.4em;
+	    font-color: white;
+	
+}
+
+ p{
+  
+ padding:10px;
+ }
+
+.articleStyle{
+	padding : 30px; 
+}
+
+  	 
 
 .close
 {
@@ -34,11 +69,7 @@ background-color:#b0c4de;
 }
 
  
-  
-.headEventHighlights{
-font-family: 'Tangerine', serif;
-        font-size: 40px;
-}
+    
 
 .events{
 font-family: 'Tangerine', serif;
@@ -59,7 +90,12 @@ font-family: 'Tangerine', serif;
 height:20px;
  }
 
+#myCarousel{
 
+	margin: 0 auto;
+	
+
+}
 
 .leaderboard {  
 padding: 60px;  
@@ -72,41 +108,24 @@ background-repeat:repeat;
 border-radius: 6px;  
 }  
  
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 .carimage{
 border: 3px solid #000;}
  
 
- 	p
- {
- 	color:#000080;
-  
- 	font-family: "Comic Sans MS", cursive, sans-serif
- 	}
- th{
-font-size:15px;
-}
+   
  
-	h1,h2,h3,h4{
+	h1,h2,h3,h4,p,li,body{
  
-	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-family:"Lucida Console",Georgia,Serif;
 		 }
  
+	footer#article-meta{
+		background: #e1d8b9 url(../assets/wallpaper.jpg) no-repeat;
+
+	}
 	
-	
-body  .hero-unit {
+body  p {
 				background: rgb(254,252,234); /* Old browsers */
 				background: -moz-linear-gradient(top, rgba(254,252,234,1) 0%, rgba(241,218,54,1) 100%); /* FF3.6+ */
 				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(254,252,234,1)), color-stop(100%,rgba(241,218,54,1))); /* Chrome,Safari4+ */
@@ -115,11 +134,17 @@ body  .hero-unit {
 				background: -ms-linear-gradient(top, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%); /* IE10+ */
 				background: linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%); /* W3C */
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', endColorstr='#f1da36',GradientType=0 ); /* IE6-9 */
-			  padding: 30px;
-			  margin-bottom: 10px;
-			  font-size: 18px;
+		 
+			  padding: 0px;
+			  
+			  margin-bottom: 50px;
+		 
 			  font-weight: 20;
-			  line-height: 10px;
+			  line-height: 20px;
+			  text-align:center;
+			  float:center;
+			  overflow :visible;
+
 
 			  color:inherit;
 
@@ -128,6 +153,7 @@ body  .hero-unit {
 			          border-radius: 6px;
 			}
 	
+  
 	
 // Set the correct sprite paths
 @iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
@@ -159,4 +185,6 @@ body  .hero-unit {
 @navbarHeight :35px;
 @gridColumns :12;
 @gridColumnWidth :60px;
+
+
  

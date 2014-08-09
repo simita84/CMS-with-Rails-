@@ -1,58 +1,49 @@
-
-<html>
  
 
-<body>
-	
-<div class="container">	
- 
-<h2> Explore Clubby Kids</h2>
- 
+
 
 <div class='row'>
+
 	
-	<div class='span4 offset1'>
+	<div class='span3 offset1'>
+	 
+		<h2> Explore Clubby Kids</h2>
+		 
+
 		<img src='/assets/mommyme.jpg'>
-		</div>
-	<div class='span6'>
-
- <div id="login">
- 	 
-<%=form_tag(:controller=>'public',:action=>'attempt_login') do %>
-
-<table align="center">
- <tr>
-
-	<td> <h3>Please Login !!</h3></td></tr>
-	<tr>
-		<td><%= label_tag (:username)%>	</td>
-		<td><%=text_field_tag(:username)%>	</td><tr>
-			
-			
-	 	<td><%= label_tag(:password)%>	</td>
-		<td><%=password_field_tag(:password)%>	</td></tr>
-		</tr>
-		<tr><td></td>
- 
-	  <td>
-		 <%=submit_tag "Sign In",:class=>'btn btn-primary btn-large' %> 
-	  
-		 <%=link_to("Sign Up",{:action=>'new'},:class=>'btn btn-primary btn-large')%></td>
-		</tr>
-		<tr>
-		<td></td>
-		<td><%= link_to "Forgot password?", new_password_reset_path%><td>
-		</tr>
-
-	</table>
-	<%end%>
-
-
-	
-		 </div>
-		</div>
- 
 	</div>
-		</div>
-</body>
-</html>
+	<div class='span6 offset1'>
+		 
+		<br>
+		<br>
+  			<h3>Please Login !!</h3> 
+ 		
+
+ 	  <div class="form-horizontal">
+ 	 
+				<%=form_tag(:controller=>'public',:action=>'attempt_login') do %>
+ 
+	          <div class="field">
+	           <%= label_tag (:username)%>	
+	            <%=text_field_tag(:username)%>
+	          </div>
+
+	          <div class="field">
+	           <%= label_tag(:password)%>
+	           <%=password_field_tag(:password)%>
+	          </div>
+
+	           <div class="actions">
+				 <%=submit_tag "Sign In",:class=>'btn btn-primary btn-large' %> 
+			  
+				 <%=link_to("Sign Up",{:action=>'new'},:class=>'btn btn-primary btn-large')%> <br>
+				 <%= link_to "Forgot password?", new_password_reset_path%>
+			</div>
+			 
+		<%end%>
+	</div>
+</div>
+</div>
+
+	  
+	  

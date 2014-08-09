@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def listProducts   
-   @products=Product.order("products.created_at DESC").paginate(page:params[:page],per_page: 10) 
+   @products=Product.order("products.created_at DESC")
   end
   
   def new

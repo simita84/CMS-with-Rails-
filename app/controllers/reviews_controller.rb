@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   end
 
   def listReviews
-  @reviews = Review.order("reviews.id DESC").where(:product_id=>@product.id).paginate(page: params[:page],per_page: 10)  
+  @reviews = Review.order("reviews.id DESC").where(:product_id=>@product.id)
    
   end
   

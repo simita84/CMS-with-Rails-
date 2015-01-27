@@ -1,6 +1,4 @@
 ---
-' background.jpg': ' background-871d65ca97a8cf515fdd7292613332a1.jpg'
-' background/index.jpg': ' background-871d65ca97a8cf515fdd7292613332a1.jpg'
 ' ball.jpg': ' ball-4066aeed965d959511dcdba2c564a83d.jpg'
 ' ball/index.jpg': ' ball-4066aeed965d959511dcdba2c564a83d.jpg'
 ' img1.jpg': ' img1-1c324c67345f73059917417926ff6364.jpg'
@@ -73,8 +71,6 @@ kid5.jpg: kid5-92b8ddbe263e36660d7ee6454820f1a8.jpg
 kid5/index.jpg: kid5-92b8ddbe263e36660d7ee6454820f1a8.jpg
 kid6.jpg: kid6-15276155803bae0a716ee7c0da8fab75.jpg
 kid6/index.jpg: kid6-15276155803bae0a716ee7c0da8fab75.jpg
-kids.jpeg: kids-d3d772c4a544d22c7c70862959461fa4.jpeg
-kids/index.jpeg: kids-d3d772c4a544d22c7c70862959461fa4.jpeg
 kids.png: kids-301c187c8cb8c3bb47427f87ea6bb338.png
 kids/index.png: kids-301c187c8cb8c3bb47427f87ea6bb338.png
 location.jpeg: location-401ebcfbfbbd42102c157ead620cb7f6.jpeg
@@ -121,10 +117,12 @@ tots.jpg: tots-82f96eed9c2064778641c58243e82d5f.jpg
 tots/index.jpg: tots-82f96eed9c2064778641c58243e82d5f.jpg
 tran.png: tran-21b0913ab09e445a126da7930e86a2ee.png
 tran/index.png: tran-21b0913ab09e445a126da7930e86a2ee.png
+wallpaper.jpg: wallpaper-e5f5f1f6ccd6f91047f312ca4ec94b2b.jpg
+wallpaper/index.jpg: wallpaper-e5f5f1f6ccd6f91047f312ca4ec94b2b.jpg
 application.js: application-78ea75faefbb9460600b6f6747187a2f.js
 application/index.js: application-78ea75faefbb9460600b6f6747187a2f.js
-application.css: application-7ecdec81382f24ad40e95736b9ab2f60.css
-application/index.css: application-7ecdec81382f24ad40e95736b9ab2f60.css
+application.css: application-d43bf089fed73762a4cdea0f0218909a.css
+application/index.css: application-d43bf089fed73762a4cdea0f0218909a.css
 jquery.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
 jquery/index.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
 glyphicons-halflings-white.png: glyphicons-halflings-white-326b0668f7165b8eddb98b43a1c674fd.png

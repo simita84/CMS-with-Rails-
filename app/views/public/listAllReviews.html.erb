@@ -7,7 +7,7 @@
 		
  
 <div class="span8">
-					 <div class="hero-unit">
+					 
 		<%=link_to("Back to Categories",{:controller=>'public',:action=>'listProducts'},:class=>'btn')%>
 		
 	 
@@ -26,15 +26,15 @@
 					 
 			
 			<h3>	 <%=review.title	%></h3></td>   
-			<td> <p> <b>Posted by : </b>
+			<td> <b>Posted by : </b>
 		 		<%=review.posted_by%> 
 				  On  
 			 
-				<%=review.created_at.strftime("%e %b %Y %I:%M %p") %></p></td>     </tr>     				 
+				<%=review.created_at.strftime("%e %b %Y %I:%M %p") %></td>     </tr>     				 
            		 		 
 						<tr align ="left">
 				<td class="lead">	
-				<p><%= word_wrap(review.content,:line_width=>500)%></p></td> </tr> 	 
+				<%= word_wrap(review.content,:line_width=>500)%></td> </tr> 	 
 				
 					<tr> </tr>	  
 				
@@ -49,7 +49,7 @@
 					<%= will_paginate @reviews %>
 		 			<h3><%=flash[:notice]%></h3>
 		 
- </div>
+ 
 </div>
 	
  

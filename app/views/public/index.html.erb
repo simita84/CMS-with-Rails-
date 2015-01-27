@@ -4,13 +4,13 @@
 		 <%@homes.each do |home|%>
 			  <img src='/assets/home.gif'>
   			  <h1 class="page-header">About Us</h1>
-			  <p><%=simple_format(home.content)%></p>		
-			  <p>
+			  <div><%=simple_format(home.content)%></div>		
+			  <div> 
 			  <center> 
 			 	<%=link_to("Sign In",{:action=>'login'},:class=>'btn btn-primary btn-large')%>
 				<%=link_to("Sign Up",{:action=>'new'},:class=>'btn btn-primary btn-large')%> 
 			  </center> 
-			   </p>
+			  </div>
 		  		<%end%>
 		</div><!--span12-->
 	</div>		<!--row-->		

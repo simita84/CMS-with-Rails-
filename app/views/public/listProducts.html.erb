@@ -45,21 +45,19 @@
 
 					<div class="row">
 						<div class="span6">
-							<figure>
+							 
 									<% if(review.reviewphoto) %> 		 		
 									 	 
 									 		<%= image_tag (review.reviewphoto.url(:medium)) %>
 								 
 									<%end%>
-							</figure>
+							 
 						</div>
 					</div>
 					 <section> 
 					<div class="row"> 
 						<div  class="span8" > 
-								<p> 
-									<%= simple_format(review.content,:line_width=>200)%>
-						 		 </p>  
+								 <%= simple_format(review.content,:line_width=>200)%>
 						</div>
 					</div>
 	 	

@@ -36,17 +36,17 @@
 					<head>	
 					 <h3><%=item.name%> </h3>
 					</head>
-						<div class="span6">
-							<figure class="thumbnail">
+						<div class="span6 thumbnail">
+							 
 								<%= image_tag item.itemphoto.url(:medium) %>
-							<figure>
+							 
 						</div>
 					</div>
 					<div class="row">
 						<div class="span8">
-								<p>
+								 
 									<%=simple_format(word_wrap(item.content,:line_width=>300))%>
-								</p>
+								 
 							 
 						</div>
 					</div>

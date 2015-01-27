@@ -1,120 +1,87 @@
+<div class="container">
+	<div class="row">
+		<div class="span12">
+		 <%@homes.each do |home|%>
+			  <img src='/assets/home.gif'>
+  			  <h1 class="page-header">About Us</h1>
+			  <p><%=simple_format(home.content)%></p>		
+			  <p>
+			  <center> 
+			 	<%=link_to("Sign In",{:action=>'login'},:class=>'btn btn-primary btn-large')%>
+				<%=link_to("Sign Up",{:action=>'new'},:class=>'btn btn-primary btn-large')%> 
+			  </center> 
+			   </p>
+		  		<%end%>
+		</div><!--span12-->
+	</div>		<!--row-->		
 
-
-
-
- 
- 	 
- 		<div class='row'>	 
- 			 <div class='span11'>
- 				 
-
-			 			<%@homes.each do |home|%>
-			 				
-						<center>
-					 
-								<img src='/assets/home.gif'>
-							 
-							<div class="page-header">
-								<h2>Kids Paradise</h2>
-							 </div>
- 
- 
-							<div class="span12">
-
-					 		  
-					  				 <div class="page-header">
-					  				 	<h1>About Us</h1>
-					  					
-					  				</div>
-					  				<p><%=simple_format(home.content)%></p>		
-					  	  
-							<p> 
-								<center> 
-							 	<%=link_to("Sign In",{:action=>'login'},:class=>'btn btn-primary btn-large')%>
-								<%=link_to("Sign Up",{:action=>'new'},:class=>'btn btn-primary btn-large')%> 
-								</center>
-							</p>
-		 
-					<%end%>
-				</div>
-					
-
-		  
-			
- 
-
-</div>
-
-</center>
- 
-
-<br><br>
-
+ 		  
+<div class="row">
+	 
 <center><h3> Whats Trending?</h3></center>
  
- <div class="row">
-
  	<div class="span12">
-	 		<div class="span3 well ">
-	 			<h4>Latest Kids Events</h4>
-	 			<center>
-	 				<img src='/assets/home.gif'>
-	 			</center>
-	 			<p> <% @events.each do |event| %>
-	 				<ul class="nav nav-list">
-	 					<li>
-	 						<%= link_to event.name,"" %> 
-	 					</li>
-	 				</ul>
-    				<%end%>
-    				 
-	 			</p>
-	 		</div>
-	 		<div class="span3 well">
-	 		
-	 			<h4>Newest Kids Recipes</h4>
-	 			<center>
-	 				<img src='/assets/home.gif'>
-	 			</center>
-	 			<p> <% @recipes.each do |recipe| %>
-	 				<ul class="nav nav-list">
-	 					<li>
-	 						<%= link_to recipe.title,"" %> 
-	 					</li>
-	 				</ul>
-    				<%end%>
-    				 
-	 			</p>
-	 		</div>
-	 		<div class="span3 well">
-	 			<h4>Kids Items on sale</h4>
-	 			<center>
-	 				<img src='/assets/home.gif'>
-	 			</center>
-	 			<p> <% @items.each do |item| %>
-	 				<ul class="nav nav-list">
-	 					<li>
-	 						<%= link_to item.name,"" %> 
-	 					</li>
-	 				</ul>
-    				<%end%>
-    				 
-	 			</p>
-	 		</div>
-
+	 	<div class="span3 well">
+ 			<h4>Latest Kids Events</h4>
+ 			<center>
+ 				<img src='/assets/home.gif'>
+ 			</center>
+ 			<p> <% @events.each do |event| %>
+ 				<ul class="nav nav-list">
+ 					<li>
+ 						<%= link_to event.name,"" %> 
+ 					</li>
+ 				</ul>
+				<%end%>
+				 
+ 			</p>
 	 	</div>
-
-	<%= render_shareable  :facebook=> {:send=> 'true', :url=> 'https://www.facebook.com/MomsAndTotsSylvanParkNeighborhood'} %> 
-	 	 
+	 	<div class="span3 well">
+ 		 <h4>Newest Kids Recipes</h4>
+ 			<center>
+ 				<img src='/assets/home.gif'>
+ 			</center>
+ 			<p> <% @recipes.each do |recipe| %>
+ 				<ul class="nav nav-list">
+ 					<li>
+ 						<%= link_to recipe.title,"" %> 
+ 					</li>
+ 				</ul>
+				<%end%>
+    		</p>
 	 	</div>
+ 		<div class="span3 well">
+ 			<h4>Kids Items on sale</h4>
+ 			<center>
+ 				<img src='/assets/home.gif'>
+ 			</center>
+ 			<p> <% @items.each do |item| %>
+ 				<ul class="nav nav-list">
+ 					<li>
+ 						<%= link_to item.name,"" %> 
+ 					</li>
+ 				</ul>
+				<%end%>
+				 
+ 			</p>
+ 		</div>
+   </div><!--row-->
+	  
+	<div class="row">
+		<div class="span6 offset3">
+			<%= render_shareable  :facebook=> {:send=> 'true', :url=> 'https://www.facebook.com/MomsAndTotsSylvanParkNeighborhood'} %> 
+		</div>
+		
+	</div>
 
- 
+ </div><!--container--> 
+
  
 	<script type='text/javascript'>
 	    $(document).ready(function() {
-	         $('.carousel').carousel({
-	             interval: 3000
-	         })
+	        $('.well').hover(function(){
+	        	$('.well').css("background-color","yellow");
+	        }); 
 	    });    
 	</script>
 

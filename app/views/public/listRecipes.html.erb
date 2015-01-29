@@ -1,7 +1,10 @@
- 	 
+ 
+<h2 class="page-header">Latest Recipes</h2>
+	 		 
+<%= will_paginate @recipes %> 	 
+<div class="container">
 <div class="row"> 
-		<div class="span2"> 
-			<aside class="asideStyle"> 
+		<div class="span2 well"> 
 				 <nav>
 					<ul class="nav nav-pills nav-stacked">
 						<li class="nav-header">
@@ -17,47 +20,31 @@
 						<%end%>	
 		 	
 				</nav>
-			</aside> 
-	 	 </div>
- 
-		 
-	 <div class="span8 offset1">
-	 	<article class="articleStyle">
-	 		<div class="page-header">
-	 			<h2>Latest Recipes</h2>
-	 		</div>
-	 		
-	 		<section>
-	 			<%= will_paginate @recipes %>
-	 					<%@recipes.each do |recipe|%>
-	 					<head>	
-	 						<h3> <%=recipe.title%></h3> 	
-	 					 </head>
 
-	 		<div class="row"> 
-	 			<div class="span6"> 
-		 				<div class="thumbnail">
-		 				<%= image_tag recipe.recipephoto.url(:medium) %>
-		 				</div>
-	 			</div>
-	 		</div>
-	 		<div class="row"> 
-	 			<div class="span8"> 
-		 				 <%=simple_format(word_wrap(recipe.content,:line_width=>300))%>
-	 			</div>
-	 		</div>
-
-	 		</section>
-	 		<footer class="meta-article">
-	 			<h5> Posted By<%=recipe.posted_by%> On  
-					  <%=recipe.created_at.strftime("%e %b %Y %I:%M %p") %> </h5>
-	 			
-	 		</footer>
-	 	</article>
-
-	 	<%end%>
+		</div>
+			 
+		 <div class="span9">
+		   	<%@recipes.each do |recipe|%>
+		 		 <h3><%=recipe.title%></h3> 
+	 
+		 		<div class="row"> 
+		 			 <div class="span2 image_dimension">		 	
+			 				<%= image_tag(recipe.recipephoto.url(:medium),:class=> "img-rounded") %>
+			 		</div>
+		 		 
+		 			<div class="span4 well"> 
+			 				<pre> <%=recipe.content%></pre> 
+			 			<h5> Posted By<%=recipe.posted_by%> On  
+						  <%=recipe.created_at.strftime("%e %b %Y %I:%M %p") %> </h5>
+		 			</div>
+		 		 
+		 	         <%end%>
+		 	   </div>
+	     </div>
 	  
- 				<%= will_paginate @recipes %>
+ 				
   			 
  </div>
-</div>
+
+ </div>
+ 

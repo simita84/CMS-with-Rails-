@@ -1,10 +1,9 @@
- 
-	
-	<div class="row">
-		<div class="span2">
-
-			<aside class="asideStyle">  
-				<nav>
+ <h2 class="page-header"> <%=@product.title%> 's  Reviews</h2>
+ <%= will_paginate @reviews %>
+ <div class="container">
+ 	<div class="row ">
+ 		<div class="span2 well">
+ 			<nav>
 					<ul class="nav nav-pills nav-stacked">  
 						<li class="nav-header">	
 							<h4>Review Categories </h4>
@@ -14,58 +13,49 @@
 						<%end%>
 					 <ul>
  				</nav>
- 			</aside>
- 		 </div>
-	 
-		
+ 			
+ 		</div>
+ 		
+
  
 	<div class="span9">
-	 	<article class="articleStyle"> 
-	 		<div class="page-header">
-	 			<h2> <%=@product.title%> 's  Reviews</h2>
-
-	 		</div>
-		<%= will_paginate @reviews %>
-	 	
-			
+	  
 			 
- <%if @reviews == []%>
-  <p>
-  	<%="Not Reviewed yet"%>
-  </p>
+		 <%if @reviews == []%>
+		  <p>
+		  	<%="Not Reviewed yet"%>
+		  </p>
 		 <%else%>
 				<% @reviews.each do |review|%>
 
 				<h3> <%=review.title	%> </h3>
 				 
 			 <div class="row">
-			 	<div class="span4">
-			 		<%= image_tag(review.reviewphoto.url(:medium)) %> 		
+			 	<div class="span2 image_dimension">		
+			 		<%= image_tag(review.reviewphoto.url(:medium),:class=> "img-rounded") %> 
+
+			 	 
 			 	</div>
-			 	<div class="span8">
-			 	 <%= word_wrap(review.content,:line_width=>500)%> 
+			 	<div class="span4 well">
+			 		<pre> <%= review.content%> </pre>
+			 	
+			 	 <h5>
+				Posted by : <%=review.posted_by%> On  
+				<%=review.created_at.strftime("%e %b %Y %I:%M %p") %>     
+				 </h5>
 			 	</div>
 			 </div>
 
-
-			  <footer>
-				   <h3>
-					  <p> Posted by : <%=review.posted_by%> On  
-					 	<%=review.created_at.strftime("%e %b %Y %I:%M %p") %>
-				      </p> 
-				 </h3>
-			  </footer>
+  			
+			  
 	   		 
 	 		 
  	<%end%>	 	 
  <%end%>
 	
-					<%= will_paginate @reviews %>
+				 
 		 			 
 		 
+  
  </div>
-  </div>
- </article>
-
- 
- 
+ </div> 

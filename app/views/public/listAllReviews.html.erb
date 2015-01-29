@@ -1,14 +1,8 @@
-<html>
-
-<body>
- 
- 
- 
-		
  
 <div class="span8">
 					 
-		<%=link_to("Back to Categories",{:controller=>'public',:action=>'listProducts'},:class=>'btn')%>
+		<%=link_to("Back to Categories",
+				{:controller=>'public',:action=>'listProducts'},:class=>'btn')%>
 		
 	 
 			<h1> <%=@product.title%> 's  Reviews</h1>
@@ -34,7 +28,8 @@
            		 		 
 						<tr align ="left">
 				<td class="lead">	
-				<%= word_wrap(review.content,:line_width=>500)%></td> </tr> 	 
+					<pre><%= review.content%></pre>
+				</td> </tr> 	 
 				
 					<tr> </tr>	  
 				

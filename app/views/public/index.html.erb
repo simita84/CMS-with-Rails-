@@ -4,7 +4,9 @@
 		 <%@homes.each do |home|%>
 			  <img src='/assets/home.gif'>
   			  <h1 class="page-header">About Us</h1>
-			  <div><%=simple_format(home.content)%></div>		
+			  <div id="home_content">
+			  	<%=home.content%>
+			  </div>		
 			  <div> 
 			  <center> 
 			 	<%=link_to("Sign In",{:action=>'login'},:class=>'btn btn-primary btn-large')%>
@@ -21,7 +23,7 @@
 <center><h3> Whats Trending?</h3></center>
  
  	<div class="span12">
-	 	<div class="span3 well">
+	 	<div class="span3 well surface">
  			<h4>Latest Kids Events</h4>
  			<center>
  				<img src='/assets/home.gif'>
@@ -36,7 +38,7 @@
 				 
  			</p>
 	 	</div>
-	 	<div class="span3 well">
+	 	<div class="span3 well surface">
  		 <h4>Newest Kids Recipes</h4>
  			<center>
  				<img src='/assets/home.gif'>
@@ -50,7 +52,7 @@
 				<%end%>
     		</p>
 	 	</div>
- 		<div class="span3 well">
+ 		<div class="span3 well surface">
  			<h4>Kids Items on sale</h4>
  			<center>
  				<img src='/assets/home.gif'>
@@ -80,7 +82,9 @@
 	<script type='text/javascript'>
 	    $(document).ready(function() {
 	        $('.well').hover(function(){
-	        	$('.well').css("padding","10px");
+	        	$(this).css("background","white");
+	        },function(){
+	        	$(this).css("background","#f5f5f5");
 	        }); 
 	    });    
 	</script>

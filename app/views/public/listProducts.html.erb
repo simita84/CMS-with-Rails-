@@ -1,10 +1,9 @@
- 
-		 
-<div class="row"> 
-		<div class="span2"> 
-		<aside class="asideStyle"> 
-
-			<%if !@products.empty?%>
+ <h2 class="page-header">  Latest Reviews</h2>  
+<h5><%= will_paginate @reviews %></h5>		 
+<div class="container">
+	<div class="row"> 
+		<div class="span2 well"> 
+		  <%if !@products.empty?%>
 			 <nav >
 			<ul class="nav nav-pills nav-stacked">
 				<li class="nav-header">
@@ -20,62 +19,29 @@
 					 </nav>
 			<%end%>
 			 	     	 
-			</aside>
-
-	</div>
-
-	<div class="span8 offset1"> 
-		
-	 <article class="articleStyle"> 
-		
-		<div class="page-header"> 
-		 	<h2>  Latest Reviews</h2> 
-
 		 </div>
+
  
-		
-		 	 
-			 <%= will_paginate @reviews %>
-			 
-					<% @reviews.each do |review|%>
-
-					<div class="section-head">
-						<h3> <%=review.title	%></h3> 
-					</div>
-
-					<div class="row">
-						<div class="span6">
-							 
-									<% if(review.reviewphoto) %> 		 		
-									 	 
-									 		<%= image_tag (review.reviewphoto.url(:medium)) %>
-								 
-									<%end%>
-							 
-						</div>
-					</div>
-					 <section> 
-					<div class="row"> 
-						<div  class="span8" > 
-								 <%= simple_format(review.content,:line_width=>200)%>
-						</div>
-					</div>
-	 	
-			<footer id="article-meta">
-				 <h5>Posted by: 
-				 <%=review.posted_by%> On  <%=review.created_at.strftime("%e %b %Y %I:%M %p") %> </h5>		
-			</footer>
-	 
-
-				</section>
-	 <%end%>	
-				<div>
-		 			<h5><%= will_paginate @reviews %></h5>
-			</div>
-	</article>
-
-	</div>
+		<div class="span9"> 
+		  <% @reviews.each do |review|%>
+ 			<h3 class="section-head"> <%=review.title%></h3> 
+ 			<div class="row"> 
+ 				<div class="span2 image_dimension">		 	
+					<% if(review.reviewphoto) %> 		 		
+						 <%= image_tag (review.reviewphoto.url(:medium)) %>
+					<%end%>
+				</div>
+				<div class="span4 well">
+					<pre>	<%= review.content%></pre>				
+					 <h5>Posted by: 
+					<%=review.posted_by%> On  
+					 <%=review.created_at.strftime("%e %b %Y %I:%M %p") %> </h5>	
+				</div>		  
+				 <%end%>	
+			 </div>
+	 </div>
 </div>		
-	
+
+ 
 	 
   

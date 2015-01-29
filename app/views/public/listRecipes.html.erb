@@ -28,12 +28,14 @@
 		 		 <h3><%=recipe.title%></h3> 
 	 
 		 		<div class="row"> 
-		 			 <div class="span2 image_dimension">		 	
-			 				<%= image_tag(recipe.recipephoto.url(:medium),:class=> "img-rounded") %>
-			 		</div>
-		 		 
-		 			<div class="span4 well"> 
-			 				<pre> <%=recipe.content%></pre> 
+		 			 <div class="span9">		 	
+			 				
+			 		 <span class="image-dimension">
+			 		 	<%= image_tag(recipe.recipephoto.url(:medium),:class=> "img-rounded") %> 
+			 		 </span>
+			 				
+			 					<br><br>
+			 					<pre> <%=recipe.content%></pre> 
 			 			<h5> Posted By<%=recipe.posted_by%> On  
 						  <%=recipe.created_at.strftime("%e %b %Y %I:%M %p") %> </h5>
 		 			</div>

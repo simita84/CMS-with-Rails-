@@ -1,9 +1,12 @@
-	 
+ <h2 class="page-header"> Items for Sale  </h2>
+				<%= will_paginate @items %>
+
+<div class="container">			 
 <div class="row"> 
 
 
 	<div class="span2"> 
-			<aside class="asideStyle"> 
+		 
 				 <nav>
 					<ul class="nav nav-pills nav-stacked">
 						<li class="nav-header">
@@ -17,47 +20,38 @@
 						<%end%>
 					</ul>
 				 </nav>
-			</aside>
+			 
 	</div>	
 
 		
-	 <div class="span8 offset1"> 
-		<article class="articleStyle">
-				<div class="page-header">
-					<h2> Items for Sale  </h2>
-				</div>
+	 <div class="span9"> 
+		 
 				
-				<%= will_paginate @items %>
+			 
 				
 				<%@items.each do |item|%> 
 
-					<div class="row">
-						
-					<head>	
-					 <h3><%=item.name%> </h3>
-					</head>
-						<div class="span6 thumbnail">
+				 
+				 
+					 <h3 class="section-head">
+					 	<%=item.name%> 
+					 </h3>
+					 
+						<span class="image_dimension">
+							<%= image_tag(item.itemphoto.url(:medium),:class=> "img-rounded") %> 
+						</span>
+						<br><br>
 							 
-								<%= image_tag item.itemphoto.url(:medium) %>
-							 
-						</div>
-					</div>
-					<div class="row">
-						<div class="span8">
-								 
-									<%=simple_format(word_wrap(item.content,:line_width=>300))%>
-								 
-							 
-						</div>
-					</div>
-
-		 
-			<footer id="article-meta">
+					<pre>
+						<%=item.content%>
+					</pre>
+					
+					 
 					 <h5> Posted By: <%=item.posted_by%>on <%=item.created_at.strftime("%B %e %Y") %></h5>
-			</footer>
-			<%= will_paginate @items %>
+	 
+			
 			<%end%>	
-		</article>
+	 
 	</div>
 			  
 
@@ -65,3 +59,4 @@
  
 	 
  
+</div>	

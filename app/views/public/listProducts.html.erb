@@ -26,13 +26,18 @@
 		  <% @reviews.each do |review|%>
  			<h3 class="section-head"> <%=review.title%></h3> 
  			<div class="row"> 
- 				<div class="span2 image_dimension">		 	
+ 				<div class="span9">		 	
+					
+				 
 					<% if(review.reviewphoto) %> 		 		
-						 <%= image_tag (review.reviewphoto.url(:medium)) %>
+						<span class="image_dimension">
+							<%= image_tag (review.reviewphoto.url(:medium)) %>
+						</span> 
 					<%end%>
-				</div>
-				<div class="span4 well">
-					<pre>	<%= review.content%></pre>				
+					<br>
+					<br>
+					 
+						<pre><%= review.content%></pre>				
 					 <h5>Posted by: 
 					<%=review.posted_by%> On  
 					 <%=review.created_at.strftime("%e %b %Y %I:%M %p") %> </h5>	
